@@ -16,7 +16,11 @@ class CreateRafflesTable extends Migration
         Schema::create('raffles', function (Blueprint $table) {
             $table->id();
             $table->int ('cantidadPart');
+            $table->unsignedBigInteger('idProducto');
             $table->timestamps();
+
+            $table->foreign('idProducto')->references('id')->On('products')
+                ->onDelete('cascate');
         });
     }
 

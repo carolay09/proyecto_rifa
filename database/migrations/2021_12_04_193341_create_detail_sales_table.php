@@ -18,7 +18,14 @@ class CreateDetailSalesTable extends Migration
             $table->int ('cantidad');
             $table->float ('precio');
             $table->float ('total');
+            $table->unsignedBigInteger('idEstado');
+            $table->unsignedBigInteger('idUsuario');
             $table->timestamps();
+
+            $table->foreign('idEstado')->references('id')->On('state')
+                ->onDelete('cascate');
+            $table->foreign('idUsuario')->references('id')->On('users')
+                ->onDelete('cascate');
         });
     }
 

@@ -19,7 +19,14 @@ class CreateSalesTable extends Migration
             $table->float ('subtotal');
             $table->float ('total');
             $table->string ('nroOperación');
+            $table->unsignedBigInteger('idEstado');
+            $table->unsignedBigInteger('idUsuario');
             $table->timestamps();
+
+            $table->foreign('idEstado')->references('id')->On('state')
+                ->onDelete('cascate');
+            $table->foreign('idUsuario')->references('id')->On('users')
+                ->onDelete('cascate');
         });
     }
 
