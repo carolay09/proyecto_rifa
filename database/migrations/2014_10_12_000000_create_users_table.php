@@ -21,7 +21,14 @@ class CreateUsersTable extends Migration
             $table->string('direccion');
             $table->string('correo')->unique();
             $table->string('clave');
+            $table->unsignedBigInteger('idEstado');
+            $table->unsignedBigInteger('idRol');
             $table->timestamps();
+
+            $table->foreign('idEstado')->references('id')->On('state')
+                ->onDelete('cascate');
+                $table->foreign('idRol')->references('id')->On('roles')
+                ->onDelete('cascate');
         });
     }
 
