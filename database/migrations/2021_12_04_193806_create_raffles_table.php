@@ -19,8 +19,8 @@ class CreateRafflesTable extends Migration
             $table->unsignedBigInteger('idProducto');
             $table->timestamps();
 
-            $table->foreign('idProducto')->references('id')->On('products')
-                ->onDelete('cascate');
+            // $table->foreign('idProducto')->references('id')->On('products')
+            //     ->onDelete('cascade');
         });
     }
 

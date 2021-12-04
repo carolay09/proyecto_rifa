@@ -23,10 +23,10 @@ class CreateSalesTable extends Migration
             $table->unsignedBigInteger('idUsuario');
             $table->timestamps();
 
-            $table->foreign('idEstado')->references('id')->On('state')
-                ->onDelete('cascate');
-            $table->foreign('idUsuario')->references('id')->On('users')
-                ->onDelete('cascate');
+            // $table->foreign('idEstado')->references('id')->On('state')
+            //     ->onDelete('cascade');
+            // $table->foreign('idUsuario')->references('id')->On('users')
+            //     ->onDelete('cascade');
         });
     }
 

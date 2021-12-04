@@ -22,10 +22,10 @@ class CreateDetailSalesTable extends Migration
             $table->unsignedBigInteger('idTicket');
             $table->timestamps();
 
-            $table->foreign('idVenta')->references('id')->On('salesstate')
-                ->onDelete('cascate');
-            $table->foreign('idTicket')->references('id')->On('raffles')
-                ->onDelete('cascate');
+            // $table->foreign('idVenta')->references('id')->On('salesstate')
+            //     ->onDelete('cascade');
+            // $table->foreign('idTicket')->references('id')->On('raffles')
+            //     ->onDelete('cascade');
         });
     }
 

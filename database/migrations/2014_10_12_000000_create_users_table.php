@@ -19,16 +19,16 @@ class CreateUsersTable extends Migration
             $table->string('apellido');
             $table->string('telefono');
             $table->string('direccion');
-            $table->string('correo')->unique();
+            $table->string('correo');
             $table->string('clave');
             $table->unsignedBigInteger('idEstado');
             $table->unsignedBigInteger('idRol');
             $table->timestamps();
 
-            $table->foreign('idEstado')->references('id')->On('state')
-                ->onDelete('cascate');
-                $table->foreign('idRol')->references('id')->On('roles')
-                ->onDelete('cascate');
+            // $table->foreign('idEstado')->references('id')->On('state')
+            //     ->onDelete('cascade');
+            // $table->foreign('idRol')->references('id')->On('roles')
+            //     ->onDelete('cascade');
         });
     }
 
