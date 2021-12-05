@@ -14,7 +14,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $products = Product::all();
+
+        return view('products.index', compact('products'));
     }
 
     /**
@@ -83,5 +85,57 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         //
+    }
+
+
+
+    public function index_admi(){
+        $products = Product::all();
+
+        return view('administracion/products-index', compact('products'));
+    }
+
+    public function create_admi(){
+
+        return view('administracion/products-create');
+    }
+
+    public function store_admi(Request $request){
+        $product = new Product;
+        $product->nombre = $request->nombre;
+        $product->descripcion = $request->descripcion;
+        $product->marca = $request->marca;
+        $product->detalle = $request->detalle;
+        $product->precio = $request->precio;
+        $product->idEstado = $request->estado;
+        $product->idCategoria = $request->categoria;
+        $product->save();
+
+        return redirect('dashboard/products');
+    }
+
+    public function edit_admi($id){
+        $product = Product::findOrFail($id);
+        
+        return view('administracion/product-edit', compact('product'));
+    }
+
+    public function update_admi(Request $request, Product $product){
+        $product = Product::findOrFail($product->id);
+
+        $product->nombre = $request->nombre;
+        $product->descripcion = $request->descripcion;
+        $product->marca = $request->marca;
+        $product->detalle = $request->detalle;
+        $product->precio = $request->precio;
+        $product->idEstado = $request->estado;
+        $product->idCategoria = $request->categoria;
+        $product->update();
+
+        return redirect('dashboard/products');
+    }
+
+    public function delete_admi(){
+        
     }
 }
