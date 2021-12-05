@@ -15,17 +15,17 @@ class CreateDetailSalesTable extends Migration
     {
         Schema::create('detail_sales', function (Blueprint $table) {
             $table->id();
-            $table->int ('cantidad');
-            $table->float ('precio');
-            $table->float ('total');
+            $table->integer('cantidad');
+            $table->float('precio');
+            $table->float('total');
             $table->unsignedBigInteger('idVenta');
             $table->unsignedBigInteger('idTicket');
             $table->timestamps();
 
-            // $table->foreign('idVenta')->references('id')->On('salesstate')
-            //     ->onDelete('cascade');
-            // $table->foreign('idTicket')->references('id')->On('raffles')
-            //     ->onDelete('cascade');
+            $table->foreign('idVenta')->references('id')->on('sales')
+                ->onDelete('cascade');
+            $table->foreign('idTicket')->references('id')->on('raffles')
+                ->onDelete('cascade');
         });
     }
 

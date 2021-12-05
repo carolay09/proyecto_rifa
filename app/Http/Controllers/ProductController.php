@@ -46,7 +46,9 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        $product->Product::finOrFail($product->id);
+
+        return view('products.show', compact('product'));
     }
 
     /**
