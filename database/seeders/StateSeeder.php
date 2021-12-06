@@ -21,5 +21,13 @@ class StateSeeder extends Seeder
         DB::table('state')->insert([
             'nombre' => 'inactivo'
         ]);
+
+        DB::table('state')->insert([
+            'nombre' => 'pendiente'
+        ]);
+
+        DB::table('state')->insert([
+            'nombre' => 'pagado'
+        ]);
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRafflesTable extends Migration
+class CreateTicketsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,12 @@ class CreateRafflesTable extends Migration
      */
     public function up()
     {
-        Schema::create('raffles', function (Blueprint $table) {
+        Schema::create('tickets', function (Blueprint $table) {
             $table->id();
-            $table->integer('cantidadPart');
-            $table->date('fechaSorteo');
-            $table->float('precioTicket');
-            $table->unsignedBigInteger('idProducto');
-            $table->unsignedBigInteger('idWinner')->nullable();
+            $table->unsignedBigInteger('idRaffle');
             $table->timestamps();
 
-            $table->foreign('idProducto')->references('id')->on('products')
+            $table->foreign('idRaffle')->references('id')->on('raffles')
                 ->onDelete('cascade');
         });
     }
@@ -34,6 +30,6 @@ class CreateRafflesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('raffles');
+        Schema::dropIfExists('tickets');
     }
 }

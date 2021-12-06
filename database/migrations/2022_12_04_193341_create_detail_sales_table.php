@@ -18,13 +18,13 @@ class CreateDetailSalesTable extends Migration
             $table->integer('cantidad');
             $table->float('precio');
             $table->float('total');
-            $table->unsignedBigInteger('idVenta');
-            $table->unsignedBigInteger('idTicket');
+            $table->unsignedBigInteger('idVenta')->nullable();
+            $table->unsignedBigInteger('idRaffle')->nullable();
             $table->timestamps();
 
             $table->foreign('idVenta')->references('id')->on('sales')
                 ->onDelete('cascade');
-            $table->foreign('idTicket')->references('id')->on('raffles')
+            $table->foreign('idRaffle')->references('id')->on('raffles')
                 ->onDelete('cascade');
         });
     }

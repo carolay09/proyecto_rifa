@@ -23,7 +23,9 @@
                         </div>
                     </div>
                     <p class="mb-3">¿Cuántos rifas quieres comprar?</p>
-                    <form action="" method="post">
+                    <form action="{{route('detail_sales.store')}}" method="post">
+                        @csrf
+                        <input type="hidden" name="precio" value="{{$product->precio}}">
                         <div class="d-flex justify-content-center">
                             <input type="button" value="-" class="form-control">
                             <input type="number" name="cantidad" value="1" id="" class="form-control text-center">
