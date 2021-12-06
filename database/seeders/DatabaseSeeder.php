@@ -20,5 +20,6 @@ class DatabaseSeeder extends Seeder
         Product::factory(3)->create();
         $this->call(RolSeeder::class);
         $this->call(UserSeeder::class);
+        $this->call(RaffleSeeder::class);
     }
 }

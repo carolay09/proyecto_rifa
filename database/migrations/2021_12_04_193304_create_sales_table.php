@@ -15,10 +15,10 @@ class CreateSalesTable extends Migration
     {
         Schema::create('sales', function (Blueprint $table) {
             $table->id();
-            $table->datetime('fecha');
-            $table->float('subtotal');
-            $table->float('total');
-            $table->string('nroOperación');
+            $table->datetime('fecha')->nullable();
+            $table->float('subtotal')->nullable();
+            $table->float('total')->nullable();
+            $table->string('nroOperación')->nullable();
             $table->unsignedBigInteger('idEstado');
             $table->unsignedBigInteger('idUsuario');
             $table->timestamps();
