@@ -83,9 +83,16 @@
               <i class="menu-icon mdi mdi-floor-plan"></i>
               <span class="menu-title">Productos</span>
               <i class="menu-arrow"></i> 
-            </a>
-            
+            </a>            
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{route('categories.index')}}">
+              <i class="menu-icon mdi mdi-floor-plan"></i>
+              <span class="menu-title">Categoria</span>
+              <i class="menu-arrow"></i> 
+             </a>
+          </li>
+
           <li class="nav-item nav-category">Forms and Datas</li>
           <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">

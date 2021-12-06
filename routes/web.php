@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -22,6 +23,8 @@ Route::post('dashboard/products/update', [ProductController::class, 'store_admi'
 Route::get('dashboard/products/{id}/edit', [ProductController::class, 'edit_admi'])->name('products.edit.admi');
 Route::patch('dashboard/products/{product}', [ProductController::class, 'update_admi'])->name('products.update.admi');
 Route::resource('products', ProductController::class);
+
+Route::resource('categories', CategoryController::class);
 
 Route::get('/', function(){
     return view('welcome');
