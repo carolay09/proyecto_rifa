@@ -19,8 +19,8 @@ class CreateUsersTable extends Migration
             $table->string('apellido');
             $table->string('telefono');
             $table->string('direccion');
-            $table->string('correo');
-            $table->string('clave');
+            $table->string('email');
+            $table->string('password');
             $table->unsignedBigInteger('idEstado');
             $table->unsignedBigInteger('idRol');
             $table->timestamps();

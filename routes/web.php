@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,4 +23,12 @@ Route::get('dashboard/products/{id}/edit', [ProductController::class, 'edit_admi
 Route::patch('dashboard/products/{product}', [ProductController::class, 'update_admi'])->name('products.update.admi');
 Route::resource('products', ProductController::class);
 
+Route::get('/', function(){
+    return view('welcome');
+});
 
+
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

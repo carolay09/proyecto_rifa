@@ -16,7 +16,7 @@ class ProductController extends Controller
     {
         $products = Product::all();
 
-        return view('products-index', compact('products'));
+        return view('cliente/products-index', compact('products'));
     }
 
     /**
@@ -48,9 +48,9 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        $product->Product::finOrFail($product->id);
+        $product = Product::findOrFail($product->id);
 
-        return view('products.show', compact('product'));
+        return view('cliente.products-show', compact('product'));
     }
 
     /**
