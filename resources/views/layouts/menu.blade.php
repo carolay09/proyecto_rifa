@@ -20,28 +20,22 @@
                 <a class="nav-link active" aria-current="page" href="#">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Features</a>
+                <a class="nav-link active" href="#">Sobre Nosotros</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                <a class="nav-link active" href="#" tabindex="-1" aria-disabled="true">Reglas Generales</a>
               </li>
-            </ul>
-            <form class="d-flex">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-light" type="submit">Search</button>
-            </form>
+              <li class="nav-item">
+                <a class="nav-link active" href="#" tabindex="-1" aria-disabled="true">Carrito</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="#" tabindex="-1" aria-disabled="true">Login</a>
+              </li>
+            </ul> 
           </div>
         </div>
       </nav>
-    <section>
-        <nav class="nav">
-            <ul class="navbar nav">
-                <li class="nav-item">Nosotros</li>
-                <li class="nav-item">contactos</li>
-                <li class="nav-item">sldkjfsl</li>
-            </ul>
-        </nav>
-    </section>
+    
 
     @yield('content')
 </body>
