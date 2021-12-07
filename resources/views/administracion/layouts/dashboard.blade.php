@@ -20,6 +20,7 @@
   <!-- End plugin css for this page -->
   <!-- inject:css -->
   <link rel="stylesheet" href="{{asset('css/vertical-layout-light/style.css')}}">
+  <link href="{{ asset('css/app.css') }}" rel="stylesheet">
   {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script> --}}
   <!-- endinject -->
   {{-- <link rel="shortcut icon" href="images/favicon.png" /> --}}
@@ -162,7 +163,9 @@
       <!-- main-panel ends -->
     </div>
     <!-- page-body-wrapper ends -->
+    
   </div>
+  
   <!-- container-scroller -->
 
   <!-- plugins:js -->
