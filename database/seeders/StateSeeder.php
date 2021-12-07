@@ -15,19 +15,48 @@ class StateSeeder extends Seeder
     public function run()
     {
         DB::table('state')->insert([
-            'nombre' => 'activo'
+            'nombre' => 'activo',
+            'descripcion' => 'rifa activa para que los usuarios puedan comprar tickets'
         ]);
 
         DB::table('state')->insert([
-            'nombre' => 'inactivo'
+            'nombre' => 'inactivo',
+            'descripcion' => 'rifa aun no activada, usuarios no pueden comprar tickets'
         ]);
 
         DB::table('state')->insert([
-            'nombre' => 'pendiente'
+            'nombre' => 'pendiente',
+            'descripcion' => 'tickets en el carrito a espera de comfirmar una compra'
         ]);
 
         DB::table('state')->insert([
-            'nombre' => 'pagado'
+            'nombre' => 'en espera',
+            'descripcion' => 'tickets en espera de confirmacion de numero de operacion'
+        ]);
+
+        DB::table('state')->insert([
+            'nombre' => 'revision',
+            'descripcion' => 'numero de operacion en espera de ser revisados'
+        ]);
+
+        DB::table('state')->insert([
+            'nombre' => 'observado',
+            'descripcion' => 'ticket con numero de operacion observados'
+        ]);
+
+        DB::table('state')->insert([
+            'nombre' => 'pagado',
+            'descripcion' => 'tickets con numero de operacion confirmados'
+        ]);
+
+        Db::table('state')->insert([
+            'nombre' => 'disponible',
+            'descripcion' => 'producto que aun no es usado en una rifa'
+        ]);
+
+        DB::table('state')->insert([
+            'nombre' => 'en uso',
+            'descripcion' => 'producto usado en una rifa'
         ]);
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DetailSale;
 use App\Models\Sale;
 use Illuminate\Http\Request;
 
@@ -67,9 +68,14 @@ class SaleController extends Controller
      * @param  \App\Models\Sale  $sale
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Sale $sale)
+    public function update($id, Request $request)
     {
-        //
+        $sale = Sale::findOrFail($id);
+        $sale->idEstado = '4';
+        $sale->total = $request->total;
+        $sale->update();
+
+        return redirect('products');
     }
 
     /**
@@ -81,5 +87,53 @@ class SaleController extends Controller
     public function destroy(Sale $sale)
     {
         //
+    }
+
+    public function mis_rifas(){
+        $id_user = auth()->user()->id;
+
+        $rifasEsp = Sale::join('detail_sales', 'detail_sales.idVenta', '=', 'sales.id')
+        ->join('raffles', 'detail_sales.idRaffle', '=', 'raffles.id')
+        // ->join('products', 'raffles.idProducto', '=', 'products.id')
+        ->where('sales.idUsuario', '=', $id_user)
+        ->where('sales.idEstado', '=', '4')
+        ->select('sales.total', 'sales.id')
+        ->groupBy('sales.id')
+        ->get();
+
+        $rifasRev = DetailSale::join('sales', 'detail_sales.idVenta', '=', 'sales.id')
+        ->join('raffles', 'detail_sales.idRaffle', '=', 'raffles.id')
+        ->join('products', 'raffles.idProducto', '=', 'products.id')
+        ->where('sales.idUsuario', '=', $id_user)
+        ->where('sales.idEstado', '=', '5')
+        ->select('sales.total', 'sales.id')
+        ->get();
+
+        $rifasConf = DetailSale::join('sales', 'detail_sales.idVenta', '=', 'sales.id')
+        ->join('raffles', 'detail_sales.idRaffle', '=', 'raffles.id')
+        ->join('products', 'raffles.idProducto', '=', 'products.id')
+        ->where('sales.idUsuario', '=', $id_user)
+        ->where('sales.idEstado', '=', '6')
+        ->select('products.nombre', 'raffles.fechaSorteo', 'raffles.precioTicket', 'detail_sales.precio', 'detail_sales.cantidad', 'detail_sales.id')
+        ->get();
+
+        $rifasObs = DetailSale::join('sales', 'detail_sales.idVenta', '=', 'sales.id')
+        ->join('raffles', 'detail_sales.idRaffle', '=', 'raffles.id')
+        ->join('products', 'raffles.idProducto', '=', 'products.id')
+        ->where('sales.idUsuario', '=', $id_user)
+        ->where('sales.idEstado', '=', '7')
+        ->select('products.nombre', 'raffles.fechaSorteo', 'raffles.precioTicket', 'detail_sales.precio', 'detail_sales.cantidad', 'detail_sales.id')
+        ->get();
+
+        return view('cliente.mis-rifas', compact('rifasEsp', 'rifasConf', 'rifasObs', 'rifasRev'));
+    }
+
+    public function state_update(Request $request, $id){
+        $sale = Sale::findOrFail($id);
+        $sale->idEstado = '5';
+        $sale->nroOperación = $request->nroOperacion;
+        $sale->update();
+
+        return redirect('mis-rifas');
     }
 }

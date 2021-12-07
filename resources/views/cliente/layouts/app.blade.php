@@ -33,11 +33,17 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-
+                      
                     </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a href="{{route('mis-rifas')}}" class="nav-link">Mis Rifas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{url('detail_sales')}}" class="nav-link">Carrito</a>
+                        </li>
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))

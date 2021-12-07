@@ -23,8 +23,11 @@ Route::get('dashboard/products/create', [ProductController::class, 'create_admi'
 Route::post('dashboard/products/update', [ProductController::class, 'store_admi'])->name('products.store.admi');
 Route::get('dashboard/products/{id}/edit', [ProductController::class, 'edit_admi'])->name('products.edit.admi');
 Route::patch('dashboard/products/{product}', [ProductController::class, 'update_admi'])->name('products.update.admi');
+Route::get('mis-rifas', [SaleController::class, 'mis_rifas'])->name('mis-rifas');
+Route::patch('actualizar-estado/{id}', [SaleController::class, 'state_update'])->name('actualizar-estado');
 Route::resource('products', ProductController::class);
 Route::resource('detail_sales', DetailSaleController::class);
+Route::resource('sales', SaleController::class);
 
 
 

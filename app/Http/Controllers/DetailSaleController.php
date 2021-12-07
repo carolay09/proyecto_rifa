@@ -25,8 +25,14 @@ class DetailSaleController extends Controller
             ->where('sales.idEstado', '=', '3')
             ->select('products.nombre', 'raffles.fechaSorteo', 'raffles.precioTicket', 'detail_sales.precio', 'detail_sales.cantidad', 'detail_sales.id')
             ->get();
-        
-        return view('cliente.carrito',compact('detail_sales'));
+
+        $sale_id = Sale::where('idUsuario', '=', auth()->user()->id)
+            ->where('idEstado', '=', '3')
+            ->orderByDesc('id')
+            ->select('id')
+            ->first();
+ 
+        return view('cliente.carrito',compact('detail_sales', 'sale_id'));
     }
 
     /**
@@ -127,10 +133,15 @@ class DetailSaleController extends Controller
      * @param  \App\Models\DetailSale  $detailSale
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, DetailSale $detailSale)
-    {
-        //
-    }
+    // public function update($id, Request $request)
+    // {
+    //     $sale = Sale::findOrFail($id);
+    //     $sale->idEstado = '4';
+    //     $sale->total = $request->total;
+    //     $sale->update();
+
+    //     return redirect('products');
+    // }
 
     /**
      * Remove the specified resource from storage.
@@ -145,4 +156,36 @@ class DetailSaleController extends Controller
 
         return redirect('detail_sales');
     }
+
+    // public function mis_rifas()
+    // {
+    //     $id_user = auth()->user()->id;
+
+    //     $rifasEsp = Sale::join('detail_sales', 'detail_sales.idVenta', '=', 'sales.id')
+    //     ->join('raffles', 'detail_sales.idRaffle', '=', 'raffles.id')
+    //     // ->join('products', 'raffles.idProducto', '=', 'products.id')
+    //     ->where('sales.idUsuario', '=', $id_user)
+    //     ->where('sales.idEstado', '=', '4')
+    //     ->select('sales.total', 'sales.id')
+    //     ->groupBy('sales.id')
+    //     ->get();
+
+    //     $rifasConf = DetailSale::join('sales', 'detail_sales.idVenta', '=', 'sales.id')
+    //     ->join('raffles', 'detail_sales.idRaffle', '=', 'raffles.id')
+    //     ->join('products', 'raffles.idProducto', '=', 'products.id')
+    //     ->where('sales.idUsuario', '=', $id_user)
+    //     ->where('sales.idEstado', '=', '6')
+    //     ->select('products.nombre', 'raffles.fechaSorteo', 'raffles.precioTicket', 'detail_sales.precio', 'detail_sales.cantidad', 'detail_sales.id')
+    //     ->get();
+
+    //     $rifasObs = DetailSale::join('sales', 'detail_sales.idVenta', '=', 'sales.id')
+    //     ->join('raffles', 'detail_sales.idRaffle', '=', 'raffles.id')
+    //     ->join('products', 'raffles.idProducto', '=', 'products.id')
+    //     ->where('sales.idUsuario', '=', $id_user)
+    //     ->where('sales.idEstado', '=', '5')
+    //     ->select('products.nombre', 'raffles.fechaSorteo', 'raffles.precioTicket', 'detail_sales.precio', 'detail_sales.cantidad', 'detail_sales.id')
+    //     ->get();
+
+    //     return view('cliente.mis-rifas', compact('rifasEsp', 'rifasConf', 'rifasObs'));
+    // }
 }
