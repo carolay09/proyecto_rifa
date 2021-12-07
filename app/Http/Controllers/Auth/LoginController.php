@@ -37,7 +37,7 @@ class LoginController extends Controller
                 return $this->redirectTo;
                 break;
             case '2': //admi
-                $this->redirectTo = '/dashboard-resume';
+                $this->redirectTo = '/dashboard';
                 return $this->redirectTo;
                 break;
         }

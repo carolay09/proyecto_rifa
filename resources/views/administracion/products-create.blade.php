@@ -14,6 +14,9 @@
         <label for="" class="label-control">Marca</label>
         <input type="text" name="marca" class="form-control" placeholder="Ingrese la marca">
 
+        <label for="" class="label-control">Imagen</label>
+        <input type="file" name="imagen" class="form-control">
+
         <label for="" class="label-control">Detalle</label>
         <input type="text" name="detalle" class="form-control" placeholder="Ingrese el detalle">
 
@@ -21,17 +24,19 @@
         <input type="number" name="precio" class="form-control" placeholder="Ingrese el precio">
 
         <label for="" class="label-control">Categoria</label>
-        <select name="estado" id="" class="form-control">
+        <select name="categoria" id="" class="form-control">
             <option value="" selected>Seleccione</option>
-            <option value="1">Telefonía</option>
-            <option value="2">Ropa</option>
+            @foreach ($categories as $category)
+                <option value="{{$category['id']}}">{{$category['nombre']}}</option>
+            @endforeach
         </select>
 
         <label for="" class="label-control">Estado</label>
-        <select name="categoria" id="" class="form-control">
+        <select name="estado" id="" class="form-control">
             <option value="" selected>Seleccione</option>
-            <option value="1">Activo</option>
-            <option value="2">Inactivo</option>
+            @foreach ($states as $state)
+                <option value="{{$state['id']}}">{{$state['nombre']}}</option>
+            @endforeach
         </select>
 
         <button type="submit">Guardar</button>

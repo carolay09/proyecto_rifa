@@ -4,6 +4,8 @@ use App\Http\Controllers\DetailSaleController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\RaffleController;
+use App\Http\Controllers\StateController;
 use App\Http\Controllers\SaleController;
 use Illuminate\Support\Facades\Auth;
 
@@ -28,6 +30,8 @@ Route::resource('products', ProductController::class);
 
 
 Route::resource('categories', CategoryController::class);
+Route::resource('raffles', RaffleController::class);
+Route::resource('states', StateController::class);
 
 
 
@@ -39,3 +43,6 @@ Route::resource('detail_sales', DetailSaleController::class);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('dashboard', function(){
+    return view('administracion.home');
+})->name('dashboard');

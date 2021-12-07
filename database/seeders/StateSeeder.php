@@ -14,19 +14,19 @@ class StateSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('state')->insert([
+        DB::table('states')->insert([
             'nombre' => 'activo'
         ]);
 
-        DB::table('state')->insert([
+        DB::table('states')->insert([
             'nombre' => 'inactivo'
         ]);
 
-        DB::table('state')->insert([
+        DB::table('states')->insert([
             'nombre' => 'pendiente'
         ]);
 
-        DB::table('state')->insert([
+        DB::table('states')->insert([
             'nombre' => 'pagado'
         ]);
     }
