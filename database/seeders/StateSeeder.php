@@ -14,7 +14,6 @@ class StateSeeder extends Seeder
      */
     public function run()
     {
-<<<<<<< HEAD
         DB::table('state')->insert([
             'nombre' => 'activo',
             'descripcion' => 'rifa activa para que los usuarios puedan comprar tickets'
@@ -58,22 +57,6 @@ class StateSeeder extends Seeder
         DB::table('state')->insert([
             'nombre' => 'en uso',
             'descripcion' => 'producto usado en una rifa'
-=======
-        DB::table('states')->insert([
-            'nombre' => 'activo'
-        ]);
-
-        DB::table('states')->insert([
-            'nombre' => 'inactivo'
-        ]);
-
-        DB::table('states')->insert([
-            'nombre' => 'pendiente'
-        ]);
-
-        DB::table('states')->insert([
-            'nombre' => 'pagado'
->>>>>>> 76b72dcaf9995a3236fc3e778356e93fc154f871
         ]);
     }
 }
