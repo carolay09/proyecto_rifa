@@ -23,7 +23,7 @@ class CreateSalesTable extends Migration
             $table->unsignedBigInteger('idUsuario');
             $table->timestamps();
 
-            $table->foreign('idEstado')->references('id')->on('state')
+            $table->foreign('idEstado')->references('id')->on('states')
                 ->onDelete('cascade');
             $table->foreign('idUsuario')->references('id')->on('users')
                 ->onDelete('cascade');

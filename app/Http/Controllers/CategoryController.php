@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Raffle;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
-class RaffleController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class RaffleController extends Controller
      */
     public function index()
     {
-        $raffles = Raffle::all();
-        return view('administracion/raffles-index', compact('raffles'));
+        $categories = Category::all();
+        return view('administracion/categories-index', compact('categories'));
     }
 
     /**
@@ -25,8 +25,7 @@ class RaffleController extends Controller
      */
     public function create()
     {
-        return view('administracion/raffles-create');
-        
+        //
     }
 
     /**
@@ -37,23 +36,16 @@ class RaffleController extends Controller
      */
     public function store(Request $request)
     {
-        $raffle = new Raffle;
-        $raffle->precioTicket = $request->precio;
-        $raffle->cantidadPart = $request->cantidad;
-        $raffle->idProducto = $request->producto;
-        $raffle->fechaSorteo = $request->fecha;        
-        $raffle->save();
-
-        return redirect('raffles');
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Raffle  $raffle
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function show(Raffle $raffle)
+    public function show(Category $category)
     {
         //
     }
@@ -61,10 +53,10 @@ class RaffleController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Raffle  $raffle
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function edit(Raffle $raffle)
+    public function edit(Category $category)
     {
         //
     }
@@ -73,10 +65,10 @@ class RaffleController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Raffle  $raffle
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Raffle $raffle)
+    public function update(Request $request, Category $category)
     {
         //
     }
@@ -84,10 +76,10 @@ class RaffleController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Raffle  $raffle
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Raffle $raffle)
+    public function destroy(Category $category)
     {
         //
     }

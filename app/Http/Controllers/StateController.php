@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Raffle;
+use App\Models\State;
 use Illuminate\Http\Request;
 
-class RaffleController extends Controller
+class StateController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,7 @@ class RaffleController extends Controller
      */
     public function index()
     {
-        $raffles = Raffle::all();
-        return view('administracion/raffles-index', compact('raffles'));
+        //
     }
 
     /**
@@ -25,8 +24,7 @@ class RaffleController extends Controller
      */
     public function create()
     {
-        return view('administracion/raffles-create');
-        
+        //
     }
 
     /**
@@ -37,23 +35,16 @@ class RaffleController extends Controller
      */
     public function store(Request $request)
     {
-        $raffle = new Raffle;
-        $raffle->precioTicket = $request->precio;
-        $raffle->cantidadPart = $request->cantidad;
-        $raffle->idProducto = $request->producto;
-        $raffle->fechaSorteo = $request->fecha;        
-        $raffle->save();
-
-        return redirect('raffles');
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Raffle  $raffle
+     * @param  \App\Models\State  $state
      * @return \Illuminate\Http\Response
      */
-    public function show(Raffle $raffle)
+    public function show(State $state)
     {
         //
     }
@@ -61,10 +52,10 @@ class RaffleController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Raffle  $raffle
+     * @param  \App\Models\State  $state
      * @return \Illuminate\Http\Response
      */
-    public function edit(Raffle $raffle)
+    public function edit(State $state)
     {
         //
     }
@@ -73,10 +64,10 @@ class RaffleController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Raffle  $raffle
+     * @param  \App\Models\State  $state
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Raffle $raffle)
+    public function update(Request $request, State $state)
     {
         //
     }
@@ -84,10 +75,10 @@ class RaffleController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Raffle  $raffle
+     * @param  \App\Models\State  $state
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Raffle $raffle)
+    public function destroy(State $state)
     {
         //
     }

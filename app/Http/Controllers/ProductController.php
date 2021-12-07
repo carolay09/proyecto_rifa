@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Category;
+use App\Models\State;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -93,18 +95,24 @@ class ProductController extends Controller
         $products = Product::all();
 
         return view('administracion/products-index', compact('products'));
-    }
+    } 
 
     public function create_admi(){
 
-        return view('administracion/products-create');
+        $categories = Category::all();
+        $states = State::all();
+
+        return view('administracion/products-create', compact('categories','states'));
     }
 
     public function store_admi(Request $request){
         $product = new Product;
         $product->nombre = $request->nombre;
         $product->descripcion = $request->descripcion;
-        $product->marca = $request->marca;
+        $product->marca = $request->marca;        
+        if($request->hasFile('imagen')){
+            $product->imagen = $request->file('imagen')->store('images','public');
+        }
         $product->detalle = $request->detalle;
         $product->precio = $request->precio;
         $product->idEstado = $request->estado;
