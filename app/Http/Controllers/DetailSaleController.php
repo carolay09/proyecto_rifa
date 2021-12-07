@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\DetailSale;
 use App\Models\Product;
 use App\Models\Sale;
+use App\Models\State;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -55,25 +56,24 @@ class DetailSaleController extends Controller
     {
         //========revisar por q id de sales es igual a 3}=============
 
-        $venta = Sale::join('state', 'sales.idEstado', '=', 'state.id')
+        $venta = Sale::join('states', 'sales.idEstado', '=', 'states.id')
             ->where('sales.idUsuario', '=', auth()->user()->id)
-            ->where('state.nombre', 'like', 'pendiente')
-            ->select('sales.id', 'state.nombre')
+            ->where('states.nombre', 'like', 'pendiente')
+            ->select('sales.id', 'states.nombre')
             ->first();
-        // $venta = Sale::where('idUsuario', '=', auth()->user()->id)
-        //     ->where('idEstado', 'like', '3')
-        //     ->first();
-        // $venta = DB::select("SELECT a.id, b.nombre FROM sales a INNER JOIN state b ON a.idEstado = b.id WHERE a.idUsuario = '1' AND b.nombre LIKE 'pendiente'");
-        // return($venta);
+        
+
         if($venta == null){
             $sale = new Sale;
             $sale->idEstado = '3';
+            // $sale->idEstado = State::where('nombre', 'like', 'pendiente')->select('id')->first();
             $sale->idUsuario = auth()->user()->id;
             $sale->save();
 
             $detailSale = new DetailSale;
             $detailSale->cantidad = $request->cantidad;
-            $detailSale->precio = $request->precio;
+            // $detailSale->precio = $request->precio;
+            $detailSale->precio = '5';
             $detailSale->total = $request->precio * $request->cantidad;
             $detailSale->idVenta = $sale->id;
             $detailSale->idRaffle = '1';

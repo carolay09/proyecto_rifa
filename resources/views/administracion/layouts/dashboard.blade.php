@@ -59,7 +59,7 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="{{route('products.index.admi')}}">
+                <a class="nav-link" href="{{route('products.index.admi')}}">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Productos</span>
                 </a>
@@ -67,11 +67,17 @@
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+                <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseUtilities"
                     aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-fw fa-wrench"></i>
-                    <span>Utilities</span>
+                    <span>Rifas</span>
                 </a>
+                <ul id="collapseUtilities" class="">
+                    <li><a href="{{route('revision-rifas')}}" class="nav-link">Revision</a></li>
+                    <li><a href="" class="nav-link">sdf</a></li>
+                    <li><a href="" class="nav-link">sdf</a></li>
+                    <li><a href="" class="nav-link">sdf</a></li>
+                </ul>
             </li>
 
             <!-- Divider -->

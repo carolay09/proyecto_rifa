@@ -50,7 +50,11 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        $product = Product::findOrFail($product->id);
+        // $product = Product::findOrFail($product->id);
+        $product = Product::join('raffles', 'products.id', '=', 'raffles.idProducto')
+            ->where('products.id', '=', $product->id)
+            ->select('products.*', 'raffles.precioTicket')
+            ->first();
 
         return view('cliente.products-show', compact('product'));
     }

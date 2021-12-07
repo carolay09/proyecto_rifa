@@ -131,9 +131,20 @@ class SaleController extends Controller
     public function state_update(Request $request, $id){
         $sale = Sale::findOrFail($id);
         $sale->idEstado = '5';
-        $sale->nroOperación = $request->nroOperacion;
+        $sale->nroOperacion = $request->nroOperacion;
         $sale->update();
 
         return redirect('mis-rifas');
+    }
+
+    public function rifas_admin(){
+        $rifasPend = Sale::where('idEstado', '=', '5')
+            ->get();
+
+        return view('administracion.revision-rifas', compact('rifasPend'));
+    }
+
+    public function operacion_conf(){
+        
     }
 }

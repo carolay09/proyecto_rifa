@@ -15,7 +15,8 @@
                     <p class="mb-3">Descripcion: {{$product->descripcion}}</p>
                     <p class="mb-3">Marca: {{$product->marca}}</p>
                     <p class="mb-3">Detalle: {{$product->detalle}}</p>
-                    <p class="mb-3">Precio: {{$product->precio}}</p>
+                    <p class="mb-3">Precio del producto: {{$product->precio}}</p>
+                    <p class="mb-3">Precio del ticket: {{$product->precioTicket}}</p>
                     <p class="mb-3">Objetivo: </p>
                     <div id="myProgress" class="mb-3 text-center">
                         <div id="myBar">
@@ -25,7 +26,7 @@
                     <p class="mb-3">¿Cuántos rifas quieres comprar?</p>
                     <form action="{{route('detail_sales.store')}}" method="post">
                         @csrf
-                        <input type="hidden" name="precio" value="{{$product->precio}}">
+                        <input type="hidden" name="precio" value="{{$product->precioTicket}}">
                         <div class="d-flex justify-content-center">
                             <input type="button" value="-" class="form-control">
                             <input type="number" name="cantidad" value="1" id="" class="form-control text-center">

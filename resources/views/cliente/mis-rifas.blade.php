@@ -6,29 +6,31 @@
     <section class="container">
         <div class="my-5">
             <h4 class="text-center mb-2">Pendientes a pagar</h4>
-            <table class="table">
-                <tr>
-                    <td class="text-center">Fecha maxima de pago</td>
-                    <td class="text-center">Monto a pagar</td>
-                    <td class="text-center"></td>
-                </tr>
-                @foreach ($rifasEsp as $rifaRev)
+            <div class="table-reponsive-xl">
+                <table class="table">
                     <tr>
-                        <td class="text-center">{{$rifaRev->fechaSorteo}}</td>
-                        <td class="text-center">{{$rifaRev->total}}</td>
-                        <td>
-                            <form action="{{route('actualizar-estado', $rifaRev)}}" method="post">
-                                @csrf
-                                @method('PATCH')
-                                <div class="d-flex">
-                                    <input type="text" name="nroOperacion" class="form-control" placeholder="Ingrese nro de operación">
-                                    <button type="submit" class="btn btn-primary">Enviar</button>
-                                </div>
-                            </form>
-                        </td>
+                        <td class="text-center">Fecha maxima de pago</td>
+                        <td class="text-center">Monto a pagar</td>
+                        <td class="text-center"></td>
                     </tr>
-                @endforeach
-            </table>
+                    @foreach ($rifasEsp as $rifaRev)
+                        <tr>
+                            <td class="text-center">{{$rifaRev->fechaSorteo}}</td>
+                            <td class="text-center">{{$rifaRev->total}}</td>
+                            <td>
+                                <form action="{{route('actualizar-estado', $rifaRev)}}" method="post">
+                                    @csrf
+                                    @method('PATCH')
+                                    <div class="d-flex">
+                                        <input type="text" name="nroOperacion" class="form-control" placeholder="Ingrese nro de operación">
+                                        <button type="submit" class="btn btn-primary">Enviar</button>
+                                    </div>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                </table>
+            </div>
         </div>
         <div class="my-5">
             <h4 class="text-center mb-2">En revision</h4>
