@@ -18,7 +18,7 @@ class CreateSalesTable extends Migration
             $table->datetime('fecha')->nullable();
             $table->float('subtotal')->nullable();
             $table->float('total')->nullable();
-            $table->string('nroOperación')->nullable();
+            $table->string('nroOperacion')->nullable();
             $table->unsignedBigInteger('idEstado');
             $table->unsignedBigInteger('idUsuario');
             $table->timestamps();
