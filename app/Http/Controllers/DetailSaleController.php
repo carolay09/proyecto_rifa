@@ -62,6 +62,10 @@ class DetailSaleController extends Controller
             ->select('sales.id', 'states.nombre')
             ->first();
         
+        $datos_rifa = Product::join('raffles', 'products.id', '=', 'raffles.idProducto')
+            ->where('products.id', '=', $request->idProducto)
+            ->select('raffles.id', 'raffles.precioTicket')
+            ->first();
 
         if($venta == null){
             $sale = new Sale;
@@ -73,10 +77,10 @@ class DetailSaleController extends Controller
             $detailSale = new DetailSale;
             $detailSale->cantidad = $request->cantidad;
             // $detailSale->precio = $request->precio;
-            $detailSale->precio = '5';
+            $detailSale->precio = $datos_rifa->precioTicket;
             $detailSale->total = $request->precio * $request->cantidad;
             $detailSale->idVenta = $sale->id;
-            $detailSale->idRaffle = '1';
+            $detailSale->idRaffle = $datos_rifa->id;
             $detailSale->save();
         }else if($venta->nombre == 'pendiente'){
             $detailSale = new DetailSale;
@@ -84,7 +88,7 @@ class DetailSaleController extends Controller
             $detailSale->precio = $request->precio;
             $detailSale->total = $request->precio * $request->cantidad;
             $detailSale->idVenta = $venta->id;
-            $detailSale->idRaffle = '1';
+            $detailSale->idRaffle = $datos_rifa->id;
             $detailSale->save();
 
         }else if($venta->nombre != 'pendiente'){
@@ -98,7 +102,7 @@ class DetailSaleController extends Controller
             $detailSale->precio = $request->precio;
             $detailSale->total = $request->precio * $request->cantidad;
             $detailSale->idVenta = $venta->id;
-            $detailSale->idRaffle = '1';
+            $detailSale->idRaffle = $datos_rifa->id;
             $detailSale->save();
         }
         return redirect('products');
