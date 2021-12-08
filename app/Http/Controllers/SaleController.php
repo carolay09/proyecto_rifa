@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\DetailSale;
+use App\Models\Raffle;
 use App\Models\Sale;
+use App\Models\Ticket;
 use Illuminate\Http\Request;
 
 class SaleController extends Controller
@@ -113,7 +115,7 @@ class SaleController extends Controller
         ->join('raffles', 'detail_sales.idRaffle', '=', 'raffles.id')
         ->join('products', 'raffles.idProducto', '=', 'products.id')
         ->where('sales.idUsuario', '=', $id_user)
-        ->where('sales.idEstado', '=', '6')
+        ->where('sales.idEstado', '=', '7')
         ->select('products.nombre', 'raffles.fechaSorteo', 'raffles.precioTicket', 'detail_sales.precio', 'detail_sales.cantidad', 'detail_sales.id')
         ->get();
 
@@ -121,7 +123,7 @@ class SaleController extends Controller
         ->join('raffles', 'detail_sales.idRaffle', '=', 'raffles.id')
         ->join('products', 'raffles.idProducto', '=', 'products.id')
         ->where('sales.idUsuario', '=', $id_user)
-        ->where('sales.idEstado', '=', '7')
+        ->where('sales.idEstado', '=', '6')
         ->select('products.nombre', 'raffles.fechaSorteo', 'raffles.precioTicket', 'detail_sales.precio', 'detail_sales.cantidad', 'detail_sales.id')
         ->get();
 
@@ -144,7 +146,51 @@ class SaleController extends Controller
         return view('administracion.revision-rifas', compact('rifasPend'));
     }
 
-    public function operacion_conf(){
-        
+    public function confirma_pago(Request $request, $id){
+        $sale = Sale::findOrFail($id);
+        $idUsuario = $request->idUsuario;
+
+        $tickets = Sale::join('detail_sales', 'sales.id', '=', 'detail_sales.idVenta')
+            ->where('sales.idUsuario', '=', $idUsuario)
+            ->where('sales.id', '=', $sale->id)
+            ->where('sales.idEstado', '=', '5')
+            ->select('detail_sales.cantidad', 'detail_sales.idRaffle')
+            ->get();
+
+        foreach($tickets as $ticket){
+            $cantidad = $ticket->cantidad;
+            $idRifa = $ticket->idRaffle;
+
+            $codigo = Raffle::join('products', 'raffles.idProducto', '=', 'products.id')
+                ->where('raffles.id', '=', $idRifa)
+                ->select('products.id', 'products.idCategoria')
+                ->first();
+
+            $nroTicket = "T".$codigo->idCategoria.$codigo->id;
+
+            for ($i=0; $i < $cantidad; $i++) { 
+                $ticket2 = new Ticket;
+                $ticket2->idUsuario = auth()->user()->id;
+                $ticket2->idRifa = $idRifa;
+                $idTicket = Ticket::select('id')->max('id') + 1;
+                if($idTicket == null){
+                    $idTicket = 1;
+                }
+                $ticket2->nroTicket = $nroTicket.$idTicket;
+                $ticket2->save();
+            }
+        }
+        $sale->idEstado = '7';
+        $sale->update();
+            
+        return redirect('dashboard/ventas/revision');
+    }
+
+    public function observa_pago($id){
+        $sale = Sale::findOrFail($id);
+        $sale->idEstado = '6';
+        $sale->update();
+
+        return redirect('dashboard/ventas/revision');
     }
 }

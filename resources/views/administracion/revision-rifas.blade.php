@@ -19,12 +19,13 @@
                         <td class="text-center">{{$rifaPend->total}}</td>
                         <td class="text-center">{{$rifaPend->nroOperacion}}</td>
                         <td class="d-flex justify-content-center">
-                            <form action="" method="post">
+                            <form action="{{route('confirma-pago', $rifaPend->id)}}" method="post">
                                 @csrf
                                 @method('PATCH')
+                                <input type="hidden" name="idUsuario" value="{{$rifaPend->idUsuario}}">
                                 <button type="submit" class="btn btn-primary">Confirmado</button>
                             </form>
-                            <form action="" method="post">
+                            <form action="{{route('observa-pago', $rifaPend->id)}}" method="post">
                                 @csrf
                                 @method('PATCH')
                                 <button type="submit" class="btn btn-danger">Observado</button>

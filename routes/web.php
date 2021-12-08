@@ -29,6 +29,8 @@ Route::patch('dashboard/products/{product}', [ProductController::class, 'update_
 Route::get('mis-rifas', [SaleController::class, 'mis_rifas'])->name('mis-rifas');
 Route::patch('actualizar-estado/{id}', [SaleController::class, 'state_update'])->name('actualizar-estado');
 Route::get('dashboard/ventas/revision', [SaleController::class, 'rifas_admin'])->name('revision-rifas');
+Route::patch('dashboard/ventas/revision/{id}/confirmar', [SaleController::class, 'confirma_pago'])->name('confirma-pago');
+Route::patch('dashboard/ventas/revision/{id}/observar', [SaleController::class, 'observa_pago'])->name('observa-pago');
 Route::resource('products', ProductController::class);
 
 
