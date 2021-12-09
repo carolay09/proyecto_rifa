@@ -26,6 +26,7 @@ Route::get('dashboard/products/create', [ProductController::class, 'create_admi'
 Route::post('dashboard/products/update', [ProductController::class, 'store_admi'])->name('products.store.admi');
 Route::get('dashboard/products/{id}/edit', [ProductController::class, 'edit_admi'])->name('products.edit.admi');
 Route::patch('dashboard/products/{product}', [ProductController::class, 'update_admi'])->name('products.update.admi');
+Route::get('dashboard/products/{id}/delete', [ProductController::class, 'delete_admi'])->name('products.delete.admi');
 Route::get('mis-rifas', [SaleController::class, 'mis_rifas'])->name('mis-rifas');
 Route::patch('actualizar-estado/{id}', [SaleController::class, 'state_update'])->name('actualizar-estado');
 Route::get('dashboard/ventas/revision', [SaleController::class, 'rifas_admin'])->name('revision-rifas');

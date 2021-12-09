@@ -25,16 +25,14 @@
                     <td>{{$product->nombre}}</td>
                     <td>{{$product->descripcion}}</td>
                     <td>{{$product->marca}}</td>
-                    <td>{{$product->imagen}}</td>
+                    <td><img src="{{asset('storage').'/'.$product->imagen}}" width="100" alt=""></td>
                     <td>{{$product->detalle}}</td>
                     <td>{{$product->precio}}</td>
-                    <td>{{$product->idCategoria}}</td>
-                    <td>{{$product->idEstado}}</td>
+                    <td>{{$product->nombreCategoria}}</td>
+                    <td>{{$product->nombreEstado}}</td>
                     <td>
                         <a href="{{route('products.edit.admi', $product->id)}}" class="btn btn-primary">Editar</a>
-                        <form action="">
-                            <button type="submit" class="btn btn-danger">Eliminar</button>
-                        </form>
+                        <a href="{{route('products.delete.admi', $product->id)}}" class="btn btn-danger" onclick="return confirm('¿Quieres borrar?')">Eliminar</a>           
                     </td>
                 </tr>
             @endforeach
@@ -44,3 +42,4 @@
 </section>
 
 @endsection
+

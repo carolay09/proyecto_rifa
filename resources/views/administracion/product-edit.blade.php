@@ -4,40 +4,45 @@
     
 @section('content')
     <section class="container">
-        <form action="{{route('products.update.admi', $product)}}" method="post">
+        <form action="{{route('products.update.admi', $product)}}" method="post" enctype="multipart/form-data">
             @csrf
             @method('PATCH')
 
             <label for="" class="label-control">Nombre</label>
-            <input type="text" name="nombre" value={{$product->nombre}} class="form-control" placeholder="Ingrese el nombre">
+            <input type="text" name="nombre" class="form-control" value=" {{$product->nombre}}">
 
             <label for="" class="label-control">Descripcion</label>
-            <input type="text" name="descripcion" value={{$product->descripcion}} class="form-control" placeholder="Ingrese la descripcion">
+            <input type="text" name="descripcion" class="form-control" value="{{$product->descripcion}}">
 
             <label for="" class="label-control">Marca</label>
-            <input type="text" name="marca" value={{$product->marca}} class="form-control" placeholder="Ingrese la marca">
+            <input type="text" name="marca" class="form-control" value="{{$product->marca}}">
 
-            <label for="" class="label-control">Detalle</label>
-            <input type="text" name="detalle" value={{$product->detalle}} class="form-control" placeholder="Ingrese el detalle">
+            <label for="" class="label-control">Imagen</label>
+            <img src="{{asset('storage').'/'.$product->imagen}}" width="100" alt="">
+            <input type="file" name="imagen" id="imagen" value="">
+                  
+                <label for="" class="label-control">Detalle</label>
+                <input type="text" name="detalle" class="form-control" value="{{$product->detalle}}">
 
-            <label for="" class="label-control">Precio</label>
-            <input type="number" name="precio" value={{$product->precio}} class="form-control" placeholder="Ingrese el precio">
+                <label for="" class="label-control">Precio</label>
+            <input type="number" name="precio" class="form-control" value="{{$product->precio}}">
 
             <label for="" class="label-control">Categoria</label>
-            <select name="estado" id="" class="form-control">
-                <option value="" selected>Seleccione</option>
-                <option value="1">Telefonía</option>
-                <option value="2">Ropa</option>
-            </select>
-
-            <label for="" class="label-control">Estado</label>
             <select name="categoria" id="" class="form-control">
-                <option value="" selected>Seleccione</option>
-                <option value="1">Activo</option>
-                <option value="2">Inactivo</option>
+                {{$cate = $product['idCategoria']}}
+                 @foreach ($categories as $category)
+                    @if ($cate == $category->id)
+                        <option value="{{$category['id']}}" selected>{{$category['nombre']}}</option>
+                    @else
+                        <option value="{{$category['id']}}">{{$category['nombre']}}</option>
+                    @endif
+                        
+                 @endforeach
             </select>
 
+             <a href="{{route('products.index.admi')}}">Cancelar</a>
             <button type="submit">Guardar</button>
+
         </form>
     </section>
 @endsection

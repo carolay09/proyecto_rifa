@@ -25,7 +25,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('administracion/categories-create');
     }
 
     /**
@@ -36,7 +36,11 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $category = new Category;
+        $category->nombre = $request->nombre;
+        $category->save();
+
+        return redirect('categories');
     }
 
     /**
@@ -56,9 +60,10 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit($id)
     {
-        //
+        $category = Category::findOrFail($id);
+        return view('administracion/category-edit', compact('category'));
     }
 
     /**
@@ -70,7 +75,12 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $category = Category::findOrFail($category->id);
+
+        $category->nombre = $request->nombre;
+        $category->update();
+
+        return redirect('categories');
     }
 
     /**
@@ -79,8 +89,11 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy($id)
     {
-        //
+        $category = Category::findOrFail($id);
+        $category->delete();
+        
+        return redirect('categories');
     }
 }

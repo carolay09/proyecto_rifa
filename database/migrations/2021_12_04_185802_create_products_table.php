@@ -18,7 +18,7 @@ class CreateProductsTable extends Migration
             $table->string('nombre');
             $table->string('descripcion');
             $table->string('marca');
-            $table->string('imagen')->nullable();
+            $table->string('imagen');
             $table->string('detalle');
             $table->float('precio');
             $table->unsignedBigInteger('idEstado');

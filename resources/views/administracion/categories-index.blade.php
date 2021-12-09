@@ -17,8 +17,10 @@
                 <td>{{$category->nombre}}</td>
                 <td>
                     <a href="{{route('categories.edit', $category->id)}}" class="btn btn-primary">Editar</a>
-                    <form action="">
-                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                    <form action="{{route('categories.destroy', $category)}}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger" onclick="return confirm('¿Quieres borrar?')">Eliminar</button>
                     </form>
                 </td>
             </tr>
