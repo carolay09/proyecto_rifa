@@ -48,7 +48,10 @@ Route::resource('sales', SaleController::class);
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('dashboard', function(){
     return view('administracion.home');
 })->name('dashboard');
+Route::get('/', function(){
+    return view('cliente.home');
+})->name('home');
