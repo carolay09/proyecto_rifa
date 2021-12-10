@@ -53,8 +53,7 @@ class DetailSaleController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //========revisar por q id de sales es igual a 3}=============
+    {   
 
         $venta = Sale::join('states', 'sales.idEstado', '=', 'states.id')
             ->where('sales.idUsuario', '=', auth()->user()->id)
