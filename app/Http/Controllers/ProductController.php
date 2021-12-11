@@ -54,10 +54,17 @@ class ProductController extends Controller
         // $product = Product::findOrFail($product->id);
         $product = Product::join('raffles', 'products.id', '=', 'raffles.idProducto')
             ->where('products.id', '=', $product->id)
-            ->select('products.*', 'raffles.precioTicket')
+            ->select('products.*', 'raffles.precioTicket', 'raffles.cantidadPart')
             ->first();
 
-        return view('cliente.products-show', compact('product'));
+        $cantPartActual = Product::join('raffles', 'products.id', '=', 'raffles.idProducto')
+            ->join('tickets', 'raffles.id', '=', 'tickets.idRifa')
+            ->where('products.id', '=', $product->id)
+            ->select('tickets.idRifa')
+            ->get()
+            ->count();
+
+        return view('cliente.products-show', compact('product', 'cantPartActual'));
     }
 
     /**

@@ -1,0 +1,51 @@
+:root{
+    --main-color: #463581;
+    --secondary-color: #f92211;
+}
+.primary-color{
+    color: var(--main-color);
+}
+.secondary-color{
+    color: var(--secondary-color);
+}
+
+
+/* ========carrusel========== */
+.img{
+    width: 20%;
+    height: 400px;
+    object-fit: cover;
+}
+.carousel-item{
+    position: relative;
+}
+.nombre-prod{
+    color: white;
+    text-align: center;
+}
+.carousel-container{
+    background-color: var(--main-color);
+}
+
+/* ==========iconos links=========== */
+
+
+.link{
+    text-decoration: none;
+}
+
+
+/* =========articulo=============== */
+.articulo{
+    color: var(--main-color);
+    font-size: 1.5rem;
+}
+
+/* ======formulario========== */
+.form-publicidad{
+    background-color: var(--main-color);
+}
+.form-publicidad p{
+    color: white;
+    font-size: 1.5rem;
+}

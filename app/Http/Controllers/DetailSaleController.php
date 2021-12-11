@@ -53,8 +53,7 @@ class DetailSaleController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //========revisar por q id de sales es igual a 3}=============
+    {   
 
         $venta = Sale::join('states', 'sales.idEstado', '=', 'states.id')
             ->where('sales.idUsuario', '=', auth()->user()->id)
@@ -62,6 +61,10 @@ class DetailSaleController extends Controller
             ->select('sales.id', 'states.nombre')
             ->first();
         
+        $datos_rifa = Product::join('raffles', 'products.id', '=', 'raffles.idProducto')
+            ->where('products.id', '=', $request->idProducto)
+            ->select('raffles.id', 'raffles.precioTicket')
+            ->first();
 
         if($venta == null){
             $sale = new Sale;
@@ -73,19 +76,30 @@ class DetailSaleController extends Controller
             $detailSale = new DetailSale;
             $detailSale->cantidad = $request->cantidad;
             // $detailSale->precio = $request->precio;
-            $detailSale->precio = '5';
+            $detailSale->precio = $datos_rifa->precioTicket;
             $detailSale->total = $request->precio * $request->cantidad;
             $detailSale->idVenta = $sale->id;
-            $detailSale->idRaffle = '1';
+            $detailSale->idRaffle = $datos_rifa->id;
             $detailSale->save();
         }else if($venta->nombre == 'pendiente'){
+            //consultar si el producto se encuentra en el carrito
+            if(DetailSale::join('sales', 'detail_sales.idVenta', '=', 'sales.id')
+                ->where('sales.idUsuario', '=', auth()->user()->id)
+                ->where('sales.id', '=', $venta->id)
+                ->count() == 0               
+            ){
             $detailSale = new DetailSale;
             $detailSale->cantidad = $request->cantidad;
             $detailSale->precio = $request->precio;
             $detailSale->total = $request->precio * $request->cantidad;
             $detailSale->idVenta = $venta->id;
-            $detailSale->idRaffle = '1';
+            $detailSale->idRaffle = $datos_rifa->id;
             $detailSale->save();
+            }else{
+
+                //retornar un mensaje de producto en carrito
+                return redirect('/');
+            }
 
         }else if($venta->nombre != 'pendiente'){
             $sale = new Sale;
@@ -98,7 +112,7 @@ class DetailSaleController extends Controller
             $detailSale->precio = $request->precio;
             $detailSale->total = $request->precio * $request->cantidad;
             $detailSale->idVenta = $venta->id;
-            $detailSale->idRaffle = '1';
+            $detailSale->idRaffle = $datos_rifa->id;
             $detailSale->save();
         }
         return redirect('products');

@@ -18,15 +18,23 @@
                     <p class="mb-3">Precio del producto: {{$product->precio}}</p>
                     <p class="mb-3">Precio del ticket: {{$product->precioTicket}}</p>
                     <p class="mb-3">Objetivo: </p>
+                    @php
+                        $objetivo = $cantPartActual / $product->cantidadPart * 100;
+                    @endphp
                     <div id="myProgress" class="mb-3 text-center">
-                        <div id="myBar">
-                            <div id="label">50%</div>
+                        <div id="myBar" style="width: @php
+                            echo $objetivo."%";
+                        @endphp">
+                            <div id="label">@php
+                                echo $objetivo."%";
+                            @endphp</div>
                         </div>
                     </div>
                     <p class="mb-3">¿Cuántos rifas quieres comprar?</p>
                     <form action="{{route('detail_sales.store')}}" method="post">
                         @csrf
                         <input type="hidden" name="precio" value="{{$product->precioTicket}}">
+                        <input type="hidden" name="idProducto" value="{{$product->id}}">
                         <div class="d-flex justify-content-center">
                             <input type="button" value="-" class="form-control">
                             <input type="number" name="cantidad" value="1" id="" class="form-control text-center">
