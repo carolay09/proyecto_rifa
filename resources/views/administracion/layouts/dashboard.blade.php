@@ -57,7 +57,7 @@
                 Administracion
             </div>
 
-            <!-- Nav Item - Pages Collapse Menu -->
+            <!-- Nav Item - Pages Collapse Menu -->            
             <li class="nav-item">
                 <a class="nav-link" href="{{route('categories.index')}}">
                     <i class="fas fa-fw fa-cog"></i>
@@ -74,7 +74,7 @@
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                <a class="nav-link collapsed" href="{{route('raffles.index')}}" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Rifas</span>
@@ -86,6 +86,21 @@
                     </div>
                 </div>
             </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{route('users.index')}}">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Usuarios</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{route('sales.index')}}">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Ventas</span>
+                </a>
+            </li>
+            
 
             <!-- Divider -->
             <hr class="sidebar-divider">

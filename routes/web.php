@@ -7,6 +7,8 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\RaffleController;
 use App\Http\Controllers\StateController;
 use App\Http\Controllers\SaleController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\RolController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -29,6 +31,7 @@ Route::patch('dashboard/products/{product}', [ProductController::class, 'update_
 Route::get('dashboard/products/{id}/delete', [ProductController::class, 'delete_admi'])->name('products.delete.admi');
 Route::get('mis-rifas', [SaleController::class, 'mis_rifas'])->name('mis-rifas');
 Route::patch('actualizar-estado/{id}', [SaleController::class, 'state_update'])->name('actualizar-estado');
+Route::get('venta/{id}/mostrar', [SaleController::class, 'mostrar'])->name('sales.mostrar');
 Route::get('dashboard/ventas/revision', [SaleController::class, 'rifas_admin'])->name('revision-rifas');
 Route::resource('products', ProductController::class);
 
@@ -36,11 +39,14 @@ Route::resource('products', ProductController::class);
 Route::resource('categories', CategoryController::class);
 Route::resource('raffles', RaffleController::class);
 Route::resource('states', StateController::class);
+Route::resource('roles', RolController::class);
+Route::resource('users', UserController::class);
 
 
 
 Route::resource('detail_sales', DetailSaleController::class);
 Route::resource('sales', SaleController::class);
+
 
 
 
