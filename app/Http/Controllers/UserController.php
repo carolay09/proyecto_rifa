@@ -48,6 +48,7 @@ class UserController extends Controller
     {
         $user = new User;
         $user->nombre = $request->nombre;
+        $user->dni = $request->dni;
         $user->apellido = $request->apellido;
         $user->telefono = $request->telefono;
         $user->direccion = $request->direccion;
@@ -102,10 +103,16 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    
+    public function update_state(Request $request, $id)
     {
         $user = User::findOrFail($id);
-        $user->idEstado = '2';
+        if($request->nombreEstado == 'activo'){
+            $user->idEstado = '2';
+        }
+        else if($request->idEstado = 'inactivo'){
+            $user->idEstado = '1';
+        }
         $user->update();
         
         return redirect('users');

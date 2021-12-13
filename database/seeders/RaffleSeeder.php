@@ -18,21 +18,24 @@ class RaffleSeeder extends Seeder
             'cantidadPart' => '10',
             'fechaSorteo' => '2021-12-25',
             'precioTicket' => '5',
-            'idProducto' => '1'
+            'idProducto' => '1',
+            'idEstado' => '1'
         ]);
 
         DB::table('raffles')->insert([
             'cantidadPart' => '10',
             'fechaSorteo' => '2021-12-25',
             'precioTicket' => '5',
-            'idProducto' => '2'
+            'idProducto' => '2',
+            'idEstado' => '1'
         ]);
 
         DB::table('raffles')->insert([
             'cantidadPart' => '10',
             'fechaSorteo' => '2021-12-25',
             'precioTicket' => '5',
-            'idProducto' => '3'
+            'idProducto' => '3',
+            'idEstado' => '1'
         ]);
     }
 }

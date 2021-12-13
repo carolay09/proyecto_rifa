@@ -10,6 +10,7 @@
     <div class="table-responsive-xl">
     <table class="table" style="max-width: 50%">
         <tr>
+            <td>Dni</td>
             <td>Nombre</td>
             <td>Apellido</td>
             <td>Telefono</td>
@@ -21,6 +22,7 @@
         </tr>
         @foreach ($users as $user)
             <tr>
+                <td>{{$user->dni}}</td>
                 <td>{{$user->nombre}}</td>
                 <td>{{$user->apellido}}</td>
                 <td>{{$user->telefono}}</td>
@@ -30,10 +32,12 @@
                 <td>{{$user->nombreEstado}}</td>
                 <td>
                     
-                    <form action="{{route('users.destroy', $user)}}" method="POST">
+                    <form action="{{route('users.update_state', $user->id)}}" method="post">
                         @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger" onclick="return confirm('¿Quieres borrar?')">Eliminar</button>
+                        @method('PATCH')
+                        <input type="hidden" name="nombreEstado" value="{{$user->nombreEstado}}">
+                        
+                        <button type="submit" class="btn btn-danger">Cambiar estado</button>
                     </form>
                 </td>
             </tr>

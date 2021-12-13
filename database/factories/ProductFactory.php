@@ -13,13 +13,15 @@ class ProductFactory extends Factory
      */
     public function definition()
     {
+        $filePath = storage_path('app/public/images');
         return [
             'nombre' => $this->faker->name(),
             'descripcion' => $this->faker->sentence(),
             'marca' => $this->faker->name(),
+            // 'imagen' => $this->faker->image($filePath,400,300) ,
             'detalle' => $this->faker->sentence(),
             'precio' => $this->faker->numberBetween($int1 = 1000, $int2 = 3000),
-            'idEstado' => $this->faker->numberBetween($int1 = 1, $int2 = 2),
+            'idEstado' => $this->faker->numberBetween($int1 = 8, $int2 = 9),
             'idCategoria' => $this->faker->numberBetween($int1 = 1, $int2 = 2),
         ];
     }

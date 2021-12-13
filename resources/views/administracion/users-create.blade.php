@@ -5,6 +5,9 @@
 @section('content')
     <form action="{{route('users.store')}}" method="post">
         @csrf
+        <label for="" class="label-control">Dni</label>
+        <input type="text" name="dni" class="form-control" placeholder="Ingrese DNI">
+
         <label for="" class="label-control">Nombre</label>
         <input type="text" name="nombre" class="form-control" placeholder="Ingrese Nombre">
 

@@ -35,16 +35,4 @@
         <button type="submit">Guardar</button>
     </form>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script>
-        $(document).ready(function(e){
-            $('#imagen').changee(function(){
-                let reader = new FileReader();
-                reader.onload = (e) => {
-                    $('#imagenSeleccionada').attr('src', e.target.result);
-                }
-                reader.readAsDataURL(this.files[0]);
-            });
-        });
-    </script>
 @endsection

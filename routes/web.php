@@ -29,12 +29,16 @@ Route::post('dashboard/products/update', [ProductController::class, 'store_admi'
 Route::get('dashboard/products/{id}/edit', [ProductController::class, 'edit_admi'])->name('products.edit.admi');
 Route::patch('dashboard/products/{product}', [ProductController::class, 'update_admi'])->name('products.update.admi');
 Route::get('dashboard/products/{id}/delete', [ProductController::class, 'delete_admi'])->name('products.delete.admi');
+Route::patch('dashboard/products/{id}/update', [ProductController::class, 'update_state'])->name('products.update_state');
+Route::patch('dashboard/users/{id}/update', [ProductController::class, 'update_state'])->name('users.update_state');
+Route::patch('dashboard/raffles/{id}/update', [RaffleController::class, 'update_state'])->name('raffles.update_state');
 Route::get('mis-rifas', [SaleController::class, 'mis_rifas'])->name('mis-rifas');
 Route::patch('actualizar-estado/{id}', [SaleController::class, 'state_update'])->name('actualizar-estado');
 Route::get('venta/{id}/mostrar', [SaleController::class, 'mostrar'])->name('sales.mostrar');
 Route::get('dashboard/ventas/revision', [SaleController::class, 'rifas_admin'])->name('revision-rifas');
 Route::patch('dashboard/ventas/revision/{id}/confirmar', [SaleController::class, 'confirma_pago'])->name('confirma-pago');
 Route::patch('dashboard/ventas/revision/{id}/observar', [SaleController::class, 'observa_pago'])->name('observa-pago');
+Route::patch('dashboard/categories/{id}', [CategoryController::class, 'update_state'])->name('categories.update-state');
 Route::resource('products', ProductController::class);
 
 

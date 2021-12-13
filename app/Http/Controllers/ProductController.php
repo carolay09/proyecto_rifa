@@ -108,9 +108,9 @@ class ProductController extends Controller
 
         $products = Product::join('categories', 'products.idCategoria', '=', 'categories.id')
             ->join('states','products.idEstado', '=', 'states.id')
-            ->select('products.*','states.nombre as nombreEstado','categories.nombre as nombreCategoria')
+           ->select('products.*','states.nombre as nombreEstado','categories.nombre as nombreCategoria')
             ->get();
-        
+         
         // $products = Product::all()->paginate(10);
 
         return view('administracion/products-index', compact('products'));
@@ -177,6 +177,19 @@ class ProductController extends Controller
         // if(Storage::delete('public/'.$product->imagen)){
         //     Product::destroy($id);
         // }
+        return redirect('dashboard/products');
+    }
+
+    public function update_state(Request $request, $id){
+        $product = Product::findOrFail($id);
+        if($request->nombreEstado == 'en uso'){
+            $product->idEstado = '8';
+        }
+        else if($request->idEstado = 'disponible'){
+            $product->idEstado = '9';
+        }
+        $product->update();
+        
         return redirect('dashboard/products');
     }
 }

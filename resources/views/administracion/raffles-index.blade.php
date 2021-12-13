@@ -14,20 +14,25 @@
             <td>Cantidad Participante</td>
             <td>Producto</td>
             <td>Fecha Sorteo</td>
+            <td>Estado</td>
             <td>Accion</td>
         </tr>
         @foreach ($raffles as $raffle)
             <tr>
                 <td>{{$raffle->precioTicket}}</td>
                 <td>{{$raffle->cantidadPart}}</td>
-                <td>{{$raffle->idProducto}}</td>
+                <td>{{$raffle->nombreProducto}}</td>
                 <td>{{$raffle->fechaSorteo}}</td>
+                <td>{{$raffle->nombreEstado}}</td>
                 <td>
                     <a href="{{route('raffles.edit', $raffle->id)}}" class="btn btn-primary">Editar</a>
-                    <form action="{{route('raffles.destroy', $raffle)}}" method="POST">
+
+                    <form action="{{route('raffles.update_state', $raffle->id)}}" method="post">
                         @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger" onclick="return confirm('¿Quieres borrar?')">Eliminar</button>
+                        @method('PATCH')
+                        <input type="hidden" name="nombreEstado" value="{{$raffle->nombreEstado}}">
+                        
+                        <button type="submit" class="btn btn-danger">Cambiar estado</button>
                     </form>
                 </td>
             </tr>

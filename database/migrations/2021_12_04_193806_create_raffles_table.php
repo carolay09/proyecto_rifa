@@ -20,8 +20,11 @@ class CreateRafflesTable extends Migration
             $table->float('precioTicket');
             $table->unsignedBigInteger('idProducto');
             $table->unsignedBigInteger('idWinner')->nullable();
+            $table->unsignedBigInteger('idEstado');
             $table->timestamps();
 
+            $table->foreign('idEstado')->references('id')->on('states')
+                ->onDelete('cascade');
             $table->foreign('idProducto')->references('id')->on('products')
                 ->onDelete('cascade');
         });
