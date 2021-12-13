@@ -6,27 +6,26 @@
 <div class="owl-container py-2 carousel-container">
     <div class="owl-carousel owl-theme">
         <div> 
-            <a href="#" class="link">
-            <img class="img" src="{{asset('images/gastronomia.jpeg')}}" alt=""> 
-            <h3 class="nombre-prod">Gastronomía</h3>
-        </a>
+            <div class="categoria-show">
+                <img class="img" src="{{asset('images/gastronomia.jpeg')}}" alt=""> 
+                <p class="d-flex justify-content-center">
+                    <input type="button" class="btn btn-primary btn-participa mb-3" value="Participa">     
+                </p>
+            </div>
+            <h3 class="nombre-ctg">Gastronomía</h3>
         </div>
+        @foreach ($categories as $category)
         <div> 
-            <img class="img" src="{{asset('images/moda.jpeg')}}" alt=""> 
-            <h3 class="nombre-prod">Moda</h3>
+            <div class="categoria-show">
+                <img class="img" src="{{asset('images/gastronomia.jpeg')}}" alt=""> 
+                <p class="d-flex justify-content-center">
+                    {{-- <input type="button" class="btn btn-primary btn-participa mb-3" value="Participa">      --}}
+                    <a href="{{route('producto_categoria', $category)}}" class="btn btn-primary mb-3">Participa</a>
+                </p>
+            </div>
+            <h3 class="nombre-ctg">{{$category->nombre}}</h3>
         </div>
-        <div> 
-            <img class="img" src="{{asset('images/tecnologia.jpeg')}}" alt=""> 
-            <h3 class="nombre-prod">Tecnología</h3>
-        </div>
-        <div> 
-            <img class="img" src="{{asset('images/viajes.jpeg')}}" alt=""> 
-            <h3 class="nombre-prod">Viajes</h3>
-        </div>
-        <div> 
-            <img class="img" src="{{asset('images/autos.jfif')}}" alt=""> 
-            <h3 class="nombre-prod">Autos</h3>
-        </div>
+        @endforeach
     </div>
 </div>
 <div class="section my-5">
@@ -36,7 +35,9 @@
     </article>
 </div>
 <div class="form-publicidad py-5">
-    <p class="text-center ">Manténgase al día con las últimas noticias</p>
+    <div class="text-center">
+        <p class="mensaje d-inline-block px-3">Manténgase al día con los sorteos vigentes</p>
+    </div>
     <form action="" method="post" class="d-flex justify-content-center">
         <input type="text" name="correoPublicidad" class="form-control w-25">
         <button type="submit" class="btn btn-danger">Enviar</button>

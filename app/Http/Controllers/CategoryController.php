@@ -83,4 +83,10 @@ class CategoryController extends Controller
     {
         //
     }
+
+    public function cliente_index(){
+        $categories = Category::all();
+
+        return view('cliente.home', compact('categories'));
+    }
 }

@@ -157,4 +157,13 @@ class ProductController extends Controller
     public function delete_admi(){
         
     }
+
+    public function producto_categoria($nombre){
+        $productos = Category::join('products', 'categories.id', '=', 'products.idCategoria')
+            ->join('raffles', 'products.id', '=', 'raffles.idProducto')
+            ->select('raffles.fechaSorteo', 'products.nombre', 'products.precio', 'raffles.precioTicket', 'raffles.id as idRifa')
+            ->get();
+        return $productos;
+        // return view('cliente.products-index', compact('productos'));
+    }
 }

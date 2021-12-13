@@ -7,6 +7,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\RaffleController;
 use App\Http\Controllers\StateController;
 use App\Http\Controllers\SaleController;
+use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -31,9 +32,11 @@ Route::patch('actualizar-estado/{id}', [SaleController::class, 'state_update'])-
 Route::get('dashboard/ventas/revision', [SaleController::class, 'rifas_admin'])->name('revision-rifas');
 Route::patch('dashboard/ventas/revision/{id}/confirmar', [SaleController::class, 'confirma_pago'])->name('confirma-pago');
 Route::patch('dashboard/ventas/revision/{id}/observar', [SaleController::class, 'observa_pago'])->name('observa-pago');
+Route::get('/', [CategoryController::class, 'cliente_index'])->name('home');
+
+Route::get('/{$nombre}', [ProductController::class, 'producto_categoria'])->name('producto_categoria');
+
 Route::resource('products', ProductController::class);
-
-
 Route::resource('categories', CategoryController::class);
 Route::resource('raffles', RaffleController::class);
 Route::resource('states', StateController::class);
@@ -52,6 +55,6 @@ Auth::routes();
 Route::get('dashboard', function(){
     return view('administracion.home');
 })->name('dashboard');
-Route::get('/', function(){
-    return view('cliente.home');
-})->name('home');
+// Route::get('/', function(){
+//     return view('cliente.home');
+// })->name('home');

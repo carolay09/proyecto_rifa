@@ -42,33 +42,37 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
-                        {{-- <li class="nav-item">
-                            <a href="{{route('mis-rifas')}}" class="nav-link"><i class="fas fa-user"></i> Iniciar sesión</a>
-                        </li> --}}
                         <li class="nav-item">
-                            <a href="{{url('detail_sales')}}" class="nav-link"><i class="fas fa-shopping-cart primary-color"></i></a>
+                            <a href="#" class="nav-link"><i class="fas fa-user"></i>Quiénes somos</a>
                         </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link"><i class="fas fa-user"></i>Políticas</a>
+                        </li>
+                        {{-- <li class="nav-item">
+                            <a href="{{url('detail_sales')}}" class="nav-link"><i class="fas fa-shopping-cart primary-color"></i></a>
+                        </li> --}}
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
-                                    <a class="nav-link primary-color" href="{{ route('login') }}"><i class="fas fa-user primary-color"></i> Iniciar sesión</a>
+                                    <a class="btn btn-primary" href="{{ route('login') }}"><i class="fas fa-user primary-color"></i> Iniciar sesión</a>
                                 </li>
                             @endif
 
-                            @if (Route::has('register'))
+                            {{-- @if (Route::has('register'))
                                 <li class="nav-item">
                                     <a class="nav-link primary-color" href="{{ route('register') }}"><i class="fas fa-file-alt primary-color" ></i>Registrarse</a>
                                 </li>
-                            @endif
+                            @endif --}}
                         @else
                             <li class="nav-item dropdown">
                                 
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre> <i class="fas fa-user primary-color"></i>
+                                <a id="navbarDropdown" class="btn btn-primary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre> <i class="fas fa-user"></i>
                                     {{ Auth::user()->nombre }}
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <p class="saludo py-2">Bienvenid@ {{Auth::user()->nombre}}</p>
                                     <a class="dropdown-item" href="">Mis compras</a>
                                     <a class="dropdown-item" href=""><i class="fas fa-ticket primary-color"></i> Mis tickets</a>
                                     <a class="dropdown-item" href="">Mis datos</a>
