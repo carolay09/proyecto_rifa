@@ -3,7 +3,7 @@
 @section('title', 'Crear producto')
     
 @section('content')
-    <form action="{{route('products.store.admi')}}" method="post">
+    <form action="{{route('products.store.admi')}}" method="post" enctype="multipart/form-data">
         @csrf
         <label for="" class="label-control">Nombre</label>
         <input type="text" name="nombre" class="form-control" placeholder="Ingrese el nombre">
@@ -15,8 +15,8 @@
         <input type="text" name="marca" class="form-control" placeholder="Ingrese la marca">
 
         <label for="" class="label-control">Imagen</label>
-        <input type="file" name="imagen" class="form-control">
-
+        <input type="file" name="imagen" id="imagen">
+                  
         <label for="" class="label-control">Detalle</label>
         <input type="text" name="detalle" class="form-control" placeholder="Ingrese el detalle">
 
@@ -31,14 +31,8 @@
             @endforeach
         </select>
 
-        <label for="" class="label-control">Estado</label>
-        <select name="estado" id="" class="form-control">
-            <option value="" selected>Seleccione</option>
-            @foreach ($states as $state)
-                <option value="{{$state['id']}}">{{$state['nombre']}}</option>
-            @endforeach
-        </select>
-
+         <a href="{{route('products.index.admi')}}">Cancelar</a>
         <button type="submit">Guardar</button>
     </form>
+
 @endsection

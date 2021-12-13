@@ -15,6 +15,7 @@ class UserSeeder extends Seeder
     public function run()
     {
         DB::table('users')->insert([
+            'dni' => '12345',
             'nombre' => 'cliente',
             'apellido' => 'cliente',
             'telefono' => 'cliente',
@@ -26,6 +27,7 @@ class UserSeeder extends Seeder
         ]);
 
         DB::table('users')->insert([
+            'dni' => '12345',
             'nombre' => 'administrador',
             'apellido' => 'administrador',
             'telefono' => 'administrador',

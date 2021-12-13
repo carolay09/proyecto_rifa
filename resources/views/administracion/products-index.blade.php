@@ -25,15 +25,22 @@
                     <td>{{$product->nombre}}</td>
                     <td>{{$product->descripcion}}</td>
                     <td>{{$product->marca}}</td>
-                    <td>{{$product->imagen}}</td>
+                    {{-- <td><img src="{{asset('images/logo.jpeg')}}" alt="" style="width: 100px"></td> --}}
+                    {{-- {{-- <td>{{<img src="{{asset('images/logo.jpeg')}}" ></td> --}}
+                    <td><img src="{{asset('storage').'/'.$product->imagen}}" width="100" alt=""></td>
                     <td>{{$product->detalle}}</td>
                     <td>{{$product->precio}}</td>
-                    <td>{{$product->idCategoria}}</td>
-                    <td>{{$product->idEstado}}</td>
+                    <td>{{$product->nombreCategoria}}</td>
+                    <td>{{$product->nombreEstado}}</td>
                     <td>
                         <a href="{{route('products.edit.admi', $product->id)}}" class="btn btn-primary">Editar</a>
-                        <form action="">
-                            <button type="submit" class="btn btn-danger">Eliminar</button>
+                                   
+                        <form action="{{route('products.update_state', $product->id)}}" method="post">
+                            @csrf
+                            @method('PATCH')
+                            <input type="hidden" name="nombreEstado" value="{{$product->nombreEstado}}">
+                            
+                            <button type="submit" class="btn btn-danger">Cambiar estado</button>
                         </form>
                     </td>
                 </tr>
@@ -44,3 +51,4 @@
 </section>
 
 @endsection
+

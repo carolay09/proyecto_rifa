@@ -14,14 +14,15 @@
         <label for="" class="label-control">Producto</label>
         <select name="producto" id="" class="form-control">
             <option value="" selected>Seleccione</option>
-            <option value="1">Josiah Lueilwitz</option>
-            <option value="2">Freddy Schamberger V</option>
-            <option value="3">Dejon Kshlerin Jr.</option>
+            @foreach ($products as $product)
+                <option value="{{$product['id']}}">{{$product['nombre']}}</option>
+            @endforeach
         </select>
 
         <label for="" class="label-control">Fecha sorteo</label>
-        <input type="text" name="fecha" class="form-control" placeholder="Ingrese cantidad de participante">   
+        <input type="date" name="fecha" class="form-control" placeholder="Ingrese fecha de sorteo">   
 
+        <a href="{{route('raffles.index')}}">Cancelar</a>
         <button type="submit">Guardar</button>
     </form>
 @endsection

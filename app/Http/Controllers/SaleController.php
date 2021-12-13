@@ -17,7 +17,11 @@ class SaleController extends Controller
      */
     public function index()
     {
-        //
+        $sales = sale::join('users', 'sales.idUsuario', '=', 'users.id')
+        ->join('states','sales.idEstado', '=', 'states.id')
+        ->select('sales.*','states.nombre as nombreEstado','users.nombre as nombreUsuario')
+        ->get();
+        return view('administracion/sales-index', compact('sales'));
     }
 
     /**
@@ -58,7 +62,7 @@ class SaleController extends Controller
      * @param  \App\Models\Sale  $sale
      * @return \Illuminate\Http\Response
      */
-    public function edit(Sale $sale)
+    public function edit($id)
     {
         //
     }
@@ -192,5 +196,15 @@ class SaleController extends Controller
         $sale->update();
 
         return redirect('dashboard/ventas/revision');
+    }
+
+    public function mostrar($id){
+        $sale = Sale::join('detail_sales', 'sales.id', '=', 'detail_sales.idVenta')
+        ->where('sales.id', '=', $id)
+        ->select('detail_sales.*')
+        ->get();
+
+
+        return view('administracion/detail_sales', compact('sale'));
     }
 }

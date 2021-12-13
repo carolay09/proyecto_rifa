@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class CategoryController extends Controller
 {
@@ -14,8 +15,11 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
+        $categories = Category::join('states','categories.idEstado', '=', 'states.id')
+           ->select('categories.*','states.nombre as nombreEstado')
+            ->get();
         return view('administracion/categories-index', compact('categories'));
+
     }
 
     /**
@@ -25,7 +29,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('administracion/categories-create');
     }
 
     /**
@@ -36,7 +40,15 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $category = new Category;
+        $category->nombre = $request->nombre;
+        if($request->hasFile('imagen')){
+            $category->imagen = $request->file('imagen')->store('images','public');
+        }
+        $category->idEstado = '1';
+        $category->save();
+
+        return redirect('categories');
     }
 
     /**
@@ -56,9 +68,10 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit($id)
     {
-        //
+        $category = Category::findOrFail($id);
+        return view('administracion/category-edit', compact('category'));
     }
 
     /**
@@ -70,7 +83,16 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $category = Category::findOrFail($category->id);
+
+        $category->nombre = $request->nombre;
+        if($request->hasFile('imagen')){
+            Storage::delete('public/'.$category->imagen);
+            $category->imagen = $request->file('imagen')->store('images','public');
+        }
+        $category->update();
+
+        return redirect('categories');
     }
 
     /**
@@ -79,9 +101,23 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy($id)
     {
-        //
+      
+    }
+
+    public function update_state(Request $request, $id)
+    {
+        $category = Category::findOrFail($id);
+        if($request->nombreEstado == 'activo'){
+            $category->idEstado = '2';
+        }
+        else if($request->idEstado = 'inactivo'){
+            $category->idEstado = '1';
+        }
+        $category->update();
+        
+        return redirect('categories');
     }
 
     public function cliente_index(){

@@ -7,7 +7,12 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\RaffleController;
 use App\Http\Controllers\StateController;
 use App\Http\Controllers\SaleController;
+<<<<<<< HEAD
 use App\Models\Category;
+=======
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\RolController;
+>>>>>>> 981879e177eae0c2f01532e3b7dbea5579b0e30c
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -27,12 +32,22 @@ Route::get('dashboard/products/create', [ProductController::class, 'create_admi'
 Route::post('dashboard/products/update', [ProductController::class, 'store_admi'])->name('products.store.admi');
 Route::get('dashboard/products/{id}/edit', [ProductController::class, 'edit_admi'])->name('products.edit.admi');
 Route::patch('dashboard/products/{product}', [ProductController::class, 'update_admi'])->name('products.update.admi');
+Route::get('dashboard/products/{id}/delete', [ProductController::class, 'delete_admi'])->name('products.delete.admi');
+Route::patch('dashboard/products/{id}/update', [ProductController::class, 'update_state'])->name('products.update_state');
+Route::patch('dashboard/users/{id}/update', [ProductController::class, 'update_state'])->name('users.update_state');
+Route::patch('dashboard/raffles/{id}/update', [RaffleController::class, 'update_state'])->name('raffles.update_state');
 Route::get('mis-rifas', [SaleController::class, 'mis_rifas'])->name('mis-rifas');
 Route::patch('actualizar-estado/{id}', [SaleController::class, 'state_update'])->name('actualizar-estado');
+Route::get('venta/{id}/mostrar', [SaleController::class, 'mostrar'])->name('sales.mostrar');
 Route::get('dashboard/ventas/revision', [SaleController::class, 'rifas_admin'])->name('revision-rifas');
 Route::patch('dashboard/ventas/revision/{id}/confirmar', [SaleController::class, 'confirma_pago'])->name('confirma-pago');
 Route::patch('dashboard/ventas/revision/{id}/observar', [SaleController::class, 'observa_pago'])->name('observa-pago');
+<<<<<<< HEAD
 Route::get('/', [CategoryController::class, 'cliente_index'])->name('home');
+=======
+Route::patch('dashboard/categories/{id}', [CategoryController::class, 'update_state'])->name('categories.update-state');
+Route::resource('products', ProductController::class);
+>>>>>>> 981879e177eae0c2f01532e3b7dbea5579b0e30c
 
 Route::get('/{$nombre}', [ProductController::class, 'producto_categoria'])->name('producto_categoria');
 
@@ -40,11 +55,14 @@ Route::resource('products', ProductController::class);
 Route::resource('categories', CategoryController::class);
 Route::resource('raffles', RaffleController::class);
 Route::resource('states', StateController::class);
+Route::resource('roles', RolController::class);
+Route::resource('users', UserController::class);
 
 
 
 Route::resource('detail_sales', DetailSaleController::class);
 Route::resource('sales', SaleController::class);
+
 
 
 

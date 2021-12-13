@@ -6,6 +6,7 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\State;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -99,11 +100,18 @@ class ProductController extends Controller
     {
         //
     }
+ 
 
 
 
     public function index_admi(){
-        $products = Product::all();
+
+        $products = Product::join('categories', 'products.idCategoria', '=', 'categories.id')
+            ->join('states','products.idEstado', '=', 'states.id')
+           ->select('products.*','states.nombre as nombreEstado','categories.nombre as nombreCategoria')
+            ->get();
+         
+        // $products = Product::all()->paginate(10);
 
         return view('administracion/products-index', compact('products'));
     } 
@@ -111,22 +119,25 @@ class ProductController extends Controller
     public function create_admi(){
 
         $categories = Category::all();
-        $states = State::all();
 
-        return view('administracion/products-create', compact('categories','states'));
+
+        return view('administracion/products-create', compact('categories'));
     }
 
     public function store_admi(Request $request){
+        // $request -> validate([
+        //     'nombre' => 'required', 'descripcion' => 'required', 'marca' => 'required', 'imagen' => 'required|image|mimes:jpg,png,svg|max:1024', 'detalle' => 'required','precio' => 'required', 'idCategoria' => 'required',
+        // ]);
         $product = new Product;
         $product->nombre = $request->nombre;
         $product->descripcion = $request->descripcion;
-        $product->marca = $request->marca;        
+        $product->marca = $request->marca;  
         if($request->hasFile('imagen')){
             $product->imagen = $request->file('imagen')->store('images','public');
         }
         $product->detalle = $request->detalle;
         $product->precio = $request->precio;
-        $product->idEstado = $request->estado;
+        $product->idEstado = '8';
         $product->idCategoria = $request->categoria;
         $product->save();
 
@@ -135,8 +146,9 @@ class ProductController extends Controller
 
     public function edit_admi($id){
         $product = Product::findOrFail($id);
+        $categories= Category::all(); 
         
-        return view('administracion/product-edit', compact('product'));
+        return view('administracion/product-edit', compact('product','categories'));
     }
 
     public function update_admi(Request $request, Product $product){
@@ -145,17 +157,40 @@ class ProductController extends Controller
         $product->nombre = $request->nombre;
         $product->descripcion = $request->descripcion;
         $product->marca = $request->marca;
+        if($request->hasFile('imagen')){
+            Storage::delete('public/'.$product->imagen);
+            $product->imagen = $request->file('imagen')->store('images','public');
+        }
         $product->detalle = $request->detalle;
         $product->precio = $request->precio;
-        $product->idEstado = $request->estado;
+        $product->idEstado = '8';
         $product->idCategoria = $request->categoria;
         $product->update();
 
         return redirect('dashboard/products');
     }
 
-    public function delete_admi(){
+    public function delete_admi($id){
+        $product = Product::findOrFail($id);
+        $product->idEstado = '9';
+        $product->update();
+        // if(Storage::delete('public/'.$product->imagen)){
+        //     Product::destroy($id);
+        // }
+        return redirect('dashboard/products');
+    }
+
+    public function update_state(Request $request, $id){
+        $product = Product::findOrFail($id);
+        if($request->nombreEstado == 'en uso'){
+            $product->idEstado = '8';
+        }
+        else if($request->idEstado = 'disponible'){
+            $product->idEstado = '9';
+        }
+        $product->update();
         
+        return redirect('dashboard/products');
     }
 
     public function producto_categoria($nombre){
