@@ -7,12 +7,8 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\RaffleController;
 use App\Http\Controllers\StateController;
 use App\Http\Controllers\SaleController;
-<<<<<<< HEAD
-use App\Models\Category;
-=======
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RolController;
->>>>>>> 981879e177eae0c2f01532e3b7dbea5579b0e30c
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -42,12 +38,12 @@ Route::get('venta/{id}/mostrar', [SaleController::class, 'mostrar'])->name('sale
 Route::get('dashboard/ventas/revision', [SaleController::class, 'rifas_admin'])->name('revision-rifas');
 Route::patch('dashboard/ventas/revision/{id}/confirmar', [SaleController::class, 'confirma_pago'])->name('confirma-pago');
 Route::patch('dashboard/ventas/revision/{id}/observar', [SaleController::class, 'observa_pago'])->name('observa-pago');
-<<<<<<< HEAD
+
 Route::get('/', [CategoryController::class, 'cliente_index'])->name('home');
-=======
+
 Route::patch('dashboard/categories/{id}', [CategoryController::class, 'update_state'])->name('categories.update-state');
 Route::resource('products', ProductController::class);
->>>>>>> 981879e177eae0c2f01532e3b7dbea5579b0e30c
+
 
 Route::get('/{$nombre}', [ProductController::class, 'producto_categoria'])->name('producto_categoria');
 
