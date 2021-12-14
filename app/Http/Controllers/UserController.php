@@ -55,7 +55,7 @@ class UserController extends Controller
         $user->email = $request->email;
         $user->password = $request->password;
         $user->idRol = '2';
-        $user->idEstado = '1';
+        $user->idEstado = '10';
 
         $user->save();
 
@@ -108,10 +108,10 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
         if($request->nombreEstado == 'activo'){
-            $user->idEstado = '2';
+            $user->idEstado = '11';
         }
         else if($request->idEstado = 'inactivo'){
-            $user->idEstado = '1';
+            $user->idEstado = '10';
         }
         $user->update();
         
