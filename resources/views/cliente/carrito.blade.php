@@ -10,6 +10,9 @@
                 <hr class="linea third-color">
                 <div class="table-responsive-xl">
                     <table class="table">
+                        @php
+                            $total = 0;
+                        @endphp
                         @foreach ($detail_sales as $detail_sale)
                             <tr>
                                 <td class="align-middle">
@@ -18,6 +21,9 @@
                                     </div>
                                 </td>
                                 <td>
+                                    @php
+                                        $total += $detail_sale->precioTicket * $detail_sale->cantidad;
+                                    @endphp
                                     <p>{{$detail_sale->nombre}}</p>
                                     <p>S/. {{number_format($detail_sale->precio, 2)}}</p>
                                     <p>
@@ -29,17 +35,22 @@
                                     </p>
                                 </td>
                                 <td class="align-middle">
-                                    S/.
+                                    S/. {{number_format($detail_sale->precioTicket * $detail_sale->cantidad, 2)}}
                                 </td>
                                 <td class="align-middle">
-                                    <i class="fas fa-trash-alt"></i>
+                                    {{-- <i class="fas fa-trash-alt"></i> --}}
+                                    <form action="{{route('detail_sales.destroy', $detail_sale->id)}}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit"><i class="fas fa-trash-alt"></i></button>
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach
                         <tr>
-                            <td>Total</td>
+                            <td class="text-center">Total</td>
                             <td></td>
-                            <td>S/. </td>
+                            <td>S/. {{number_format($total, 2)}}</td>
                             <td></td>
                         </tr>
 
@@ -96,17 +107,31 @@
                             </tr> --}}
                     </table>
                 </div>
-                <div class="d-flex justify-content-around my-5">
-                    <a href="" class="btn btn-primary">Seguir comprando</a>
-                    <a href="" class="btn btn-primary">Siguiente</a>
-                </div>
+                @if (count($detail_sales))
+                    <div class="d-flex justify-content-around my-5">
+                        <a href="{{url('/')}}" class="btn btn-primary">Seguir comprando</a>
+                        {{-- <form action="{{route('users.show', Auth::user())}}" method="get">
+                            <input type="hidden" name="id_venta" value="{{$id_venta}}">
+                            <button type="submit" class="btn btn-primary">Siguiente</button>
+                        </form> --}}
+                        {{-- <a href="{{route('users.show', Auth::user())}}" class="btn btn-primary">Siguiente</a> --}}
+                        <form action="{{route('sales.update', $sale_id)}}" method="post">
+                            @csrf
+                            @method('PATCH')
+                            <input type="hidden" name="total" value="{{$total}}">
+                            <button type="submit" class="btn btn-primary">Siguiente</button>
+                        </form>
+                    </div>
+                @else
+                    <p class="text-center py-5"><strong>No hay productos en su carrito</strong></p>
+                @endif
             </div>
             <div class="col-3">
                 <h4 class="third-color"><strong>RESUMEN</strong></h4>
                 <hr class="linea third-color">
                 <div class="row">
                     <p class="col-12 col-md-6 font-color">Valor regular: </p>
-                    <p class="col-12 col-md-6 font-color">S/. </p>
+                    <p class="col-12 col-md-6 font-color">S/. {{number_format($total, 2)}}</p>
                 </div>
                 <div>
                     <form action="">
@@ -118,7 +143,7 @@
                 <hr class="linea third-color my-4">
                 <div class="row">
                     <p class="col-12 col-md-6 font-color">Total</p>
-                    <p class="col-12 col-md-6 font-color">S/. </p>
+                    <p class="col-12 col-md-6 font-color">S/. {{number_format($total, 2)}}</p>
                 </div>
             </div>
         </div>

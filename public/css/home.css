@@ -24,7 +24,7 @@
     position: fixed;
     bottom: 1rem;
     right: 0.5rem;
-    width: 90px;
+    width: 3rem;
 }
 
 
@@ -137,4 +137,14 @@
 }
 .borde-input{
     border: solid 1px var(--third-color);
+}
+
+
+
+
+/* ================================================= */
+/* ------------------metodo pago-------------------- */
+/* ================================================= */
+.logo-metodo-pago{
+    width: 100px;
 }

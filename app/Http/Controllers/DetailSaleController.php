@@ -147,15 +147,15 @@ class DetailSaleController extends Controller
      * @param  \App\Models\DetailSale  $detailSale
      * @return \Illuminate\Http\Response
      */
-    // public function update($id, Request $request)
-    // {
-    //     $sale = Sale::findOrFail($id);
-    //     $sale->idEstado = '4';
-    //     $sale->total = $request->total;
-    //     $sale->update();
+    public function update($id, Request $request)
+    {
+        // $sale = Sale::findOrFail($id);
+        // $sale->idEstado = '4';
+        // $sale->total = $request->total;
+        // $sale->update();
 
-    //     return redirect('products');
-    // }
+        return redirect('products');
+    }
 
     /**
      * Remove the specified resource from storage.

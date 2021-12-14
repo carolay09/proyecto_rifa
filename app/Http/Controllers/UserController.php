@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Rol;
+use App\Models\Sale;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -70,7 +71,9 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        //
+        // $user = User::findOrFail($user->id);
+
+        // return view('cliente.formulario-venta', compact('user'));
     }
 
     /**
@@ -94,7 +97,22 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-       
+       $user = User::findOrFail($user->id);
+       $user->nombre = $request->nombre;
+       $user->apellido = $request->apellido;
+       $user->email = $request->email;
+       $user->dni = $request->dni;
+       $user->telefono = $request->telefono;
+       $user->update();
+
+       $sale = Sale::join('states', 'sales.idEstado', '=', 'states.id')
+            ->where('sales.idUsuario', '=', auth()->user()->id)
+            ->where('states.nombre', 'like', 'pendiente')
+            ->select('sales.id', 'sales.total')
+            ->first();
+        
+
+       return view('cliente.metodos-pago', compact('sale'));
     }
 
     /**

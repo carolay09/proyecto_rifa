@@ -32,7 +32,7 @@ Route::get('dashboard/products/{id}/delete', [ProductController::class, 'delete_
 Route::patch('dashboard/products/{id}/update', [ProductController::class, 'update_state'])->name('products.update_state');
 Route::patch('dashboard/users/{id}/update', [UserController::class, 'update_state'])->name('users.update_state');
 Route::patch('dashboard/raffles/{id}/update', [RaffleController::class, 'update_state'])->name('raffles.update_state');
-Route::get('mis-rifas', [SaleController::class, 'mis_rifas'])->name('mis-rifas');
+Route::get('mis-sorteos', [SaleController::class, 'mis_sorteos'])->name('mis-sorteos');
 Route::patch('actualizar-estado/{id}', [SaleController::class, 'state_update'])->name('actualizar-estado');
 Route::get('venta/{id}/mostrar', [SaleController::class, 'mostrar'])->name('sales.mostrar');
 Route::get('dashboard/ventas/revision', [SaleController::class, 'rifas_admin'])->name('revision-rifas');

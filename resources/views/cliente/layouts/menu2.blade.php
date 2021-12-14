@@ -27,7 +27,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm fixed-top">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/products') }}">
+                <a class="navbar-brand" href="{{ url('/') }}">
                     <img src="{{asset('images/logo.jpeg')}}" alt="" style="width: 100px">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -96,7 +96,10 @@
     <main class="py-4 mt-5">
         @yield('content')
     </main>
-    <img src="{{asset('images/whatsapp.jpg')}}" alt="" class="icono-ayuda">
+    <a href="https://api.whatsapp.com/send?phone=51987954874&amp;text=Hola!%20quisiera%20m%C3%A1s%20informacion.%20GRACIAS!
+    ">
+        <img src="{{asset('images/whatsapp.png')}}" alt="" class="icono-ayuda">
+    </a>
     <div class="footer my-5">
         <p class="text-center">
             Derechos Reservados
