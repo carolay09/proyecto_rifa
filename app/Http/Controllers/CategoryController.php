@@ -110,10 +110,10 @@ class CategoryController extends Controller
     {
         $category = Category::findOrFail($id);
         if($request->nombreEstado == 'activo'){
-            $category->idEstado = '2';
+            $category->idEstado = '11';
         }
         else if($request->idEstado = 'inactivo'){
-            $category->idEstado = '1';
+            $category->idEstado = '10';
         }
         $category->update();
         
