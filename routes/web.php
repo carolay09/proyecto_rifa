@@ -56,7 +56,7 @@ Route::resource('users', UserController::class);
 
 
 
-Route::resource('detail_sales', DetailSaleController::class);
+Route::resource('detail_sales', DetailSaleController::class)->middleware('auth');
 Route::resource('sales', SaleController::class);
 
 

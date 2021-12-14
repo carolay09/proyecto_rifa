@@ -4,7 +4,7 @@
     
 @section('content')
     <section class="container">
-        <form action="{{route('categories.update', $category)}}" method="post" >
+        <form action="{{route('categories.update', $category)}}" method="post" enctype="multipart/form-data">
             @csrf
             @method('PATCH')
 

@@ -16,9 +16,9 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
         $this->call(StateSeeder::class);
-        $this->call(CategorySeeder::class);
-        Product::factory(3)->create();
-        $this->call(RaffleSeeder::class);
+        // $this->call(CategorySeeder::class);
+        // Product::factory(3)->create();
+        // $this->call(RaffleSeeder::class);
         $this->call(RolSeeder::class);
         $this->call(UserSeeder::class);
     }

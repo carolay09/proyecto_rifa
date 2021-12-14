@@ -14,7 +14,7 @@
                             <tr>
                                 <td class="align-middle">
                                     <div class="d-flex flex-column align-items-center">
-                                        <img src="{{asset('images/moda.jpeg')}}" alt="" class="imagen-icono">
+                                        <img src="{{asset('storage'.'/'.$detail_sale->imagen)}}" alt="" class="imagen-icono">
                                     </div>
                                 </td>
                                 <td>

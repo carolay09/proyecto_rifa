@@ -96,6 +96,7 @@
     <main class="py-4 mt-5">
         @yield('content')
     </main>
+    <img src="{{asset('images/whatsapp.jpg')}}" alt="" class="icono-ayuda">
     <div class="footer my-5">
         <p class="text-center">
             Derechos Reservados

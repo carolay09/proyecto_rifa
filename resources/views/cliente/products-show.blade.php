@@ -6,7 +6,7 @@
     <section class="container">
         <div class="row">
             <div class="col-6">
-                <img src="{{asset('images/producto.jpeg')}}" class="image-fluid" alt="" style="max-width: 100%">
+                <img src="{{asset('storage'.'/'.$product->imagen)}}" class="image-fluid" alt="" style="max-width: 100%">
                 <div class="my-4 borde">
                     <p class="">Objetivo de la promoción</p>
                     @php

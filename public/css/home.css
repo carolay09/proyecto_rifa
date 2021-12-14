@@ -20,6 +20,12 @@
 .imagen-icono{
     width: 100px;
 }
+.icono-ayuda{
+    position: fixed;
+    bottom: 1rem;
+    right: 0.5rem;
+    width: 90px;
+}
 
 
 /* ================================================= */
