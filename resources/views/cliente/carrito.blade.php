@@ -11,32 +11,31 @@
                 <div class="table-responsive-xl">
                     <table class="table">
                         @foreach ($detail_sales as $detail_sale)
-                            
-                        @endforeach
-                        <tr>
-                            <td class="align-middle">
-                                <div class="d-flex flex-column align-items-center">
-                                    <img src="{{asset('images/moda.jpeg')}}" alt="" class="imagen-icono">
-                                </div>
-                            </td>
-                            <td>
-                                <p>{{$detail_sale->nombre}}</p>
-                                <p>S/. {{number_format($detail_sale->precio, 2)}}</p>
-                                <p>
-                                    <div class="d-flex justify-content-center w-50">
-                                        <input type="button" value="-" class="form-control">
-                                        <input type="number" name="cantidad" value="1" id="" class="form-control text-center">
-                                        <input type="button" value="+" class="form-control">
+                            <tr>
+                                <td class="align-middle">
+                                    <div class="d-flex flex-column align-items-center">
+                                        <img src="{{asset('images/moda.jpeg')}}" alt="" class="imagen-icono">
                                     </div>
-                                </p>
-                            </td>
-                            <td class="align-middle">
-                                S/.
-                            </td>
-                            <td class="align-middle">
-                                <i class="fas fa-trash-alt"></i>
-                            </td>
-                        </tr>
+                                </td>
+                                <td>
+                                    <p>{{$detail_sale->nombre}}</p>
+                                    <p>S/. {{number_format($detail_sale->precio, 2)}}</p>
+                                    <p>
+                                        <div class="d-flex justify-content-center w-50">
+                                            <input type="button" value="-" class="form-control">
+                                            <input type="number" name="cantidad" value="1" id="" class="form-control text-center">
+                                            <input type="button" value="+" class="form-control">
+                                        </div>
+                                    </p>
+                                </td>
+                                <td class="align-middle">
+                                    S/.
+                                </td>
+                                <td class="align-middle">
+                                    <i class="fas fa-trash-alt"></i>
+                                </td>
+                            </tr>
+                        @endforeach
                         <tr>
                             <td>Total</td>
                             <td></td>

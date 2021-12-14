@@ -46,7 +46,8 @@ class RaffleController extends Controller
         $raffle->precioTicket = $request->precio;
         $raffle->cantidadPart = $request->cantidad;
         $raffle->idProducto = $request->producto;
-        $raffle->fechaSorteo = $request->fecha;        
+        $raffle->fechaSorteo = $request->fecha;  
+        $raffle->idEstado = $request->idEstado; 
         $raffle->save();
 
         return redirect('raffles');

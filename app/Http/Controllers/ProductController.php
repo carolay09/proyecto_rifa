@@ -49,17 +49,17 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show($id)
     {
         // $product = Product::findOrFail($product->id);
         $product = Product::join('raffles', 'products.id', '=', 'raffles.idProducto')
-            ->where('products.id', '=', $product->id)
+            ->where('products.id', '=', $id)
             ->select('products.*', 'raffles.precioTicket', 'raffles.cantidadPart')
             ->first();
 
         $cantPartActual = Product::join('raffles', 'products.id', '=', 'raffles.idProducto')
             ->join('tickets', 'raffles.id', '=', 'tickets.idRifa')
-            ->where('products.id', '=', $product->id)
+            ->where('products.id', '=', $id)
             ->select('tickets.idRifa')
             ->get()
             ->count();
@@ -193,12 +193,14 @@ class ProductController extends Controller
         return redirect('dashboard/products');
     }
 
-    public function producto_categoria($nombre){
-        $productos = Category::join('products', 'categories.id', '=', 'products.idCategoria')
+    public function producto_categoria(Category $category){
+        $products = Category::join('products', 'categories.id', '=', 'products.idCategoria')
             ->join('raffles', 'products.id', '=', 'raffles.idProducto')
-            ->select('raffles.fechaSorteo', 'products.nombre', 'products.precio', 'raffles.precioTicket', 'raffles.id as idRifa')
+            ->where('categories.id', '=', $category->id)
+            ->select('raffles.fechaSorteo', 'products.nombre as nombProd', 'products.precio', 'products.imagen', 'raffles.precioTicket', 'raffles.id as idRifa', 'products.id as idProduct')
             ->get();
-        return $productos;
-        // return view('cliente.products-index', compact('productos'));
+        $categoria = $category->nombre;
+        // return $category->nombre;
+        return view('cliente.products-index', compact('products', 'categoria'));
     }
 }

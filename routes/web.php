@@ -42,10 +42,10 @@ Route::patch('dashboard/ventas/revision/{id}/observar', [SaleController::class, 
 Route::get('/', [CategoryController::class, 'cliente_index'])->name('home');
 
 Route::patch('dashboard/categories/{id}', [CategoryController::class, 'update_state'])->name('categories.update-state');
-Route::resource('products', ProductController::class);
 
 
-Route::get('/{$nombre}', [ProductController::class, 'producto_categoria'])->name('producto_categoria');
+
+Route::get('categoria/{category}', [ProductController::class, 'producto_categoria'])->name('producto_categoria');
 
 Route::resource('products', ProductController::class);
 Route::resource('categories', CategoryController::class);

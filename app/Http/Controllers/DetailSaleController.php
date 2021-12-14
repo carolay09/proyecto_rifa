@@ -83,11 +83,11 @@ class DetailSaleController extends Controller
             $detailSale->save();
         }else if($venta->nombre == 'pendiente'){
             //consultar si el producto se encuentra en el carrito
-            if(DetailSale::join('sales', 'detail_sales.idVenta', '=', 'sales.id')
-                ->where('sales.idUsuario', '=', auth()->user()->id)
-                ->where('sales.id', '=', $venta->id)
-                ->count() == 0               
-            ){
+            // if(DetailSale::join('sales', 'detail_sales.idVenta', '=', 'sales.id')
+            //     ->where('sales.idUsuario', '=', auth()->user()->id)
+            //     ->where('sales.id', '=', $venta->id)
+            //     ->count() == 0               
+            // ){
             $detailSale = new DetailSale;
             $detailSale->cantidad = $request->cantidad;
             $detailSale->precio = $request->precio;
@@ -95,11 +95,11 @@ class DetailSaleController extends Controller
             $detailSale->idVenta = $venta->id;
             $detailSale->idRaffle = $datos_rifa->id;
             $detailSale->save();
-            }else{
+            // }else{
 
-                //retornar un mensaje de producto en carrito
-                return redirect('/');
-            }
+            //     //retornar un mensaje de producto en carrito
+            //     return redirect('/');
+            // }
 
         }else if($venta->nombre != 'pendiente'){
             $sale = new Sale;
@@ -115,7 +115,7 @@ class DetailSaleController extends Controller
             $detailSale->idRaffle = $datos_rifa->id;
             $detailSale->save();
         }
-        return redirect('products');
+        return redirect('detail_sales');
     }
 
     /**

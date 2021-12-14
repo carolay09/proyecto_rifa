@@ -65,12 +65,12 @@
                 </a>
             </li>
 
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a class="nav-link" href="{{route('winners.index')}}">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Ganador</span>
                 </a>
-            </li>
+            </li> --}}
 
             <li class="nav-item">
                 <a class="nav-link" href="{{route('products.index.admi')}}">

@@ -52,23 +52,17 @@
                         <p class="mb-3">Precio del ticket: {{$product->precioTicket}}</p>
                         <p class="mb-3">Objetivo: </p> --}}
                     </div>
-                    <button type="submit" class="btn btn-primary my-2 px-5">Agregar al carrito</button>
+                    {{-- <button type="submit" class="btn btn-primary my-2 px-5">Agregar al carrito</button> --}}
                     
                     {{-- </div> --}}
                     {{-- <p class="mb-3">¿Cuántos rifas quieres comprar?</p> --}}
-                    {{-- <form action="{{route('detail_sales.store')}}" method="post">
+                    <form action="{{route('detail_sales.store')}}" method="post">
                         @csrf
                         <input type="hidden" name="precio" value="{{$product->precioTicket}}">
                         <input type="hidden" name="idProducto" value="{{$product->id}}">
-                        <div class="d-flex justify-content-center">
-                            <input type="button" value="-" class="form-control">
-                            <input type="number" name="cantidad" value="1" id="" class="form-control text-center">
-                            <input type="button" value="+" class="form-control">
-                        </div>
-                        <p class="text-center my-3">
-                            <button type="submit" class="btn btn-primary">Enviar al carrito</button>
-                        </p>
-                    </form> --}}
+                        <input type="hidden" name="cantidad" value="1">
+                        <button type="submit" class="btn btn-primary my-2 px-5">Agregar al carrito</button>
+                    </form>
                 </div>
             </div>
         </div>

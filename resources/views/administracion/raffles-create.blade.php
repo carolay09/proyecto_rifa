@@ -22,6 +22,8 @@
         <label for="" class="label-control">Fecha sorteo</label>
         <input type="date" name="fecha" class="form-control" placeholder="Ingrese fecha de sorteo">   
 
+        <input type="hidden" name="idEstado" value="2">
+
         <a href="{{route('raffles.index')}}">Cancelar</a>
         <button type="submit">Guardar</button>
     </form>
