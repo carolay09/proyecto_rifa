@@ -125,9 +125,9 @@ class ProductController extends Controller
     }
 
     public function store_admi(Request $request){
-        // $request -> validate([
-        //     'nombre' => 'required', 'descripcion' => 'required', 'marca' => 'required', 'imagen' => 'required|image|mimes:jpg,png,svg|max:1024', 'detalle' => 'required','precio' => 'required', 'idCategoria' => 'required',
-        // ]);
+        $request -> validate([
+            'imagen' => 'required|image|mimes:jpg,png,svg|max:1024',
+        ]);
         $product = new Product;
         $product->nombre = $request->nombre;
         $product->descripcion = $request->descripcion;

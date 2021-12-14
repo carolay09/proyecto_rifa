@@ -6,7 +6,7 @@
     <section class="container">
         <h4 class="text-center">Edición de categorias</h4>
         <div class="row justify-content-md-center">
-        <form action="{{route('categories.update', $category)}}" method="post" >
+        <form action="{{route('categories.update', $category)}}" method="post" enctype="multipart/form-data">
             @csrf
             @method('PATCH')
 
@@ -20,6 +20,7 @@
             <br>
             <br>
             <input type="file" name="imagen" id="imagen" value="">
+            
             <br>
             <br>
 

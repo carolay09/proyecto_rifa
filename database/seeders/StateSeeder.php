@@ -68,5 +68,15 @@ class StateSeeder extends Seeder
             'nombre' => 'inactivo',
             'descripcion' => 'usuario aun no activada, usuarios no pueden comprar tickets'
         ]);
+
+        DB::table('states')->insert([
+            'nombre' => 'bloqueado',
+            'descripcion' => 'usuarios no pueden ver categorias'
+        ]);
+
+        DB::table('states')->insert([
+            'nombre' => 'desbloqueado',
+            'descripcion' => 'usuarios pueden ver categorias'
+        ]);
     }
 }

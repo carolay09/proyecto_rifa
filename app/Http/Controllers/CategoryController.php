@@ -40,6 +40,9 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+        $request -> validate([
+            'imagen' => 'required|image|mimes:jpg,png,svg|max:1024',
+        ]);
         $category = new Category;
         $category->nombre = $request->nombre;
         if($request->hasFile('imagen')){
@@ -83,7 +86,11 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
+        
         $category = Category::findOrFail($category->id);
+        $request -> validate([
+            'imagen' => 'image|mimes:jpg,jpeg,png,svg|max:1024',
+        ]);
 
         $category->nombre = $request->nombre;
         if($request->hasFile('imagen')){
