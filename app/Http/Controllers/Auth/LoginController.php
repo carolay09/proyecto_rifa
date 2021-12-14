@@ -33,7 +33,7 @@ class LoginController extends Controller
 
         switch($rol){
             case '1': //cliente
-                $this->redirectTo = '/products';
+                $this->redirectTo = '/';
                 return $this->redirectTo;
                 break;
             case '2': //admi
@@ -55,6 +55,6 @@ class LoginController extends Controller
     public function logout()
     {
         Auth::logout();
-        return redirect('/products');
+        return redirect('/');
     }
 }

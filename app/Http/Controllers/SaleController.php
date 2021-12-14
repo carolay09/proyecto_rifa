@@ -6,6 +6,7 @@ use App\Models\DetailSale;
 use App\Models\Raffle;
 use App\Models\Sale;
 use App\Models\Ticket;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class SaleController extends Controller
@@ -77,11 +78,15 @@ class SaleController extends Controller
     public function update($id, Request $request)
     {
         $sale = Sale::findOrFail($id);
-        $sale->idEstado = '4';
+        // $sale->idEstado = '4';
         $sale->total = $request->total;
         $sale->update();
 
-        return redirect('products');
+        $user = User::findOrFail(auth()->user()->id);
+        // $sale = Sale::findOrFail($id);
+        $total = $sale->total;
+        // return $total;
+        return view('cliente.formulario-venta', compact('user', 'total'));
     }
 
     /**
@@ -95,7 +100,7 @@ class SaleController extends Controller
         //
     }
 
-    public function mis_rifas(){
+    public function mis_sorteos(){
         $id_user = auth()->user()->id;
 
         $rifasEsp = Sale::join('detail_sales', 'detail_sales.idVenta', '=', 'sales.id')
@@ -131,16 +136,24 @@ class SaleController extends Controller
         ->select('products.nombre', 'raffles.fechaSorteo', 'raffles.precioTicket', 'detail_sales.precio', 'detail_sales.cantidad', 'detail_sales.id')
         ->get();
 
-        return view('cliente.mis-rifas', compact('rifasEsp', 'rifasConf', 'rifasObs', 'rifasRev'));
+        return view('cliente.mis-sorteos', compact('rifasEsp', 'rifasConf', 'rifasObs', 'rifasRev'));
     }
 
     public function state_update(Request $request, $id){
         $sale = Sale::findOrFail($id);
-        $sale->idEstado = '5';
-        $sale->nroOperacion = $request->nroOperacion;
-        $sale->update();
 
-        return redirect('mis-rifas');
+        //evaluar si el nro de operacion fue usado
+        if($request->nroOperacion == $sale->nroOperacion){
+            //mensaje de rechazo
+            return redirect('/');
+        }else{
+            $sale->idEstado = '5';
+            $sale->nroOperacion = $request->nroOperacion;
+            $sale->update();
+        }
+
+
+        return redirect('mis-sorteos');
     }
 
     public function rifas_admin(){

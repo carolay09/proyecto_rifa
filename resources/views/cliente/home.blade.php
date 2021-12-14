@@ -45,6 +45,14 @@
     </form>
 
 </div>
+<script>
+    Swal.fire({
+  title: 'Error!',
+  text: 'Do you want to continue',
+  icon: 'error',
+  confirmButtonText: 'Cool'
+})
+</script>
 
     <script src="{{asset('js/jquery.min.js')}}"></script>
     <script src="{{asset('js/owl.carousel.min.js')}}"></script>

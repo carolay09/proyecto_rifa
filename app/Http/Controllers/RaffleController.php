@@ -46,7 +46,8 @@ class RaffleController extends Controller
         $raffle->precioTicket = $request->precio;
         $raffle->cantidadPart = $request->cantidad;
         $raffle->idProducto = $request->producto;
-        $raffle->fechaSorteo = $request->fecha;        
+        $raffle->fechaSorteo = $request->fecha; 
+        $raffle->idEstado = '2';
         $raffle->save();
 
         return redirect('raffles');
@@ -112,10 +113,10 @@ class RaffleController extends Controller
     public function update_state(Request $request, $id)
     {
         $raffle = Raffle::findOrFail($id);
-        if($request->nombreEstado == 'activo'){
+        if($request->nombreEstado == 'publicado'){
             $raffle->idEstado = '2';
         }
-        else if($request->idEstado = 'inactivo'){
+        else if($request->idEstado = 'sin publicar'){
             $raffle->idEstado = '1';
         }
         $raffle->update();
