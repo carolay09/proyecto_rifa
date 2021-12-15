@@ -3,6 +3,11 @@
 @section('title', 'Crear rifa')
     
 @section('content')
+<section class="container">
+
+    <h4 class="text-center">Creación de rifas</h4>
+    <div class="row justify-content-md-center">
+
     <form action="{{route('raffles.store')}}" method="post">
         @csrf
         <label for="" class="label-control">Precio</label>
@@ -24,7 +29,12 @@
 
         <input type="hidden" name="idEstado" value="2">
 
-        <a href="{{route('raffles.index')}}">Cancelar</a>
-        <button type="submit">Guardar</button>
+        <p class="d-flex justify-content-center py-3">
+            <button type="submit" class="btn btn-primary mx-2">Guardar</button>
+            <a href="{{route('raffles.index')}}" class="btn btn-primary mx-2">Cancelar</a>
+        </p>
+
     </form>
+</div>
+</section>
 @endsection

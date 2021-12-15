@@ -16,6 +16,8 @@ class CreateWinnersTable extends Migration
         Schema::create('winners', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('idUsuario');
+            $table->String('idRifa');
+            $table->String('nroTicket');
             $table->timestamps();
 
             $table->foreign('idUsuario')->references('id')->on('users')

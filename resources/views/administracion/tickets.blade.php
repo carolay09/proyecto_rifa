@@ -10,21 +10,35 @@
     <table class="table">
         <tr>
             <td>Numero de ticket</td>
+            <td>Dni</td>
             <td>Nombre</td>
-            <td>Total</td>
-            <td>Rifa</td>
+            <td>Apellido</td>
+            <td>Correo</td>
+            <td>Telefono</td>
+            <td></td>
         </tr>
-        @foreach ($sale as $detail_sale)
+        @foreach ($raffle as $ticket)
             <tr>
-                <td>{{$detail_sale->cantidad}}</td>
-                <td>{{$detail_sale->precio}}</td>
-                <td>{{$detail_sale->total}}</td>
-                <td>{{$detail_sale->idRaffle}}</td>
+                <td>{{$ticket->dni}}</td>
+                <td>{{$ticket->nroTicket}}</td>
+                <td>{{$ticket->nombre}}</td>
+                <td>{{$ticket->apellido}}</td>
+                <td>{{$ticket->email}}</td>
+                <td>{{$ticket->telefono}}</td>
+                <td>
+                    <form action="{{route('winners.store')}}" method="POST">
+                        @csrf
+                        <input type="hidden" name="nroTicket" value="{{$ticket->nroTicket}}">
+                        <input type="hidden" name="idRifa" value="{{$ticket->idRifa}}">
+                        <input type="hidden" name="idUsuario" value="{{$ticket->idUsuario}}">
+                        <button type="submit" class="btn btn-primary">Elegir ganador</button>
+                    </form>
+                </td>
             </tr>
         @endforeach
     
     </table>
-    <a href="{{route('sales.index')}}" class="btn btn-primary">Regresar</a>
+    <a href="{{route('raffles.index')}}" class="btn btn-primary">Regresar</a>
 </div>
 </section>
 
