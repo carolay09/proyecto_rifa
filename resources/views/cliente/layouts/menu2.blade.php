@@ -74,7 +74,7 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <p class="saludo py-2">Bienvenid@ {{Auth::user()->nombre}}</p>
                                     <a class="dropdown-item" href="">Mis compras</a>
-                                    <a class="dropdown-item" href=""><i class="fas fa-ticket primary-color"></i> Mis tickets</a>
+                                    <a class="dropdown-item" href="{{route('mis-sorteos')}}"><i class="fas fa-ticket primary-color"></i> Mis Sorteos</a>
                                     <a class="dropdown-item" href="">Mis datos</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
