@@ -7,7 +7,7 @@
 
     <h4 class="text-center">Edición de categorias</h4>
 
-    
+    <div class="row justify-content-md-center">
     <form action="{{route('categories.update', $category)}}" method="post" enctype="multipart/form-data" class="py-5">
 
             @csrf

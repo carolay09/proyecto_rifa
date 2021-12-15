@@ -3,6 +3,11 @@
 @section('title', 'Crear usuario')
     
 @section('content')
+<section class="container">
+
+    <h4 class="text-center">Creación de usuarios</h4>
+    <div class="row justify-content-md-center">
+
     <form action="{{route('users.store')}}" method="post">
         @csrf
         <label for="" class="label-control">Dni</label>
@@ -26,9 +31,13 @@
         <label for="" class="label-control">Clave</label>
         <input type="text" name="password" class="form-control" placeholder="Ingrese Clave">
 
-            
-        <a href="{{route('users.index')}}">Cancelar</a>
-        <button type="submit">Guardar</button>
+        <p class="d-flex justify-content-center py-3">
+            <button type="submit" class="btn btn-primary mx-2">Guardar</button>
+            <a href="{{route('users.index')}}" class="btn btn-primary mx-2">Cancelar</a>
+        </p> 
+
     </form>
+</div>
+</section>
     
 @endsection

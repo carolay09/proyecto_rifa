@@ -41,7 +41,7 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $request -> validate([
-            'imagen' => 'required|image|mimes:jpg,png,svg|max:1024',
+            'imagen' => 'required|image|mimes:jpg,jpeg,png,svg|max:1024',
         ]);
         $category = new Category;
         $category->nombre = $request->nombre;
@@ -74,7 +74,7 @@ class CategoryController extends Controller
     public function edit($id)
     {
         $category = Category::findOrFail($id);
-        return view('administracion/category-edit', compact('category'));
+        return view('administrcaion/category-edit', compact('category'));
     }
 
     /**
