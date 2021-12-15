@@ -87,6 +87,12 @@
                     <span>Rifas</span>
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{route('coupons.index')}}">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Cupones</span>
+                </a>
+            </li>
             {{-- <li class="nav-item"> --}}
                 {{-- <a class="nav-link collapsed" href="{{route('raffles.index')}}" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">

@@ -29,7 +29,8 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    // protected $redirectTo = RouteServiceProvider::HOME;
+        protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -50,9 +51,9 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            // 'name' => ['required', 'string', 'max:255'],
+            // 'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            // 'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
 
@@ -64,10 +65,21 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        // return User::create([
+        //     'name' => $data['name'],
+        //     'email' => $data['email'],
+        //     'password' => Hash::make($data['password']),
+        // ]);
         return User::create([
-            'name' => $data['name'],
+            'nombre' => $data['nombre'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'dni' => $data['dni'],
+            'apellido' => $data['apellido'],
+            'telefono' => $data['telefono'],
+            'direccion' => $data['direccion'],
+            'idEstado' => '1',
+            'idRol' => '1'
         ]);
     }
 }

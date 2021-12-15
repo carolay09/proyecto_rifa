@@ -18,12 +18,12 @@ class CreateCouponsTable extends Migration
             $table->string('nombre');
             $table->float('descuento'); 
             $table->integer('cantidad');
-            $table->unsignedBigInteger('idVenta');
+            // $table->unsignedBigInteger('idVenta');
             $table->unsignedBigInteger('idEstado');
             $table->timestamps();
 
-            $table->foreign('idVenta')->references('id')->on('sales')
-                ->onDelete('cascade');     
+            // $table->foreign('idVenta')->references('id')->on('sales')
+            //     ->onDelete('cascade');     
             $table->foreign('idEstado')->references('id')->on('states')
                 ->onDelete('cascade');     
         });

@@ -134,10 +134,14 @@
                     <p class="col-12 col-md-6 font-color">S/. {{number_format($total, 2)}}</p>
                 </div>
                 <div>
-                    <form action="">
+                    {{-- <form action="{{route('consultar_cupon')}}" method="post"> --}}
+                    <form action="" method="post">
+                        {{-- @csrf
+                        @method('PATCH') --}}
+                        <input type="hidden" name="idVenta" value="{{$sale_id}}">
                         <label for=""><strong>Cupón de descuento</strong></label>
-                        <input type="text" name="cupon" class="form-control borde-input">
-                        <button type="submit" class="btn btn-primary my-1 px-4">Aplicar cupón</button>
+                        <input type="text" name="nombre" class="form-control borde-input">
+                        <button type="submit" class="btn btn-primary my-1 px-4" disabled>Aplicar cupón</button>
                     </form>
                 </div>
                 <hr class="linea third-color my-4">

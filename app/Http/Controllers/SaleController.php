@@ -12,11 +12,12 @@ use Illuminate\Session\SessionManager;
 
 class SaleController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct()
+    {
+        $this->middleware('cliente')->only('update');
+        $this->middleware('admin')->only('index');
+    }
+    
     public function index()
     {
         $sales = sale::join('users', 'sales.idUsuario', '=', 'users.id')
@@ -26,56 +27,11 @@ class SaleController extends Controller
         return view('administracion/sales-index', compact('sales'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Sale  $sale
-     * @return \Illuminate\Http\Response
-     */
     public function show(Sale $sale)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Sale  $sale
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Sale  $sale
-     * @return \Illuminate\Http\Response
-     */
     public function update($id, Request $request)
     {
         $sale = Sale::findOrFail($id);
@@ -88,17 +44,6 @@ class SaleController extends Controller
         $total = $sale->total;
         // return $total;
         return view('cliente.formulario-venta', compact('user', 'total'));
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Sale  $sale
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Sale $sale)
-    {
-        //
     }
 
     public function mis_sorteos(){

@@ -7,11 +7,11 @@ use App\Models\Winner;
 
 class WinnerController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct()
+    {
+        $this->middleware('admin')->only('index');
+    }
+
     public function index()
     {
         $winners = Winner::join('users','winners.idUsuario', '=', 'users.id')
@@ -26,22 +26,6 @@ class WinnerController extends Controller
 
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         

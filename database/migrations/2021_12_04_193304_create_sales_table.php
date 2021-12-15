@@ -20,12 +20,16 @@ class CreateSalesTable extends Migration
             $table->string('nroOperacion')->nullable();
             $table->unsignedBigInteger('idEstado');
             $table->unsignedBigInteger('idUsuario');
+            $table->unsignedBigInteger('idCupon')->nullable();
             $table->timestamps();
 
             $table->foreign('idEstado')->references('id')->on('states')
                 ->onDelete('cascade');
             $table->foreign('idUsuario')->references('id')->on('users')
                 ->onDelete('cascade');
+            $table->foreign('idCupon')->references('id')->on('coupons')
+                ->onDelete('cascade');
+            
         });
     }
 

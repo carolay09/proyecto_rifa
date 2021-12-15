@@ -11,11 +11,10 @@ use Illuminate\Support\Facades\DB;
 
 class DetailSaleController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct()
+    {
+        $this->middleware('cliente')->only('index', 'store', 'destroy');
+    }
     public function index()
     {
         $detail_sales = DetailSale::join('sales', 'detail_sales.idVenta', '=', 'sales.id')
@@ -36,22 +35,6 @@ class DetailSaleController extends Controller
         return view('cliente.carrito',compact('detail_sales', 'sale_id'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {   
 
@@ -118,51 +101,23 @@ class DetailSaleController extends Controller
         return redirect('detail_sales');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\DetailSale  $detailSale
-     * @return \Illuminate\Http\Response
-     */
-    public function show(DetailSale $detailSale)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\DetailSale  $detailSale
-     * @return \Illuminate\Http\Response
-     */
     public function edit(DetailSale $detailSale)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\DetailSale  $detailSale
-     * @return \Illuminate\Http\Response
-     */
-    public function update($id, Request $request)
-    {
+
+    //=========verificar si se esta usando===========================
+    // public function update($id, Request $request)
+    // {
         // $sale = Sale::findOrFail($id);
         // $sale->idEstado = '4';
         // $sale->total = $request->total;
         // $sale->update();
 
-        return redirect('products');
-    }
+    //     return redirect('products');
+    // }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\DetailSale  $detailSale
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         $detail_sales = DetailSale::findOrFail($id);
@@ -170,36 +125,4 @@ class DetailSaleController extends Controller
 
         return redirect('detail_sales');
     }
-
-    // public function mis_rifas()
-    // {
-    //     $id_user = auth()->user()->id;
-
-    //     $rifasEsp = Sale::join('detail_sales', 'detail_sales.idVenta', '=', 'sales.id')
-    //     ->join('raffles', 'detail_sales.idRaffle', '=', 'raffles.id')
-    //     // ->join('products', 'raffles.idProducto', '=', 'products.id')
-    //     ->where('sales.idUsuario', '=', $id_user)
-    //     ->where('sales.idEstado', '=', '4')
-    //     ->select('sales.total', 'sales.id')
-    //     ->groupBy('sales.id')
-    //     ->get();
-
-    //     $rifasConf = DetailSale::join('sales', 'detail_sales.idVenta', '=', 'sales.id')
-    //     ->join('raffles', 'detail_sales.idRaffle', '=', 'raffles.id')
-    //     ->join('products', 'raffles.idProducto', '=', 'products.id')
-    //     ->where('sales.idUsuario', '=', $id_user)
-    //     ->where('sales.idEstado', '=', '6')
-    //     ->select('products.nombre', 'raffles.fechaSorteo', 'raffles.precioTicket', 'detail_sales.precio', 'detail_sales.cantidad', 'detail_sales.id')
-    //     ->get();
-
-    //     $rifasObs = DetailSale::join('sales', 'detail_sales.idVenta', '=', 'sales.id')
-    //     ->join('raffles', 'detail_sales.idRaffle', '=', 'raffles.id')
-    //     ->join('products', 'raffles.idProducto', '=', 'products.id')
-    //     ->where('sales.idUsuario', '=', $id_user)
-    //     ->where('sales.idEstado', '=', '5')
-    //     ->select('products.nombre', 'raffles.fechaSorteo', 'raffles.precioTicket', 'detail_sales.precio', 'detail_sales.cantidad', 'detail_sales.id')
-    //     ->get();
-
-    //     return view('cliente.mis-rifas', compact('rifasEsp', 'rifasConf', 'rifasObs'));
-    // }
 }

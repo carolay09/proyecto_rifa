@@ -9,12 +9,12 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('admin')->only('index', 'create', 'store');
+        $this->middleware('cliente')->only('update');
+    }
     
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $users = User::join('roles', 'users.idRol', '=', 'roles.id')
@@ -24,11 +24,6 @@ class UserController extends Controller
         return view('administracion/users-index', compact('users'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         // $roles = Rol::all();
@@ -37,14 +32,6 @@ class UserController extends Controller
         return view('administracion/users-create');
     }
 
-    protected $fillable;
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $user = new User;
@@ -63,38 +50,11 @@ class UserController extends Controller
         return redirect('users');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
-     */
-    public function show(User $user)
-    {
-        // $user = User::findOrFail($user->id);
-
-        // return view('cliente.formulario-venta', compact('user'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         
     }
 
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, User $user)
     {
        $user = User::findOrFail($user->id);
@@ -115,13 +75,6 @@ class UserController extends Controller
        return view('cliente.metodos-pago', compact('sale'));
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
-     */
-    
     public function update_state(Request $request, $id)
     {
         $user = User::findOrFail($id);
