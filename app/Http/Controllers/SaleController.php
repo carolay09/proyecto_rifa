@@ -8,6 +8,7 @@ use App\Models\Sale;
 use App\Models\Ticket;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Session\SessionManager;
 
 class SaleController extends Controller
 {
@@ -140,13 +141,15 @@ class SaleController extends Controller
         return view('cliente.mis-sorteos', compact('rifasRev', 'rifasConf'));
     }
 
-    public function state_update(Request $request, $id){
+    public function state_update(Request $request, $id, SessionManager $sessionManager){
         $sale = Sale::findOrFail($id);
-
+        $nroOperacion_exist = Sale::where('nroOperacion', '=', $request->nroOperacion)
+            ->first();
         //evaluar si el nro de operacion fue usado
-        if($request->nroOperacion == $sale->nroOperacion){
-            //mensaje de rechazo
-            return redirect('/');
+        if($nroOperacion_exist != null){
+            $sessionManager->flash('mensaje', 'Este número de operación ya fue usado');
+
+            return view('cliente.metodos-pago', compact('sale'));
         }else{
             $sale->idEstado = '5';
             $sale->nroOperacion = $request->nroOperacion;
@@ -154,6 +157,7 @@ class SaleController extends Controller
         }
 
         return redirect('mis-sorteos');
+        // return $sale;
     }
 
     public function rifas_admin(){
