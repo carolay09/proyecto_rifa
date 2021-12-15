@@ -9,6 +9,7 @@ use App\Http\Controllers\StateController;
 use App\Http\Controllers\SaleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RolController;
+use App\Http\Controllers\WinnerController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -53,7 +54,7 @@ Route::resource('raffles', RaffleController::class);
 Route::resource('states', StateController::class);
 Route::resource('roles', RolController::class);
 Route::resource('users', UserController::class);
-
+Route::resource('winners', WinnerController::class);
 
 
 Route::resource('detail_sales', DetailSaleController::class)->middleware('auth');

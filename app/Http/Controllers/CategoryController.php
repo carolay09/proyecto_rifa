@@ -48,7 +48,7 @@ class CategoryController extends Controller
         if($request->hasFile('imagen')){
             $category->imagen = $request->file('imagen')->store('images','public');
         }
-        $category->idEstado = '1';
+        $category->idEstado = '12';
         $category->save();
 
         return redirect('categories');
@@ -116,11 +116,11 @@ class CategoryController extends Controller
     public function update_state(Request $request, $id)
     {
         $category = Category::findOrFail($id);
-        if($request->nombreEstado == 'activo'){
-            $category->idEstado = '11';
+        if($request->nombreEstado == 'bloqueado'){
+            $category->idEstado = '13';
         }
-        else if($request->idEstado = 'inactivo'){
-            $category->idEstado = '10';
+        else if($request->idEstado = 'desbloqueado'){
+            $category->idEstado = '12';
         }
         $category->update();
         

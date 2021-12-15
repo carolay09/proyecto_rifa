@@ -26,7 +26,6 @@
                 <td>{{$winner->nombreU}}</td>
                 <td>{{$winner->apellidoU}}</td>
                 <td>{{$winner->telefonoU}}</td>
-                <td>{{$winner->emailU}}</td>
                 <td>{{$winner->direccionU}}</td>
                 <td>{{$winner->emailU}}</td>
                 <td>{{$winner->rifaU}}</td>
