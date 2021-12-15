@@ -73,7 +73,7 @@ class CategoryController extends Controller
     public function edit($id)
     {
         $category = Category::findOrFail($id);
-        return view('administrcaion/category-edit', compact('category'));
+        return view('administracion/category-edit', compact('category'));
     }
 
     /**
@@ -127,9 +127,7 @@ class CategoryController extends Controller
     }
 
     public function cliente_index(){
-        $categories = Category::join('states','categories.idEstado', '=', 'states.id')
-            ->select('categories.*','states.nombre as nombreEstado')
-            ->get();
+        $categories = Category::all();
 
         return view('cliente.home', compact('categories'));
     }

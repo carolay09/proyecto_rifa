@@ -17,7 +17,7 @@ class RaffleController extends Controller
     {
         $raffles = Raffle::join('states','raffles.idEstado', '=', 'states.id')
         ->join('products','raffles.idProducto','=','products.id')
-        ->select('raffles.*','states.nombre as nombreEstado','products.nombre as nombreProducto')
+        ->select('raffles.*','states.nombre as nombreEstado','products.nombre as nombreProducto','products.idEstado as estadoProducto')
         ->get();;
         return view('administracion/raffles-index', compact('raffles'));
     }
@@ -46,9 +46,15 @@ class RaffleController extends Controller
         $raffle->precioTicket = $request->precio;
         $raffle->cantidadPart = $request->cantidad;
         $raffle->idProducto = $request->producto;
+        // $raffle->estadoProducto = '9';
+    
         $raffle->fechaSorteo = $request->fecha; 
         $raffle->idEstado = '2';
         $raffle->save();
+
+        $product = Product::findOrFail($request->producto);
+        $product->idEstado = '9';
+        $product->update();
 
         return redirect('raffles');
     }

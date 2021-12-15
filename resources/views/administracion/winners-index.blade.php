@@ -5,7 +5,7 @@
 @section('content')
 
 <section class="container">
-    <a href="{{route('categories.create')}}" class="btn btn-primary my-3">Crear ganador</a>
+    
     <h4 class="text-center">Lista de ganadores</h4>
     <div class="table-responsive-xl">
     <table class="table">
