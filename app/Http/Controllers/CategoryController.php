@@ -19,7 +19,6 @@ class CategoryController extends Controller
            ->select('categories.*','states.nombre as nombreEstado')
             ->get();
         return view('administracion/categories-index', compact('categories'));
-
     }
 
     /**
