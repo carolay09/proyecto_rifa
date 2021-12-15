@@ -19,8 +19,10 @@
                     </div>
                 </div>
                 <div class="borde w-50 text-center p-0">
-                    <i class="fas fa-file-alt"></i>
-                    <p class="p-0 m-0">TÉRMINOS Y CONDICIONES</p>
+                    <a href="{{route('politicas')}}">
+                        <i class="fas fa-file-alt"></i>
+                        <p class="p-0 m-0">TÉRMINOS Y CONDICIONES</p>
+                    </a>
                 </div>
             </div>
             <div class="col-6">

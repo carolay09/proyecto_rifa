@@ -71,6 +71,9 @@ Auth::routes();
 Route::get('dashboard', function(){
     return view('administracion.home');
 })->name('dashboard');
+Route::get('politicas', function(){
+    return view('cliente.politicas');
+})->name('politicas');
 // Route::get('/', function(){
 //     return view('cliente.home');
 // })->name('home');

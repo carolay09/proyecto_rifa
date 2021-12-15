@@ -27,7 +27,13 @@
                 <td>
                     <a href="{{route('raffles.edit', $raffle->id)}}" class="btn btn-primary">Editar</a>
 
+<<<<<<< HEAD
                     <a href="{{route('raffles.mostrar', $raffle->id)}}" class="btn btn-primary">Ver Tickets</a>                    
+=======
+                    {{-- <a href="{{route('raffles.mostrar', $raffle->id)}}" class="btn btn-primary">Ver Tickets</a> --}}
+
+                    <a href="{{route('raffles.edit', $raffle->id)}}" class="btn btn-primary">Elegir ganador</a>
+>>>>>>> 85ddcad876e6f3dfa9aa30c64c5d74df8c6dc08d
 
                     <form action="{{route('raffles.update_state', $raffle->id)}}" method="post">
                         @csrf
