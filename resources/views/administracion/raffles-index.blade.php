@@ -27,7 +27,7 @@
                 <td>
                     <a href="{{route('raffles.edit', $raffle->id)}}" class="btn btn-primary">Editar</a>
 
-                    <a href="{{route('raffles.mostrar', $raffle->id)}}" class="btn btn-primary">Ver Tickets</a>
+                    {{-- <a href="{{route('raffles.mostrar', $raffle->id)}}" class="btn btn-primary">Ver Tickets</a> --}}
 
                     <a href="{{route('raffles.edit', $raffle->id)}}" class="btn btn-primary">Elegir ganador</a>
 

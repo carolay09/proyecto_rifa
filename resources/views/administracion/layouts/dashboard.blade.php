@@ -82,18 +82,26 @@
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="{{route('raffles.index')}}" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
+                <a class="nav-link" href="{{route('raffles.index')}}">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Rifas</span>
                 </a>
+            </li>
+            {{-- <li class="nav-item"> --}}
+                {{-- <a class="nav-link collapsed" href="{{route('raffles.index')}}" data-toggle="collapse" data-target="#collapseTwo"
+                    aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Rifas</span>
+                </a> --}}
+                
+{{--                 
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="py-2 collapse-inner rounded">
                         <a href="{{route('revision-rifas')}}" class="collapse-item text-white">Revision</a>
                         <a href="" class="collapse-item text-white">sdf</a>
                     </div>
                 </div>
-            </li>
+            </li> --}}
 
             <li class="nav-item">
                 <a class="nav-link" href="{{route('users.index')}}">
@@ -115,27 +123,40 @@
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Addons
+                Revisión
             </div>
 
-            <!-- Nav Item - Pages Collapse Menu -->
+            {{-- <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div class="py-2 collapse-inner rounded">
+                    <a href="{{route('revision-rifas')}}" class="collapse-item text-white">Revision</a>
+                    <a href="" class="collapse-item text-white">Revisión</a>
+                </div>
+            </div> --}}
             <li class="nav-item">
+                <a class="nav-link" href="{{route('revision-rifas')}}">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Revisión</span>
+                </a>
+            </li>
+
+            <!-- Nav Item - Pages Collapse Menu -->
+            {{-- <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
                     aria-expanded="true" aria-controls="collapsePages">
                     <i class="fas fa-fw fa-folder"></i>
                     <span>Pages</span>
                 </a>
-            </li>
+            </li> --}}
 
             <!-- Nav Item - Charts -->
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a class="nav-link" href="#">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Charts</span>
                   </a>
-            </li>
+            </li> --}}
 
-            <!-- Nav Item - Tables -->
+            {{-- <!-- Nav Item - Tables -->
             <li class="nav-item">
                 <a class="nav-link" href="#">
                     <i class="fas fa-fw fa-table"></i>
@@ -148,7 +169,7 @@
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
-            </div>
+            </div> --}}
 
         </ul>
 

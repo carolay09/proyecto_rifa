@@ -46,7 +46,7 @@
                             <a href="#" class="nav-link"><i class="fas fa-user"></i>Quiénes somos</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link"><i class="fas fa-user"></i>Políticas</a>
+                            <a href="{{route('politicas')}}" class="nav-link" target="_blank"><i class="fas fa-user"></i>Políticas</a>
                         </li>
                         {{-- <li class="nav-item">
                             <a href="{{url('detail_sales')}}" class="nav-link"><i class="fas fa-shopping-cart primary-color"></i></a>

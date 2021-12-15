@@ -19,8 +19,8 @@ class WinnerController extends Controller
       
             
                 
-                <td>{{$winner->rifaU}}</td>
-                <td>{{$winner->ticketU}}</td>
+                // <td>{{$winner->rifaU}}</td>
+                // <td>{{$winner->ticketU}}</td>
          ->get();
         return view('administracion/winners-index', compact('winners'));
 

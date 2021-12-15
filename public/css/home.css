@@ -47,6 +47,12 @@
     height: 400px;
     object-fit: cover;
 }
+.img-bloqueado{
+    width: 20%;
+    height: 400px;
+    object-fit: cover;
+    border-top-left-radius: 20px;
+}
 .nombre-ctg{
     color: white;
     text-align: center;
@@ -88,6 +94,14 @@
 }
 .mensaje{
     background-color: var(--third-color);
+}
+
+/* =========logo candado=============== */
+.img-candado{
+    position: absolute;
+    z-index: 2000;
+    top: -5px;
+    left: -5px;
 }
 
 
