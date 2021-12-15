@@ -18,28 +18,18 @@
             <td>Correo</td>
             <td>Rifa</td>
             <td>Ticket</td>
-            <td>Accion</td>
         </tr>
         @foreach ($winners as $winner)
             <tr>
-                <td>{{$winner->dniU}}</td>
-                <td>{{$winner->nombreU}}</td>
-                <td>{{$winner->apellidoU}}</td>
-                <td>{{$winner->telefonoU}}</td>
-                <td>{{$winner->direccionU}}</td>
-                <td>{{$winner->emailU}}</td>
-                <td>{{$winner->rifaU}}</td>
-                <td>{{$winner->ticketU}}</td>
+                <td>{{$winner->dni}}</td>
+                <td>{{$winner->nombre}}</td>
+                <td>{{$winner->apellido}}</td>
+                <td>{{$winner->telefono}}</td>
+                <td>{{$winner->direccion}}</td>
+                <td>{{$winner->email}}</td>
+                <td>{{$winner->idRifa}}</td>
+                <td>{{$winner->nroTicket}}</td>
                    
-                    <a href="{{route('winners.edit', $winner->id)}}" class="btn btn-primary">Editar</a>
-                    <form action="{{route('winners.update-state', $winner->id)}}" method="post">
-                        @csrf
-                        @method('PATCH')
-                        <input type="hidden" name="nombreEstado" value="{{$category->nombreEstado}}">
-                        
-                        <button type="submit" class="btn btn-danger">Cambiar estado</button>
-                    </form>
-                </td>
             </tr>
         @endforeach
     </table>

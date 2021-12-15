@@ -15,13 +15,8 @@ class WinnerController extends Controller
     public function index()
     {
         $winners = Winner::join('users','winners.idUsuario', '=', 'users.id')
-        ->select('categories.*','users.dni as dniU','users.nombre as nombreU','users.apellido as apellidoU','users.telefono as telefonoU','users.direccion as direccionU','users.email as emailU','users.dni as dniU','users.dni as dniU')
-      
-            
-                
-                <td>{{$winner->rifaU}}</td>
-                <td>{{$winner->ticketU}}</td>
-         ->get();
+            ->select('users.*','winners.*')        
+            ->get();
         return view('administracion/winners-index', compact('winners'));
 
     }
@@ -44,7 +39,13 @@ class WinnerController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $winner = new Winner;
+        $winner->idUsuario = $request->idUsuario;
+        $winner->idRifa = $request->idRifa;
+        $winner->nroTicket = $request->nroTicket;
+        $winner->save();
+
+        return redirect('winners');
     }
 
     /**

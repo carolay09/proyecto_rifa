@@ -52,6 +52,7 @@ Route::resource('products', ProductController::class);
 Route::resource('categories', CategoryController::class);
 Route::resource('raffles', RaffleController::class);
 Route::resource('states', StateController::class);
+Route::get('ticket/{id}/mostrar', [RaffleController::class, 'mostrar'])->name('raffles.mostrar');
 Route::resource('roles', RolController::class);
 Route::resource('users', UserController::class);
 Route::resource('winners', WinnerController::class);

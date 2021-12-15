@@ -127,11 +127,13 @@ class RaffleController extends Controller
     public function mostrar($id){
         $raffle = Raffle::join('tickets', 'raffles.id', '=', 'tickets.idRifa')
         ->join('users', 'tickets.idUsuario', '=' ,'users.id')
-        ->where('raffless.id', '=', $id)
+        ->where('raffles.id', '=', $id)
         ->select('tickets.*','users.*','raffles.*')
         ->get();
 
 
         return view('administracion/tickets', compact('raffle'));
     }
+
+    
 }
