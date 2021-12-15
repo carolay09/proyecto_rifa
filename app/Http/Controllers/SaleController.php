@@ -103,21 +103,21 @@ class SaleController extends Controller
     public function mis_sorteos(){
         $id_user = auth()->user()->id;
 
-        $rifasEsp = Sale::join('detail_sales', 'detail_sales.idVenta', '=', 'sales.id')
-        ->join('raffles', 'detail_sales.idRaffle', '=', 'raffles.id')
-        // ->join('products', 'raffles.idProducto', '=', 'products.id')
-        ->where('sales.idUsuario', '=', $id_user)
-        ->where('sales.idEstado', '=', '4')
-        ->select('sales.total', 'sales.id')
-        ->groupBy('sales.id')
-        ->get();
+        // $rifasEsp = Sale::join('detail_sales', 'detail_sales.idVenta', '=', 'sales.id')
+        // ->join('raffles', 'detail_sales.idRaffle', '=', 'raffles.id')
+        // // ->join('products', 'raffles.idProducto', '=', 'products.id')
+        // ->where('sales.idUsuario', '=', $id_user)
+        // ->where('sales.idEstado', '=', '4')
+        // ->select('sales.total', 'sales.id')
+        // ->groupBy('sales.id')
+        // ->get();
 
         $rifasRev = DetailSale::join('sales', 'detail_sales.idVenta', '=', 'sales.id')
         ->join('raffles', 'detail_sales.idRaffle', '=', 'raffles.id')
         ->join('products', 'raffles.idProducto', '=', 'products.id')
         ->where('sales.idUsuario', '=', $id_user)
         ->where('sales.idEstado', '=', '5')
-        ->select('sales.total', 'sales.id')
+        ->select('products.imagen', 'products.nombre', 'raffles.precioTicket', 'sales.idEstado', 'raffles.fechaSorteo')
         ->get();
 
         $rifasConf = DetailSale::join('sales', 'detail_sales.idVenta', '=', 'sales.id')
@@ -125,18 +125,19 @@ class SaleController extends Controller
         ->join('products', 'raffles.idProducto', '=', 'products.id')
         ->where('sales.idUsuario', '=', $id_user)
         ->where('sales.idEstado', '=', '7')
-        ->select('products.nombre', 'raffles.fechaSorteo', 'raffles.precioTicket', 'detail_sales.precio', 'detail_sales.cantidad', 'detail_sales.id')
+        ->select('products.imagen', 'products.nombre', 'raffles.fechaSorteo', 'raffles.precioTicket', 'detail_sales.precio', 'detail_sales.cantidad', 'detail_sales.id')
         ->get();
 
-        $rifasObs = DetailSale::join('sales', 'detail_sales.idVenta', '=', 'sales.id')
-        ->join('raffles', 'detail_sales.idRaffle', '=', 'raffles.id')
-        ->join('products', 'raffles.idProducto', '=', 'products.id')
-        ->where('sales.idUsuario', '=', $id_user)
-        ->where('sales.idEstado', '=', '6')
-        ->select('products.nombre', 'raffles.fechaSorteo', 'raffles.precioTicket', 'detail_sales.precio', 'detail_sales.cantidad', 'detail_sales.id')
-        ->get();
-
-        return view('cliente.mis-sorteos', compact('rifasEsp', 'rifasConf', 'rifasObs', 'rifasRev'));
+        // $rifasObs = DetailSale::join('sales', 'detail_sales.idVenta', '=', 'sales.id')
+        // ->join('raffles', 'detail_sales.idRaffle', '=', 'raffles.id')
+        // ->join('products', 'raffles.idProducto', '=', 'products.id')
+        // ->where('sales.idUsuario', '=', $id_user)
+        // ->where('sales.idEstado', '=', '6')
+        // ->select('products.nombre', 'raffles.fechaSorteo', 'raffles.precioTicket', 'detail_sales.precio', 'detail_sales.cantidad', 'detail_sales.id')
+        // ->get();
+        // return $rifasRev;
+        // return view('cliente.mis-sorteos', compact('rifasEsp', 'rifasConf', 'rifasObs', 'rifasRev'));
+        return view('cliente.mis-sorteos', compact('rifasRev', 'rifasConf'));
     }
 
     public function state_update(Request $request, $id){
@@ -151,7 +152,6 @@ class SaleController extends Controller
             $sale->nroOperacion = $request->nroOperacion;
             $sale->update();
         }
-
 
         return redirect('mis-sorteos');
     }
