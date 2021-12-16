@@ -20,8 +20,8 @@
         </tr>
         @foreach ($raffle as $ticket)
             <tr>
-                <td>{{$ticket->dni}}</td>
                 <td>{{$ticket->nroTicket}}</td>
+                <td>{{$ticket->dni}}</td>                
                 <td>{{$ticket->nombre}}</td>
                 <td>{{$ticket->apellido}}</td>
                 <td>{{$ticket->email}}</td>

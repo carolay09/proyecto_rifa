@@ -21,6 +21,7 @@ class CreateRafflesTable extends Migration
             $table->unsignedBigInteger('idProducto');
             $table->unsignedBigInteger('idWinner')->nullable();
             $table->unsignedBigInteger('idEstado');
+            $table->string('link');
             $table->timestamps();
 
             $table->foreign('idEstado')->references('id')->on('states')

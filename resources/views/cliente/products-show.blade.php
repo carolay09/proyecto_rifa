@@ -19,7 +19,7 @@
                     </div>
                 </div>
                 <div class="borde w-50 text-center p-0">
-                    <a href="{{route('politicas')}}">
+                    <a href="{{route('politicas')}}" target="_blank">
                         <i class="fas fa-file-alt"></i>
                         <p class="p-0 m-0">TÉRMINOS Y CONDICIONES</p>
                     </a>
@@ -32,16 +32,16 @@
                     <div class="borde tamano-letra">
                         <div class="mb-4">
                             <p class="p-0 m-0">Fecha de inicio del sorteo:</p>
-                            <p class="p-0 m-0">fecha</p>
+                            <p class="p-0 m-0">{{$product->fechaSorteo}}</p>
                         </div>
                         <div class="mb-4">
                             <p class="p-0 m-0">Fecha límite para ingresar</p>
-                            <p class="p-0 m-0">fecha</p>
+                            <p class="p-0 m-0">{{$product->fechaSorteo}}</p>
                         </div>
-                        <div class="mb-4">
+                        {{-- <div class="mb-4">
                             <p class="p-0 m-0">Ganador anunciado</p>
                             <p class="p-0 m-0">fecha</p>
-                        </div>
+                        </div> --}}
                         <div class="">
                             <p class="p-0 m-0">Valor minorista aproximado</p>
                             <p class="p-0 m-0">S/. {{$product->precio}}</p>

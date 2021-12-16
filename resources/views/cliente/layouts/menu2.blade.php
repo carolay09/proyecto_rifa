@@ -96,9 +96,10 @@
     <main class="py-4 mt-5">
         @yield('content')
     </main>
-    <a href="https://api.whatsapp.com/send?phone=51987954874&amp;text=Hola!%20quisiera%20m%C3%A1s%20informacion.%20GRACIAS!
+    <a href="https://api.whatsapp.com/send?phone=51982027069&amp;text=Hola!%20quisiera%20m%C3%A1s%20informacion.%20GRACIAS!
     ">
         <img src="{{asset('images/whatsapp.png')}}" alt="" class="icono-ayuda">
+        <p class="palabra-ayuda"><strong>AYUDA</strong></p>
     </a>
     <div class="footer my-5">
         <p class="text-center">

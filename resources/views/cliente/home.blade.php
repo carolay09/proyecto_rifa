@@ -55,8 +55,9 @@
     <div class="text-center">
         <p class="mensaje d-inline-block px-3">Manténgase al día con los sorteos vigentes</p>
     </div>
-    <form action="" method="post" class="d-flex justify-content-center">
-        <input type="text" name="correoPublicidad" class="form-control w-25">
+    <form action="{{route('emails.store')}}" method="post" class="d-flex justify-content-center">
+        @csrf
+        <input type="email" name="correoPublicidad" class="form-control w-25">
         <button type="submit" class="btn btn-danger">Enviar</button>
     </form>
 
