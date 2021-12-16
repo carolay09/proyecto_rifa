@@ -97,7 +97,6 @@ class RaffleController extends Controller
         ->select('tickets.*','users.*','raffles.*')
         ->get();
 
-
         return view('administracion/tickets', compact('raffle'));
     }
 
