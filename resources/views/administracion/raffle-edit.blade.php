@@ -27,7 +27,7 @@
         </select>
 
         <label for="" class="label-control">Fecha sorteo</label>
-        <input type="date" name="fecha" class="form-control" value=" {{$raffle->fechaSorteo}}">   
+        <input type="date" name="fechaSorteo" class="form-control" value=" {{$raffle->fechaSorteo}}">   
 
         <a href="{{route('raffles.index')}}">Cancelar</a>
         <button type="submit">Guardar</button>

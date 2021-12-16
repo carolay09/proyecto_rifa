@@ -42,14 +42,14 @@ Route::group(['middleware' => 'admin'], function(){
     Route::get('dashboard/ventas/revision', [SaleController::class, 'rifas_admin'])->name('revision-rifas');
     Route::patch('dashboard/ventas/revision/{id}/confirmar', [SaleController::class, 'confirma_pago'])->name('confirma-pago');
     Route::patch('dashboard/ventas/revision/{id}/observar', [SaleController::class, 'observa_pago'])->name('observa-pago');
+    Route::get('venta/{id}/mostrar', [SaleController::class, 'mostrar'])->name('sales.mostrar');
     Route::patch('dashboard/categories/{id}', [CategoryController::class, 'update_state'])->name('categories.update-state');
-
+    Route::get('ticket/{id}/mostrar', [RaffleController::class, 'mostrar'])->name('raffles.mostrar');
 });
 
 Route::group(['middleware' => 'cliente'], function(){
     Route::get('mis-sorteos', [SaleController::class, 'mis_sorteos'])->name('mis-sorteos');
     Route::patch('actualizar-estado/{id}', [SaleController::class, 'state_update'])->name('actualizar-estado');
-    Route::get('venta/{id}/mostrar', [SaleController::class, 'mostrar'])->name('sales.mostrar');
     Route::patch('consultar-cupon', [CouponController::class, 'consultar_cupon'])->name('consultar_cupon');
 
 });
@@ -66,7 +66,6 @@ Route::resource('products', ProductController::class);
 Route::resource('categories', CategoryController::class);
 Route::resource('raffles', RaffleController::class);
 Route::resource('states', StateController::class);
-Route::get('ticket/{id}/mostrar', [RaffleController::class, 'mostrar'])->name('raffles.mostrar');
 Route::resource('roles', RolController::class);
 Route::resource('users', UserController::class);
 Route::resource('winners', WinnerController::class);

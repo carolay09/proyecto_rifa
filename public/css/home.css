@@ -1,7 +1,7 @@
 :root{
     --main-color: #463581;
     --secondary-color: #f92211;
-    --third-color: #612de3;
+    --third-color: #463581;
     --font-color: #002060;
 }
 .primary-color{
@@ -23,8 +23,17 @@
 .icono-ayuda{
     position: fixed;
     bottom: 1rem;
-    right: 0.5rem;
-    width: 3rem;
+    right: 2rem;
+    width: 5rem;
+}
+
+.palabra-ayuda{
+    position: fixed;
+    bottom: -1.2rem;
+    right: 1rem;
+    width: 5rem;
+    color: black;
+    
 }
 
 

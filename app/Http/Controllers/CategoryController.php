@@ -84,6 +84,7 @@ class CategoryController extends Controller
     public function cliente_index(){
         $categories = Category::join('states','categories.idEstado', '=', 'states.id')
            ->select('categories.*','states.nombre as nombreEstado')
+           ->orderBydesc('categories.idEstado')
             ->get();
 
         return view('cliente.home', compact('categories'));
