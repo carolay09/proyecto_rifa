@@ -27,6 +27,9 @@
         <label for="" class="label-control">Fecha sorteo</label>
         <input type="date" name="fecha" class="form-control" placeholder="Ingrese fecha de sorteo">   
 
+        <label for="" class="label-control">Link de la reunión</label>
+        <input type="text" name="link" class="form-control" placeholder="Ingrese link">     
+
         <input type="hidden" name="idEstado" value="2">
 
         <p class="d-flex justify-content-center py-3">

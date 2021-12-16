@@ -38,6 +38,7 @@ class RaffleController extends Controller
         // $raffle->estadoProducto = '9';
     
         $raffle->fechaSorteo = $request->fecha; 
+        $raffle->link = $request->link; 
         $raffle->idEstado = '2';
         $raffle->save();
 

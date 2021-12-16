@@ -11,6 +11,7 @@ use App\Http\Controllers\SaleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RolController;
 use App\Http\Controllers\WinnerController;
+use App\Http\Controllers\EmailController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -72,6 +73,7 @@ Route::resource('winners', WinnerController::class);
 Route::resource('coupons', CouponController::class);
 Route::resource('detail_sales', DetailSaleController::class);
 Route::resource('sales', SaleController::class);
+Route::resource('emails', EmailController::class);
 
 Auth::routes();
 

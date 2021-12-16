@@ -14,6 +14,7 @@
             <td>Cantidad Participante</td>
             <td>Producto</td>
             <td>Fecha Sorteo</td>
+            <td>Link</td>
             <td>Estado</td>
             <td>Accion</td>
         </tr>
@@ -23,7 +24,9 @@
                 <td>{{$raffle->cantidadPart}}</td>
                 <td>{{$raffle->nombreProducto}}</td>
                 <td>{{$raffle->fechaSorteo}}</td>
+                <td>{{$raffle->link}}</td>
                 <td>{{$raffle->nombreEstado}}</td>
+                
                 <td>
                     <a href="{{route('raffles.edit', $raffle->id)}}" class="btn btn-primary">Editar</a>
 
@@ -31,8 +34,6 @@
                     <a href="{{route('raffles.mostrar', $raffle->id)}}" class="btn btn-primary">Ver Tickets</a>                    
 
                     {{-- <a href="{{route('raffles.mostrar', $raffle->id)}}" class="btn btn-primary">Ver Tickets</a> --}}
-
-                    <a href="{{route('raffles.edit', $raffle->id)}}" class="btn btn-primary">Elegir ganador</a>
 
 
                     <form action="{{route('raffles.update_state', $raffle->id)}}" method="post">

@@ -66,13 +66,7 @@
                 </a>
             </li>
 
-            <li class="nav-item">
-                <a class="nav-link" href="{{route('winners.index')}}">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Ganador</span>
-                </a>
-            </li>
-
+            
             <li class="nav-item">
                 <a class="nav-link" href="{{route('products.index.admi')}}">
                     <i class="fas fa-fw fa-cog"></i>
@@ -81,33 +75,30 @@
             </li>
 
             <!-- Nav Item - Utilities Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link" href="{{route('raffles.index')}}">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Rifas</span>
-                </a>
-            </li>
+            
             <li class="nav-item">
                 <a class="nav-link" href="{{route('coupons.index')}}">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Cupones</span>
                 </a>
             </li>
-            {{-- <li class="nav-item"> --}}
-                {{-- <a class="nav-link collapsed" href="{{route('raffles.index')}}" data-toggle="collapse" data-target="#collapseTwo"
+
+           
+            <li class="nav-item"> 
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Rifas</span>
-                </a> --}}
+                </a> 
                 
-{{--                 
+
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="py-2 collapse-inner rounded">
+                        <a href="{{route('raffles.index')}}" class="collapse-item text-white">Creación</a>
                         <a href="{{route('revision-rifas')}}" class="collapse-item text-white">Revision</a>
-                        <a href="" class="collapse-item text-white">sdf</a>
                     </div>
                 </div>
-            </li> --}}
+            </li>
 
             <li class="nav-item">
                 <a class="nav-link" href="{{route('users.index')}}">
@@ -116,13 +107,7 @@
                 </a>
             </li>
 
-            <li class="nav-item">
-                <a class="nav-link" href="{{route('sales.index')}}">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Ventas</span>
-                </a>
-            </li>
-            
+                       
 
             <!-- Divider -->
             <hr class="sidebar-divider">
@@ -139,11 +124,26 @@
                 </div>
             </div> --}}
             <li class="nav-item">
-                <a class="nav-link" href="{{route('revision-rifas')}}">
+                <a class="nav-link" href="{{route('emails.index')}}">
                     <i class="fas fa-fw fa-cog"></i>
-                    <span>Revisión</span>
+                    <span>Mensaje</span>
                 </a>
             </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{route('winners.index')}}">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Ganador</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{route('sales.index')}}">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Ventas</span>
+                </a>
+            </li>
+            
 
             <!-- Nav Item - Pages Collapse Menu -->
             {{-- <li class="nav-item">
@@ -177,7 +177,17 @@
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
             </div> --}}
 
+            <!-- Divider -->
+        <hr class="sidebar-divider d-none d-md-block">
+
+        <!-- Sidebar Toggler (Sidebar) -->
+        <div class="text-center d-none d-md-inline">
+            <button class="rounded-circle border-0" id="sidebarToggle"></button>
+        </div>
+
         </ul>
+
+        
 
         <!-- End of Sidebar -->
 
@@ -228,7 +238,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Bienvenid@ {{Auth::user()->nombre}}</span>
                                 <img class="img-profile rounded-circle"
                                     src="{{asset('img/undraw_profile.svg')}}">
                             </a>
@@ -248,10 +258,19 @@
                                     Activity Log
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                {{-- <a class="dropdown-item" href="{{ route('logout') }}">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
-                                </a>
+                                </a> --}}
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();"> <i class="fas fa-power-off primary-color"></i>
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
                             </div>
                         </li>
 
@@ -281,44 +300,26 @@
         <i class="fas fa-angle-up"></i>
     </a>
 
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
-                </div>
-            </div>
-        </div>
-    </div>
+    
 
               
 
     <!-- Bootstrap core JavaScript-->
-    <script src="{{asset('jquery/jquery.min.js')}}"></script>
-    <script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
+    <script src="{{asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="{{asset('jquery/jquery.easing.min.js')}}"></script>
+    <script src="{{asset('vendor/jquery-easing/jquery.easing.min.js')}}"></script>
 
     <!-- Custom scripts for all pages-->
     <script src="{{asset('js/sb-admin-2.min.js')}}"></script>
 
     <!-- Page level plugins -->
-    <script src="{{asset('js/Chart.min.js')}}"></script>
+    <script src="{{asset('vendor/chart.js/Chart.min.js')}}"></script>
 
     <!-- Page level custom scripts -->
-    <script src="{{asset('js/chart-area-demo.js')}}"></script>
-    <script src="{{asset('js/chart-pie-demo.js')}}"></script>
+    <script src="{{asset('js/demo/chart-area-demo.js')}}"></script>
+    <script src="{{asset('js/demo/chart-pie-demo.js')}}"></script>
 
 
 </body>
