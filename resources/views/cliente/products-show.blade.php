@@ -31,20 +31,21 @@
                     <p class="mb-3 text-center nombre-prod py-3 fs-2"><strong>{{$product->nombre}}</strong></p>
                     <div class="borde tamano-letra">
                         <div class="mb-4">
-                            <p class="p-0 m-0">Fecha de inicio del sorteo:</p>
+                            <p class="p-0 m-0"><strong> Fecha del sorteo: </strong></p>
                             <p class="p-0 m-0">{{$product->fechaSorteo}}</p>
                         </div>
                         <div class="mb-4">
-                            <p class="p-0 m-0">Fecha límite para ingresar</p>
-                            <p class="p-0 m-0">{{$product->fechaSorteo}}</p>
+                            <p class="p-0 m-0"><strong>Detalles del producto</strong></p>
+                            <p class="p-0 m-0">Descripción: {{$product->descripcion}}</p>
+                            <p class="p-0 m-0">Marca: {{$product->marca}}</p>
                         </div>
                         {{-- <div class="mb-4">
                             <p class="p-0 m-0">Ganador anunciado</p>
                             <p class="p-0 m-0">fecha</p>
                         </div> --}}
                         <div class="">
-                            <p class="p-0 m-0">Valor minorista aproximado</p>
-                            <p class="p-0 m-0">S/. {{$product->precio}}</p>
+                            <p class="p-0 m-0"><strong> Minorista aproximado</strong></p>
+                            <p class="p-0 m-0">S/. {{number_format ( $product->precio,2) }}</p>
                         </div>
 
                         {{-- <p class="mb-3">Descripcion: {{$product->descripcion}}</p>

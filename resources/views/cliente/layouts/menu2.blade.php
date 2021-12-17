@@ -48,9 +48,9 @@
                         <li class="nav-item">
                             <a href="{{route('politicas')}}" class="nav-link" target="_blank"><i class="fas fa-user"></i>Políticas</a>
                         </li>
-                        {{-- <li class="nav-item">
-                            <a href="{{url('detail_sales')}}" class="nav-link"><i class="fas fa-shopping-cart primary-color"></i></a>
-                        </li> --}}
+                        <li class="nav-item">
+                            <a href="{{url('detail_sales')}}" class="nav-link"><i class="fas fa-shopping-cart px-3"></i></a>
+                        </li>
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
@@ -101,10 +101,75 @@
         <img src="{{asset('images/whatsapp.png')}}" alt="" class="icono-ayuda">
         <p class="palabra-ayuda"><strong>AYUDA</strong></p>
     </a>
-    <div class="footer my-5">
-        <p class="text-center">
-            Derechos Reservados
-        </p>
-    </div>
+   
+    <footer class="text-white pt-5 pb-4 footer-home">
+        <div class="container text-center text-md-left">
+            <div class="row text-center text-md-left">
+                <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+                    <h5 class="text-uppercase mb-4 font-weight-bold text-white"><strong>¿Necesitas ayuda?</strong></h5>
+                    <a href="{{route('politicas')}}" class="nav-link text-white" target="_blank">Términos y Condiciones</a>
+                </div>
+                
+                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+                    <h5 class="text-uppercase mb-4 font-weight-bold text-white"><strong>Redes Socialeas</strong></h5>
+                    <ul class="list-unstyled list-inline">
+                        <li class="list-inline-item">
+                            <a href="https://www.facebook.com/a.clarosmendiet" target="_blank" class="btm-floating btn-sm text-white" style="font-size: 23px;">
+                                <i class="fab fa-facebook"></i>
+                            </a>
+
+                            <a href="https://www.instagram.com/aclaros95/" target="_blank" class="btm-floating btn-sm text-white" style="font-size: 23px;">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+                    <h5 class="text-uppercase mb-4 font-weight-bold text-white"><strong>Metodo de pago</strong></h5>
+                    <ul class="list-unstyled list-inline">
+                        <li class="list-inline-item">
+                            <a href="" class="btn-floating btn-sm text-white" style="font-size: 23px;">
+                                <img src="{{asset('images/interbank.png')}}" class="metodo-pago" alt="">
+                            </a>
+
+                            <a href="" class="btn-floating btn-sm text-white" style="font-size: 23px;">
+                                <img src="{{asset('images/bcp.png')}}" class="metodo-pago" alt="">
+                            </a>
+
+                            <a href="" class="btn-floating btn-sm text-white" style="font-size: 23px;">
+                                <img src="{{asset('images/yape.png')}}" class="metodo-pago" alt="">
+                            </a>
+
+                            <a href="" class="btn-floating btn-sm text-white" style="font-size: 23px;">
+                                <img src="{{asset('images/plin.png')}}" class="metodo-pago" alt="">
+                            </a>
+                            
+                        </li>
+                    </ul>
+                </div>
+
+                
+            </div>
+            <hr class="mb-4">
+
+            <div class="row align-items-center">
+                <div class="col-md-8 col-lg-12">
+                    <p>
+                        © All right reserved by:
+                        <a href="#" style="text-decoration: none;">
+                            <strong class="text-white">Carolay &</strong>
+                        </a>
+
+                        <a href="#" style="text-decoration: none;">
+                            <strong class="text-white">Manuel</strong>
+                        </a>
+                    </p>
+                </div>
+                
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
