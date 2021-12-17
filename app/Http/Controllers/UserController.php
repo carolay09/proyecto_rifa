@@ -70,9 +70,13 @@ class UserController extends Controller
             ->where('states.nombre', 'like', 'pendiente')
             ->select('sales.id', 'sales.total')
             ->first();
-        
 
-       return view('cliente.metodos-pago', compact('sale'));
+        $cupon = Sale::join('coupons', 'sales.idCupon', '=', 'coupons.id')
+        ->where('sales.id', '=', $sale->id)
+        ->select('coupons.nombre', 'coupons.descuento')
+        ->first();
+
+       return view('cliente.metodos-pago', compact('sale', 'cupon'));
     }
 
     public function update_state(Request $request, $id)

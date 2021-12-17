@@ -39,11 +39,15 @@ class SaleController extends Controller
         $sale->total = $request->total;
         $sale->update();
 
+        $cupon = Sale::join('coupons', 'sales.idCupon', '=', 'coupons.id')
+            ->where('sales.id', '=', $id)
+            ->select('coupons.nombre', 'coupons.descuento')
+            ->first();
+
         $user = User::findOrFail(auth()->user()->id);
         // $sale = Sale::findOrFail($id);
-        $total = $sale->total;
         // return $total;
-        return view('cliente.formulario-venta', compact('user', 'total'));
+        return view('cliente.formulario-venta', compact('user', 'sale', 'cupon'));
     }
 
     public function mis_sorteos(){
