@@ -43,10 +43,10 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a href="#" class="nav-link"><i class="fas fa-user"></i>Quiénes somos</a>
+                            <a href="#" class="nav-link"><i class="fas fa-users px-2"></i>Quiénes somos</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('politicas')}}" class="nav-link" target="_blank"><i class="fas fa-user"></i>Políticas</a>
+                            <a href="{{route('politicas')}}" class="nav-link" target="_blank"><i class="fas fa-file-invoice px-2"></i>Políticas</a>
                         </li>
                         <li class="nav-item">
                             <a href="{{url('detail_sales')}}" class="nav-link"><i class="fas fa-shopping-cart px-3"></i></a>
@@ -55,7 +55,7 @@
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
-                                    <a class="btn btn-primary" href="{{ route('login') }}"><i class="fas fa-user primary-color"></i> Iniciar sesión</a>
+                                    <a class="btn btn-primary" href="{{ route('login') }}"><i class="fas fa-user"></i> Iniciar sesión</a>
                                 </li>
                             @endif
 
@@ -74,11 +74,11 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <p class="saludo py-2">Bienvenid@ {{Auth::user()->nombre}}</p>
                                     <a class="dropdown-item" href="">Mis compras</a>
-                                    <a class="dropdown-item" href="{{route('mis-sorteos')}}"><i class="fas fa-ticket primary-color"></i> Mis Sorteos</a>
+                                    <a class="dropdown-item" href="{{route('mis-sorteos')}}"><i class="fas fa-ticket"></i> Mis Sorteos</a>
                                     <a class="dropdown-item" href="">Mis datos</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();"> <i class="fas fa-power-off primary-color"></i>
+                                                     document.getElementById('logout-form').submit();"> <i class="fas fa-power-off"></i>
                                         {{ __('Logout') }}
                                     </a>
 

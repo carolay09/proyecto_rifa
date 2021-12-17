@@ -26,13 +26,22 @@ class DetailSaleController extends Controller
             ->select('products.nombre', 'products.imagen', 'raffles.fechaSorteo', 'raffles.precioTicket', 'detail_sales.precio', 'detail_sales.cantidad', 'detail_sales.id')
             ->get();
 
-        $sale_id = Sale::where('idUsuario', '=', auth()->user()->id)
+        // $sale = Sale::where('idUsuario', '=', auth()->user()->id)
+        //     ->where('idEstado', '=', '3')
+        //     ->orderByDesc('id')
+        //     ->select('id', 'idCupon')
+        //     ->first();
+        $sale = Sale::where('idUsuario', '=', auth()->user()->id)
             ->where('idEstado', '=', '3')
             ->orderByDesc('id')
             ->select('id')
             ->first();
+        $sale_cupon = Sale::join('coupons', 'sales.idCupon', '=', 'coupons.id')
+            ->where('sales.id', '=', $sale->id)
+            ->select('coupons.nombre', 'coupons.descuento')
+            ->first();
  
-        return view('cliente.carrito',compact('detail_sales', 'sale_id'));
+        return view('cliente.carrito',compact('detail_sales', 'sale', 'sale_cupon'));
     }
 
     public function store(Request $request)
@@ -66,11 +75,12 @@ class DetailSaleController extends Controller
             $detailSale->save();
         }else if($venta->nombre == 'pendiente'){
             //consultar si el producto se encuentra en el carrito
-            // if(DetailSale::join('sales', 'detail_sales.idVenta', '=', 'sales.id')
-            //     ->where('sales.idUsuario', '=', auth()->user()->id)
-            //     ->where('sales.id', '=', $venta->id)
-            //     ->count() == 0               
-            // ){
+            if(DetailSale::join('sales', 'detail_sales.idVenta', '=', 'sales.id')
+                ->where('sales.idUsuario', '=', auth()->user()->id)
+                ->where('sales.id', '=', $venta->id)
+                ->where('detail_sales.idRaffle', '=', $datos_rifa->id)
+                ->count() == 0               
+            ){
             $detailSale = new DetailSale;
             $detailSale->cantidad = $request->cantidad;
             $detailSale->precio = $request->precio;
@@ -78,11 +88,22 @@ class DetailSaleController extends Controller
             $detailSale->idVenta = $venta->id;
             $detailSale->idRaffle = $datos_rifa->id;
             $detailSale->save();
-            // }else{
+            }else{
+                //retornar un mensaje de producto en carrito
+                $cantProd = DetailSale::where('idVenta', '=', $venta->id)
+                    ->where('idRaffle', '=', $datos_rifa->id)
+                    ->select('detail_sales.cantidad', 'detail_sales.total', 'detail_sales.precio')
+                    ->first();
 
-            //     //retornar un mensaje de producto en carrito
-            //     return redirect('/');
-            // }
+                $detVenta = DetailSale::where('idVenta', '=', $venta->id)
+                    ->where('idRaffle', '=', $datos_rifa->id)
+                    ->first();
+
+                $detVenta->cantidad = $cantProd->cantidad + 1;
+                $detVenta->total += $cantProd->precio;
+                $detVenta->update(); 
+                return redirect('detail_sales');
+            }
 
         }else if($venta->nombre != 'pendiente'){
             $sale = new Sale;
@@ -118,10 +139,14 @@ class DetailSaleController extends Controller
     //     return redirect('products');
     // }
 
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
         $detail_sales = DetailSale::findOrFail($id);
         $detail_sales->delete();
+
+        // $sale = Sale::findOrFail($request->idVenta);
+        // $sale->total -= $request->cantidad * $request->precio;
+        // $sale->update();
 
         return redirect('detail_sales');
     }

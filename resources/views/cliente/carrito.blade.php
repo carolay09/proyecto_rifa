@@ -8,6 +8,7 @@
             <div class="col-9">
                 <h4 class="third-color"><strong>PRODUCTOS</strong></h4>
                 <hr class="linea third-color">
+                @if (count($detail_sales))
                 <div class="table-responsive-xl">
                     <table class="table">
                         @php
@@ -42,6 +43,9 @@
                                     <form action="{{route('detail_sales.destroy', $detail_sale->id)}}" method="post">
                                         @csrf
                                         @method('DELETE')
+                                        <input type="hidden" name="cantidad" value="{{$detail_sale->cantidad}}">
+                                        <input type="hidden" name="precio" value="{{$detail_sale->precio}}">
+                                        <input type="hidden" name="idVenta" value="{{$sale->id}}">
                                         <button type="submit"><i class="fas fa-trash-alt"></i></button>
                                     </form>
                                 </td>
@@ -95,8 +99,8 @@
                                     @endphp
                                 </td>
                                 <td>
-                                    @if ($sale_id != null)
-                                        <form action="{{route('sales.update', $sale_id)}}" method="post">
+                                    @if ($sale != null)
+                                        <form action="{{route('sales.update', $sale)}}" method="post">
                                             @csrf
                                             @method('PATCH')
                                             <input type="hidden" name="total" value="@php echo $total @endphp">
@@ -107,7 +111,7 @@
                             </tr> --}}
                     </table>
                 </div>
-                @if (count($detail_sales))
+                
                     <div class="d-flex justify-content-around my-5">
                         <a href="{{url('/')}}" class="btn btn-primary">Seguir comprando</a>
                         {{-- <form action="{{route('users.show', Auth::user())}}" method="get">
@@ -115,94 +119,61 @@
                             <button type="submit" class="btn btn-primary">Siguiente</button>
                         </form> --}}
                         {{-- <a href="{{route('users.show', Auth::user())}}" class="btn btn-primary">Siguiente</a> --}}
-                        <form action="{{route('sales.update', $sale_id)}}" method="post">
+                        <form action="{{route('sales.update', $sale)}}" method="post">
                             @csrf
                             @method('PATCH')
                             <input type="hidden" name="total" value="{{$total}}">
                             <button type="submit" class="btn btn-primary">Siguiente</button>
                         </form>
                     </div>
+                </div>
+                <div class="col-3">
+                    {{-- @livewire('coupon-apply') --}}
+                    <h4 class="third-color"><strong>RESUMEN</strong></h4>
+                    <hr class="linea third-color">
+                    <div class="row">
+                        <p class="col-12 col-md-6 font-color">Valor regular: </p>
+                        <p class="col-12 col-md-6 font-color">S/. {{number_format($total, 2)}}</p>
+                    </div>
+                    @if ($sale_cupon == null)                    
+                    
+                        <div> 
+                            <form action="{{route('consultar_cupon')}}" method="post">
+                                @csrf
+                                <input type="hidden" name="idVenta" value="{{$sale->id}}">
+                                <label for=""><strong>Cupón de descuento</strong></label>
+                                <input type="text" name="nombre" class="form-control borde-input">
+                                @if (session()->has('mensaje'))
+                                    <div class="text-danger">
+                                        {{session('mensaje')}}
+                                    </div>
+                                @endif
+                                <button type="submit" class="btn btn-primary my-1 px-4">Aplicar cupón</button>
+                            </form>
+                            <hr class="linea third-color my-4">
+                            <div class="row">
+                                <p class="col-12 col-md-6 font-color">Total</p>
+                                <p class="col-12 col-md-6 font-color">S/. {{number_format($total, 2)}}</p>
+                            </div>
+                        </div>
+                    @else
+                        <div class="row">
+                            <label for="" class="col-12 col-md-6 font-color">Descuento</label>
+                            <p class="col-12 col-md-6 text-danger">S/. {{number_format($sale_cupon->descuento, 2)}}</p>
+                        </div>
+                        <hr class="linea third-color my-4">
+                        <div class="row">
+                            <p class="col-12 col-md-6 font-color">Total</p>
+                            <p class="col-12 col-md-6 font-color text-success">S/. {{number_format($total-$sale_cupon->descuento, 2)}}</p>
+                        </div>
+                    @endif
+                </div>
                 @else
                     <p class="text-center py-5"><strong>No hay productos en su carrito</strong></p>
                 @endif
-            </div>
-            <div class="col-3">
-                <h4 class="third-color"><strong>RESUMEN</strong></h4>
-                <hr class="linea third-color">
-                <div class="row">
-                    <p class="col-12 col-md-6 font-color">Valor regular: </p>
-                    <p class="col-12 col-md-6 font-color">S/. {{number_format($total, 2)}}</p>
-                </div>
-                <div>
-                    {{-- <form action="{{route('consultar_cupon')}}" method="post"> --}}
-                    <form action="" method="post">
-                        {{-- @csrf
-                        @method('PATCH') --}}
-                        <input type="hidden" name="idVenta" value="{{$sale_id}}">
-                        <label for=""><strong>Cupón de descuento</strong></label>
-                        <input type="text" name="nombre" class="form-control borde-input">
-                        <button type="submit" class="btn btn-primary my-1 px-4" disabled>Aplicar cupón</button>
-                    </form>
-                </div>
-                <hr class="linea third-color my-4">
-                <div class="row">
-                    <p class="col-12 col-md-6 font-color">Total</p>
-                    <p class="col-12 col-md-6 font-color">S/. {{number_format($total, 2)}}</p>
-                </div>
-            </div>
+            
         </div>
     </section>
 
-    <script>
-        $(document).ready(function() {
-            $(".btnEliminar").click(function(event) {
-                event.preventDefault();
-                var id = $(this).data('id');
-                var boton = $(this);
-
-                $.ajax({
-                    method: 'POST',
-                    url: 'eliminarCarrito.php',
-                    data: {
-                        id: id
-                    }
-                }).done(function(respuesta) {
-                    boton.parent('td').parent('tr').remove();
-                });
-            });
-
-
-            $(".txtCantidad").keyup(function() {
-                var cantidad = $(this).val();
-                var precio = $(this).data('precio');
-                var id = $(this).data('id');
-                incrementar(cantidad, precio, id);
-            });
-
-
-            $(".btnIncrementar").click(function() {
-                var precio = $(this).parent('div').parent('div').find('input').data('precio');
-                var id = $(this).parent('div').parent('div').find('input').data('id');
-                var cantidad = $(this).parent('div').parent('div').find('input').val();
-                incrementar(cantidad, precio, id);
-            });
-
-
-            function incrementar(cantidad, precio, id) {
-                var mult = parseFloat(cantidad) * parseFloat(precio);
-                $(".cant" + id).text("$" + mult);
-                $.ajax({
-                    method: 'POST',
-                    url: 'actualizar.php',
-                    data: {
-                        id: id,
-                        cantidad: cantidad
-                    }
-                }).done(function(respuesta) {
-                    boton.parent('td').parent('tr').remove();
-                });
-            }
-        });
-    </script>
     
 @endsection

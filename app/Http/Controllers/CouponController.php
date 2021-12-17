@@ -63,22 +63,46 @@ class CouponController extends Controller
             return redirect('detail_sales');
         }
 
-        $cupon_venta = Sale::findOrFail($request->idVenta);
+        $cupon_user = Coupon::join('sales', 'coupons.id', '=', 'sales.idCupon')
+            ->where('sales.idUsuario', '=', auth()->user()->id)
+            ->where('coupons.nombre', '=', $request->nombre)
+            ->select('coupons.id')
+            ->first();
 
-        if($cupon_venta->idCupon == null){
-            $cupon_venta->idCupon = $cupon->id;
-            $cupon_venta->save();
-            $sessionManager->flash('mensaje', 'El cupón se aplicón correctamente');
-
+        if($cupon_user != null){
+            $sessionManager->flash('mensaje', 'Este cupón ya fue usado');
             return redirect('detail_sales');
         }
+        else{
+            if($cupon->cantidad <= 0){
+                $sessionManager->flash('mensaje', 'Ya no quedan cupones disponibles');
+                return redirect('detail_sales');
+            }else{
+                $sale = Sale::findOrFail($request->idVenta);
+                $sale->idCupon = $cupon->id;
+                $sale->update();
 
-        if($cupon_venta->idCupon == $cupon->idCupon){
-            $sessionManager->flash('mensaje', 'El cupón ya fue usado');
+                $cupon->cantidad -= 1;
+                $cupon->update();
 
-            return redirect('detail_sales');
+                $sessionManager->flash('mensaje', 'El cupón se aplicó correctamente');
+                return redirect('detail_sales');
+            }
         }
+        // $cupon_venta = Sale::findOrFail($request->idVenta);
 
+        // if($cupon_venta->idCupon == null){
+        //     $cupon_venta->idCupon = $cupon->id;
+        //     $cupon_venta->save();
+        //     $sessionManager->flash('mensaje', 'El cupón se aplicón correctamente');
 
+        //     return redirect('detail_sales');
+        // }
+
+        // if($cupon_venta->idCupon == $cupon->idCupon){
+        //     $sessionManager->flash('mensaje', 'El cupón ya fue usado');
+
+        //     return redirect('detail_sales');
+        // }
     }
 }

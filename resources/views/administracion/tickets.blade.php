@@ -5,8 +5,8 @@
 @section('content')
 
 <section class="container">
-    {{-- @livewire('show-tickets') --}}
-    <h4 class="text-center">Tickets de la rifa</h4>
+    @livewire('show-tickets', ['id' => $id])
+    {{-- <h4 class="text-center">Tickets de la rifa</h4>
     <div class="table-responsive-xl">
     <table class="table">
         <tr>
@@ -41,6 +41,6 @@
     </table>
     <a href="{{route('raffles.index')}}" class="btn btn-primary">Regresar</a>
 </div>
-</section>
+</section> --}}
 
 @endsection
