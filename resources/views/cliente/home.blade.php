@@ -29,18 +29,16 @@
                 </div>
             @endif
             @if ($category->nombreEstado == 'bloqueado')
-            <div> 
-                <div class="categoria-show">
-                    <img class="img-bloqueado" src="{{asset('storage').'/'.$category->imagen}}" alt=""> 
-                    <img class="img-candado" src="{{asset('images/comming-soon.jpeg')}}" alt="" style="width: 40%">
-                    {{-- <img src="{{asset('images/moda.jpeg')}}" class="img" alt=""> --}}
-                    {{-- <p class="d-flex justify-content-center"> --}}
-                        {{-- <input type="button" class="btn btn-primary btn-participa mb-3" value="Participa">      --}}
-                        {{-- <a href="{{route('producto_categoria', $category)}}" class="btn btn-primary btn-participa mb-3">Bloqueado</a> --}}
-                    {{-- </p> --}}
+                <div> 
+                    <div class="categoria-show">
+                        <img class="img-bloqueado" src="{{asset('storage').'/'.$category->imagen}}" alt=""> 
+                        <img class="img-candado" src="{{asset('images/comming-soon.jpeg')}}" alt="" style="width: 40%">
+                        <p class="d-flex justify-content-center">
+                            {{-- <a href="{{route('producto_categoria', $category)}}" class="btn btn-primary btn-participa mb-3">Bloqueado</a> --}}
+                        </p>
+                    </div>
+                    <h3 class="nombre-ctg">{{$category->nombre}}</h3>
                 </div>
-                <h3 class="nombre-ctg">{{$category->nombre}}</h3>
-            </div>
             @endif
         @endforeach
     </div>

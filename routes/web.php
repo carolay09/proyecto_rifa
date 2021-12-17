@@ -50,7 +50,7 @@ Route::group(['middleware' => 'admin'], function(){
 Route::group(['middleware' => 'cliente'], function(){
     Route::get('mis-sorteos', [SaleController::class, 'mis_sorteos'])->name('mis-sorteos');
     Route::patch('actualizar-estado/{id}', [SaleController::class, 'state_update'])->name('actualizar-estado');
-    Route::patch('consultar-cupon', [CouponController::class, 'consultar_cupon'])->name('consultar_cupon');
+    Route::post('consultar-cupon', [CouponController::class, 'consultar_cupon'])->name('consultar_cupon');
 
 });
 

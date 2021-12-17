@@ -5,7 +5,7 @@
 @section('content')
 
 <section class="container">
-    @livewire('show-tickets')
+    @livewire('show-tickets', ['id' => $id])
     {{-- <h4 class="text-center">Tickets de la rifa</h4>
     <div class="table-responsive-xl">
     <table class="table">
