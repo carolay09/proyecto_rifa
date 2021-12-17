@@ -4,6 +4,13 @@
     --third-color: #463581;
     --font-color: #002060;
 }
+
+body{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
 .primary-color{
     color: var(--main-color);
 }
@@ -34,6 +41,15 @@
     width: 5rem;
     color: black;
     
+}
+
+.footer-home{
+    background-color: var(--third-color);
+    margin-top: auto;
+}
+
+.metodo-pago{
+    max-width: 25px;
 }
 
 
@@ -169,5 +185,13 @@
 /* ------------------metodo pago-------------------- */
 /* ================================================= */
 .logo-metodo-pago{
-    width: 100px;
+    width: 80px;
+}
+
+/* ================================================= */
+/* ------------------login-------------------- */
+/* ================================================= */
+
+.login{
+    background-color: var(--third-color);
 }

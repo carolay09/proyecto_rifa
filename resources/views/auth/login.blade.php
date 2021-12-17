@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+                <div class="card-header text-white login">{{ __('Login') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
@@ -41,16 +41,18 @@
 
                         <div class="row mb-0">
                             <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
-                                </button>
+                                <p class="text-center">
+                                    <button type="submit" class="btn btn-primary">
+                                        {{ __('Login') }}
+                                    </button>
+                                </p>
 
                                 {{-- @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
                                         {{ __('Forgot Your Password?') }}
                                     </a>
                                 @endif --}}
-                                <p>No tiene una cuenta? Registrate</p> <a href="{{ route('register') }}">aqui</a>
+                                <p class="text-center">No tiene una cuenta? Registrate <a href="{{ route('register') }}" class="text-black" style="text-decoration: none;"><strong>aqui</strong></a></p>
                                 {{-- <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a> --}}
                             </div>
                         </div>
