@@ -2,19 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Raffle;
 use App\Models\Ticket;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TicketController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
-        //
+        $sorteos = Raffle::join('detail_sales', 'raffles.id', '=', 'detail_sales.idRaffle')
+            ->join('sales', 'detail_sales.idVenta', '=', 'sales.id')
+            ->join('products', 'raffles.idProducto', '=', 'products.id')
+            ->join('states', 'sales.idEstado', '=', 'states.id')
+            ->where('states.nombre', '=', 'pagado')
+            ->select('products.nombre', 'products.imagen', 'raffles.fechaSorteo', [DB::raw("SUM(detail_sales.cantidad) as cantidad")])
+            ->groupBy('products.nombre')
+            ->get();
+        return $sorteos;
     }
 
     /**

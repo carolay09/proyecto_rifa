@@ -74,9 +74,9 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <p class="saludo py-2">Bienvenid@ {{Auth::user()->nombre}}</p>
-                                    <a class="dropdown-item" href="">Mis compras</a>
+                                    <a class="dropdown-item" href="{{route('mis-compras')}}"><i class="fas fa-shopping-bag"></i> Mis compras</a>
                                     <a class="dropdown-item" href="{{route('mis-sorteos')}}"><i class="fas fa-ticket"></i> Mis Sorteos</a>
-                                    <a class="dropdown-item" href="">Mis datos</a>
+                                    {{-- <a class="dropdown-item" href="">Mis datos</a> --}}
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();"> <i class="fas fa-power-off"></i>

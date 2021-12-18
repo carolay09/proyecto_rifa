@@ -12,6 +12,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\RolController;
 use App\Http\Controllers\WinnerController;
 use App\Http\Controllers\EmailController;
+use App\Http\Controllers\TicketController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -48,7 +49,8 @@ Route::group(['middleware' => 'admin'], function(){
 });
 
 Route::group(['middleware' => 'cliente'], function(){
-    Route::get('mis-sorteos', [SaleController::class, 'mis_sorteos'])->name('mis-sorteos');
+    Route::get('mis-sorteos', [TicketController::class, 'index'])->name('mis-sorteos');
+    Route::get('mis-compras', [SaleController::class, 'mis_compras'])->name('mis-compras');
     Route::patch('actualizar-estado/{id}', [SaleController::class, 'state_update'])->name('actualizar-estado');
     Route::post('consultar-cupon', [CouponController::class, 'consultar_cupon'])->name('consultar_cupon');
 

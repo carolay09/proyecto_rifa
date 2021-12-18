@@ -50,7 +50,7 @@ class SaleController extends Controller
         return view('cliente.formulario-venta', compact('user', 'sale', 'cupon'));
     }
 
-    public function mis_sorteos(){
+    public function mis_compras(){
         $id_user = auth()->user()->id;
 
         // $rifasEsp = Sale::join('detail_sales', 'detail_sales.idVenta', '=', 'sales.id')
@@ -87,7 +87,7 @@ class SaleController extends Controller
         // ->get();
         // return $rifasRev;
         // return view('cliente.mis-sorteos', compact('rifasEsp', 'rifasConf', 'rifasObs', 'rifasRev'));
-        return view('cliente.mis-sorteos', compact('rifasRev', 'rifasConf'));
+        return view('cliente.mis-compras', compact('rifasRev', 'rifasConf'));
     }
 
     public function state_update(Request $request, $id, SessionManager $sessionManager){

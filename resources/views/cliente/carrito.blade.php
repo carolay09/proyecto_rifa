@@ -24,7 +24,7 @@
                                 <td>
                                     @php
                                         $total += $detail_sale->precioTicket * $detail_sale->cantidad;
-                                    @endphp
+                                        @endphp
                                     <p>{{$detail_sale->nombre}}</p>
                                     <p>S/. {{number_format($detail_sale->precio, 2)}}</p>
                                     {{-- <p>
@@ -34,6 +34,13 @@
                                             <input type="button" value="+" class="form-control">
                                         </div>
                                     </p> --}}
+                                </td>
+                                <td class="align-middle">
+                                    @if ($detail_sale->cantidad == 1)
+                                        {{$detail_sale->cantidad}} ticket
+                                    @else
+                                        {{$detail_sale->cantidad}} tickets
+                                    @endif
                                 </td>
                                 <td class="align-middle">
                                     S/. {{number_format($detail_sale->precioTicket * $detail_sale->cantidad, 2)}}
@@ -53,6 +60,7 @@
                         @endforeach
                         <tr>
                             <td class="text-center">Total</td>
+                            <td></td>
                             <td></td>
                             <td>S/. {{number_format($total, 2)}}</td>
                             <td></td>
