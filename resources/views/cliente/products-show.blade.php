@@ -48,6 +48,11 @@
                             <p class="p-0 m-0">S/. {{number_format ( $product->precio,2) }}</p>
                         </div>
 
+                        <div class="">
+                            <p class="p-0 m-0"><strong> Precio de la rifa</strong></p>
+                            <p class="p-0 m-0">S/. {{number_format ( $product->precioTicket,2) }}</p>
+                        </div>
+
                         {{-- <p class="mb-3">Descripcion: {{$product->descripcion}}</p>
                         <p class="mb-3">Marca: {{$product->marca}}</p>
                         <p class="mb-3">Detalle: {{$product->detalle}}</p>

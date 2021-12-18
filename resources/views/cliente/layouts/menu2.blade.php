@@ -128,7 +128,7 @@
                 </div>
 
                 <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
-                    <h5 class="text-uppercase mb-4 font-weight-bold text-white"><strong>Metodo de pago</strong></h5>
+                    <h5 class="text-uppercase mb-4 font-weight-bold text-white"><strong>Medios de pago</strong></h5>
                     <ul class="list-unstyled list-inline">
                         <li class="list-inline-item">
                             <a href="" class="btn-floating btn-sm text-white" style="font-size: 23px;">
@@ -160,11 +160,11 @@
                     <p>
                         © All right reserved by:
                         <a href="#" style="text-decoration: none;">
-                            <strong class="text-white">Carolay &</strong>
+                            <strong class="escondido">Carolay &</strong>
                         </a>
 
                         <a href="#" style="text-decoration: none;">
-                            <strong class="text-white">Manuel</strong>
+                            <strong class="escondido">Manuel</strong>
                         </a>
                     </p>
                 </div>

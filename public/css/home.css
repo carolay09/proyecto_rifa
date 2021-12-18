@@ -48,6 +48,10 @@ body{
     margin-top: auto;
 }
 
+.escondido{
+    color: #4B0082;
+}
+
 .metodo-pago{
     max-width: 25px;
 }
@@ -60,7 +64,7 @@ body{
 
 /* ========nav============= */
 .saludo{
-    background-color: #CCBBFF;
+    background-color: #CCAAFF;
     margin: 0;
     padding-left: 16px;
 }

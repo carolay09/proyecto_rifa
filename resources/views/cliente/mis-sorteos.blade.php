@@ -22,7 +22,7 @@
                     <td class="font-color align-middle"><strong>S/. {{number_format($rifaRev->precioTicket, 2)}}</strong></td>
                     <td class="font-color align-middle text-danger">Validando código</td>
                     <td class="font-color align-middle">{{$rifaRev->fechaSorteo}}</td>
-                    <td class="align-middle"><a href="#" class="btn btn-primary">Ver Sorteo</a></td>
+                    <td class="align-middle"><a href="#" class="btn boton-color text-white">Ver Sorteo</a></td>
                 </tr>
             @endforeach
             @foreach ($rifasConf as $rifaConf)

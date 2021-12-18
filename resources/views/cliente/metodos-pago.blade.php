@@ -45,23 +45,7 @@
                         </div>
                     </div>
 
-                </div>
-                <form action="{{route('actualizar-estado', $sale->id)}}" method="post">
-                    @csrf
-                    @method('PATCH')
-                    <label for="" class="label-control">Ingresa tu código de operación</label>
-                    <div class="row">
-                        <div class="col-12 col-md-6">
-                            <input type="text" class="form-control borde-input" required name="nroOperacion">
-                            @if (Session::has('mensaje'))
-                                <div class="text-danger">{{Session::get('mensaje')}}</div>
-                            @endif
-                        </div>
-                        <div class="col-12 col-md-6">
-                            <button type="submit" class="btn btn-danger">Finalizar compra</button>
-                        </div>
-                    </div>
-                </form>
+                </div>                
             </div>
             <div class="col-3">
                 <h4 class="third-color"><strong>RESUMEN</strong></h4>
@@ -87,6 +71,23 @@
                         <p class="col-12 col-md-6 text-success">S/. {{number_format($sale->total-$cupon->descuento, 2)}}</p>
                     @endif
                 </div>
+
+                <form action="{{route('actualizar-estado', $sale->id)}}" method="post">
+                    @csrf
+                    @method('PATCH')
+                    <label for="" class="label-control py-3">Ingresa tu código de operación</label>
+                    <div class="row">
+                        <div class="col-12">
+                            <input type="text" class="form-control borde-input" name="nroOperacion">
+                            @if (Session::has('mensaje'))
+                                <div class="text-danger">{{Session::get('mensaje')}}</div>
+                            @endif
+                        </div>
+                        <div class="col-12 py-3">
+                            <p class="text-center"><button type="submit" class="btn btn-danger">Finalizar compra</button></p>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </section>
