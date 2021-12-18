@@ -8,6 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
+    <link rel="icon" type="image/jpeg" href="{{asset('images/logo.jpeg')}}">
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -55,7 +56,7 @@
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
-                                    <a class="btn btn-primary" href="{{ route('login') }}"><i class="fas fa-user"></i> Iniciar sesión</a>
+                                    <a class="btn boton-color text-white" href="{{ route('login') }}"><i class="fas fa-user"></i> Iniciar sesión</a>
                                 </li>
                             @endif
 
@@ -67,7 +68,7 @@
                         @else
                             <li class="nav-item dropdown">
                                 
-                                <a id="navbarDropdown" class="btn btn-primary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre> <i class="fas fa-user"></i>
+                                <a id="navbarDropdown" class="btn boton-color text-white dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre> <i class="fas fa-user"></i>
                                     {{ Auth::user()->nombre }}
                                 </a>
 

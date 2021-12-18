@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <script type="text/javascript" src="views/js/sweetalert2@10.js"></script>
-    <link rel="icon" type="image/png" href="views/img/logo.png">
+    <link rel="icon" type="image/jpeg" href="{{asset('images/logo.jpeg')}}">
 
     <title>@yield('title')</title>
 
@@ -22,7 +22,7 @@
     <!-- Custom styles for this template-->
     
     <link href="{{asset('css/sb-admin-2.min.css')}}" rel="stylesheet">
-    @livewireStyles
+    
 </head>
 
 <body id="page-top">
@@ -95,7 +95,7 @@
 
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="py-2 collapse-inner rounded">
-                        <a href="{{route('raffles.index')}}" class="collapse-item text-white">Creación</a>
+                        <a href="{{route('raffles.index')}}" class="collapse-item text-white">Listar</a>
                         <a href="{{route('revision-rifas')}}" class="collapse-item text-white">Revision</a>
                     </div>
                 </div>
@@ -322,7 +322,6 @@
     <script src="{{asset('js/demo/chart-area-demo.js')}}"></script>
     <script src="{{asset('js/demo/chart-pie-demo.js')}}"></script>
 
-    @livewireScripts
 </body>
 
 </html>

@@ -22,7 +22,7 @@
                         {{-- <img src="{{asset('images/moda.jpeg')}}" class="img" alt=""> --}}
                         <p class="d-flex justify-content-center">
                             {{-- <input type="button" class="btn btn-primary btn-participa mb-3" value="Participa">      --}}
-                            <a href="{{route('producto_categoria', $category)}}" class="btn btn-primary btn-participa mb-3">Participa</a>
+                            <a href="{{route('producto_categoria', $category)}}" class="btn boton-color text-white btn-participa mb-3">Participa</a>
                         </p>
                     </div>
                     <h3 class="nombre-ctg">{{$category->nombre}}</h3>

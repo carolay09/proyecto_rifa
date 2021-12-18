@@ -52,7 +52,7 @@
                     <label for="" class="label-control">Ingresa tu código de operación</label>
                     <div class="row">
                         <div class="col-12 col-md-6">
-                            <input type="text" class="form-control borde-input" name="nroOperacion">
+                            <input type="text" class="form-control borde-input" required name="nroOperacion">
                             @if (Session::has('mensaje'))
                                 <div class="text-danger">{{Session::get('mensaje')}}</div>
                             @endif

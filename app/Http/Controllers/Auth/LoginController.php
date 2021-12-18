@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
@@ -28,6 +29,16 @@ class LoginController extends Controller
      * @var string
      */
     // protected $redirectTo = RouteServiceProvider::HOME;
+
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'email' => ['required', 'email', 'max:100', 'unique:users'],
+            'password' => ['required', 'min:8', 'confirmed'],
+            
+        ]);
+    }
+
     public function redirectTo(){
         $rol = Auth::user()->idRol;
 
