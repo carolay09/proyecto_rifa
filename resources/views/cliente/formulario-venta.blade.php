@@ -12,7 +12,6 @@
                 <form action="{{route('users.update', $user)}}" method="post">
                     @csrf
                     @method('PUT')
-
                     <div class=" py-2">
                         <label for="" class="label-control">Correo</label>
                         <input type="email" class="form-control borde-input" name="email" value="{{$user->email}}">

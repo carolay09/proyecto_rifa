@@ -75,7 +75,7 @@ class UserController extends Controller
         ->where('sales.id', '=', $sale->id)
         ->select('coupons.nombre', 'coupons.descuento')
         ->first();
-
+        // return $cupon;
        return view('cliente.metodos-pago', compact('sale', 'cupon'));
     }
 
