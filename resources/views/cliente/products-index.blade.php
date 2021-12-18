@@ -11,7 +11,7 @@
                     <div class="card mb-3">
                         <img src="{{asset('storage').'/'.$product->imagen}}" alt="">
                         <div class="p-3">
-                            <p class="borde px-3 py-0 m-0 d-inline-block">Quedan 30 dias</p>
+                            <p class="borde px-3 py-0 m-0 d-inline-block">Fecha sorteo: {{$product->fechaSorteo}}</p>
                             {{-- @php
                                 $actual = date('Y-m-d');
                                 $venc = date($product->fechaSorteo);
@@ -32,7 +32,7 @@
                                 <p class="font-color m-0">S/. {{$product->precioTicket}}</p>
                             </div>
                             <p class="text-center">
-                                <a href="{{route('products.show', $product->idProduct)}}" class="btn btn-primary">Comprar</a>
+                                <a href="{{route('products.show', $product->idProduct)}}" class="btn boton-color text-white">Comprar</a>
                             </p>
                         </div>
                     </div>

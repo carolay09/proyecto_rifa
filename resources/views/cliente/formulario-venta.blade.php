@@ -9,12 +9,10 @@
                 <h4 class="third-color"><strong>IDENTIFICACIÓN</strong></h4>
                 <hr class="linea third-color">
                 <p>Solicitamos únicamente la información esencial para la finalización de la compra</p>
-                <form action="{{route('users.update', $user)}}" method="post">
-                    @csrf
-                    @method('PUT')
+                
                     <div class=" py-2">
                         <label for="" class="label-control">Correo</label>
-                        <input type="text" class="form-control borde-input" name="email" value="{{$user->email}}">
+                        <input type="email" class="form-control borde-input" name="email" value="{{$user->email}}">
                     </div>
                     <div class="row">
                         <div class="col-12 col-md-6 py-2">
@@ -29,17 +27,24 @@
                     <div class="row">
                         <div class="col-12 col-md-6 py-2">
                             <label for="" class="label-control">Documento de identidad</label>
-                            <input type="text" class="form-control borde-input" name="dni" value="{{$user->dni}}">
+                            <input id="dni" type="text" class="form-control borde-input  @error('dni') is-invalid @enderror" name="dni"  value="{{$user->dni}}" autocomplete="dni" autofocus>
+                            @error('dni')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                        
                         </div>
+
+                        
                         <div class="col-12 col-md-6 py-2">
                             <label for="" class="label-control">Teléfono</label>
                             <input type="text" class="form-control borde-input" name="telefono" value="{{$user->telefono}}">
                         </div>
                         <div class="text-center py-2">
-                            <button type="submit" class="btn btn-primary px-4">Siguiente</button>
+                            <button type="submit" class="btn boton-color text-white px-4">Siguiente</button>
                         </div>
                     </div>
-                </form>
             </div>
             <div class="col-3">
                 <h4 class="third-color"><strong>RESUMEN</strong></h4>

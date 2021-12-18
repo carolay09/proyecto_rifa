@@ -19,9 +19,9 @@
                     </div>
                 </div>
                 <div class="borde w-50 text-center p-0">
-                    <a href="{{route('politicas')}}" target="_blank">
-                        <i class="fas fa-file-alt"></i>
-                        <p class="p-0 m-0">TÉRMINOS Y CONDICIONES</p>
+                    <a href="{{route('politicas')}}" style="text-decoration: none;" target="_blank">
+                        <i class="fas fa-file-alt color-letra"></i>
+                        <p class="p-0 m-0 color-letra" >TÉRMINOS Y CONDICIONES</p>
                     </a>
                 </div>
             </div>
@@ -68,7 +68,7 @@
                             <input type="number" class="form-control text-center" name="cantidad" value="1">
                         </p>
                         <p class="text-center">
-                            <button type="submit" class="btn btn-primary my-2 px-5">Agregar al carrito</button>
+                            <button type="submit" class="btn boton-color text-white my-2 px-5">Agregar al carrito</button>
                         </p>
                     </form>
                 </div>

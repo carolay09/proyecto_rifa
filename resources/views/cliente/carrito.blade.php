@@ -113,7 +113,7 @@
                 </div>
                 
                     <div class="d-flex justify-content-around my-5">
-                        <a href="{{url('/')}}" class="btn btn-primary">Seguir comprando</a>
+                        <a href="{{url('/')}}" class="btn boton-color text-white">Seguir comprando</a>
                         {{-- <form action="{{route('users.show', Auth::user())}}" method="get">
                             <input type="hidden" name="id_venta" value="{{$id_venta}}">
                             <button type="submit" class="btn btn-primary">Siguiente</button>
@@ -123,7 +123,7 @@
                             @csrf
                             @method('PATCH')
                             <input type="hidden" name="total" value="{{$total}}">
-                            <button type="submit" class="btn btn-primary">Siguiente</button>
+                            <button type="submit" class="btn boton-color text-white">Siguiente</button>
                         </form>
                     </div>
                 </div>
@@ -148,7 +148,7 @@
                                         {{session('mensaje')}}
                                     </div>
                                 @endif
-                                <button type="submit" class="btn btn-primary my-1 px-4">Aplicar cupón</button>
+                                <button type="submit" class="btn boton-color text-white my-1 px-4">Aplicar cupón</button>
                             </form>
                             <hr class="linea third-color my-4">
                             <div class="row">

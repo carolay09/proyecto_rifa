@@ -29,14 +29,14 @@ body{
 }
 .icono-ayuda{
     position: fixed;
-    bottom: 1rem;
+    bottom: 2rem;
     right: 2rem;
     width: 5rem;
 }
 
 .palabra-ayuda{
     position: fixed;
-    bottom: -1.2rem;
+    bottom: -0.7rem;
     right: 1rem;
     width: 5rem;
     color: black;
@@ -60,7 +60,7 @@ body{
 
 /* ========nav============= */
 .saludo{
-    background-color: #ffc000;
+    background-color: #CCBBFF;
     margin: 0;
     padding-left: 16px;
 }
@@ -192,6 +192,10 @@ body{
 /* ------------------login-------------------- */
 /* ================================================= */
 
-.login{
+.boton-color{
     background-color: var(--third-color);
+}
+
+.color-letra{
+    color: var(--third-color);
 }
