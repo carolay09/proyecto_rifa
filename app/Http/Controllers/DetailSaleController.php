@@ -36,12 +36,15 @@ class DetailSaleController extends Controller
             ->orderByDesc('id')
             ->select('id')
             ->first();
-        $sale_cupon = Sale::join('coupons', 'sales.idCupon', '=', 'coupons.id')
-            ->where('sales.id', '=', $sale->id)
-            ->select('coupons.nombre', 'coupons.descuento')
-            ->first();
- 
-        return view('cliente.carrito',compact('detail_sales', 'sale', 'sale_cupon'));
+        if($sale != null){
+            $sale_cupon = Sale::join('coupons', 'sales.idCupon', '=', 'coupons.id')
+                ->where('sales.id', '=', $sale->id)
+                ->select('coupons.nombre', 'coupons.descuento')
+                ->first();
+
+            return view('cliente.carrito',compact('detail_sales', 'sale', 'sale_cupon'));
+        }
+        return view('cliente.carrito', compact('detail_sales'));
     }
 
     public function store(Request $request)

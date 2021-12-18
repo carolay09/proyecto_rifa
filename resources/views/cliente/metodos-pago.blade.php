@@ -56,19 +56,19 @@
                 </div>
                 <div class="row">
                     <label for="" class="col-12 col-md-6 font-color">Descuento</label>
-                    @if ($cupon == null)
-                        <p class="col-12 col-md-6 text-danger">S/. 0.00</p>  
-                    @else  
+                    @if (isset($cupon))
                         <p class="col-12 col-md-6 text-danger">S/. {{number_format($cupon->descuento, 2)}}</p>
+                    @else  
+                        <p class="col-12 col-md-6 text-danger">S/. 0.00</p>  
                     @endif
                 </div>
                 <hr class="linea third-color my-4">
                 <div class="row">
                     <p class="col-12 col-md-6 font-color">Total</p>
-                    @if ($cupon == null)
-                        <p class="col-12 col-md-6 text-success">S/. {{number_format($sale->total, 2)}}</p>
-                    @else
+                    @if (isset($cupon))
                         <p class="col-12 col-md-6 text-success">S/. {{number_format($sale->total-$cupon->descuento, 2)}}</p>
+                    @else
+                        <p class="col-12 col-md-6 text-success">S/. {{number_format($sale->total, 2)}}</p>
                     @endif
                 </div>
 
@@ -78,7 +78,12 @@
                     <label for="" class="label-control py-3">Ingresa tu código de operación</label>
                     <div class="row">
                         <div class="col-12">
-                            <input type="text" class="form-control borde-input" name="nroOperacion">
+                            <input type="text" class="form-control borde-input" name="nroOperacion" value="{{old('nroOperacion')}}">
+                            @error('nroOperacion')
+                            <div class="text-danger">
+                                {{$message}}
+                            </div>
+                            @enderror
                             @if (Session::has('mensaje'))
                                 <div class="text-danger">{{Session::get('mensaje')}}</div>
                             @endif

@@ -91,21 +91,29 @@ class SaleController extends Controller
     }
 
     public function state_update(Request $request, $id, SessionManager $sessionManager){
+        // return $request;
+        $request->validate([
+            'nroOperacion' => 'required',
+        ]);
+        // return $request;
+        if($request->nroOperacion == '' || $request->nroOperacion == null){
+            $sessionManager->flash('mensaje', 'Tiene que ingresar un número de operación para continuar');
+            return redirect()->back();
+        }
         $sale = Sale::findOrFail($id);
         $nroOperacion_exist = Sale::where('nroOperacion', '=', $request->nroOperacion)
             ->first();
         //evaluar si el nro de operacion fue usado
         if($nroOperacion_exist != null){
             $sessionManager->flash('mensaje', 'Este número de operación ya fue usado');
-
-            return view('cliente.metodos-pago', compact('sale'));
+            return redirect()->back();
         }else{
             $sale->idEstado = '5';
             $sale->nroOperacion = $request->nroOperacion;
             $sale->update();
         }
-
-        return redirect('mis-sorteos');
+        
+        return redirect(url('mis-compras'));
         // return $sale;
     }
 
@@ -172,5 +180,20 @@ class SaleController extends Controller
 
 
         return view('administracion/detail_sales', compact('sale'));
+    }
+
+    public function metodos_pago(){
+        $sale = Sale::join('states', 'sales.idEstado', '=', 'states.id')
+            ->where('sales.idUsuario', '=', auth()->user()->id)
+            ->where('states.nombre', 'like', 'pendiente')
+            ->select('sales.id', 'sales.total')
+            ->first();
+
+        $cupon = Sale::join('coupons', 'sales.idCupon', '=', 'coupons.id')
+        ->where('sales.id', '=', $sale->id)
+        ->select('coupons.nombre', 'coupons.descuento')
+        ->first();
+        // return $cupon;
+       return view('cliente.metodos-pago', compact('sale', 'cupon'));
     }
 }

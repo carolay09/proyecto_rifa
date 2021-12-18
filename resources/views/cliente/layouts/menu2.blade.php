@@ -50,7 +50,7 @@
                             <a href="{{route('politicas')}}" class="nav-link" target="_blank"><i class="fas fa-file-invoice px-2"></i>Políticas</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{url('detail_sales')}}" class="nav-link"><i class="fas fa-shopping-cart px-3"></i></a>
+                            <a href="{{route('detail_sales.index')}}" class="nav-link"><i class="fas fa-shopping-cart px-3"></i></a>
                         </li>
                         <!-- Authentication Links -->
                         @guest
