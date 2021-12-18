@@ -75,6 +75,7 @@ Route::resource('coupons', CouponController::class);
 Route::resource('detail_sales', DetailSaleController::class);
 Route::resource('sales', SaleController::class);
 Route::resource('emails', EmailController::class);
+Route::resource('tickets', TicketController::class);
 
 Auth::routes();
 
