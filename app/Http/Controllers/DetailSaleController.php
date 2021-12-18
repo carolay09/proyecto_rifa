@@ -99,7 +99,7 @@ class DetailSaleController extends Controller
                     ->where('idRaffle', '=', $datos_rifa->id)
                     ->first();
 
-                $detVenta->cantidad = $cantProd->cantidad + 1;
+                $detVenta->cantidad = $cantProd->cantidad + $request->cantidad;
                 $detVenta->total += $cantProd->precio;
                 $detVenta->update(); 
                 return redirect('detail_sales');

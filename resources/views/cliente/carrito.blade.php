@@ -27,13 +27,13 @@
                                     @endphp
                                     <p>{{$detail_sale->nombre}}</p>
                                     <p>S/. {{number_format($detail_sale->precio, 2)}}</p>
-                                    <p>
+                                    {{-- <p>
                                         <div class="d-flex justify-content-center w-50">
                                             <input type="button" value="-" class="form-control">
                                             <input type="number" name="cantidad" value="1" id="" class="form-control text-center">
                                             <input type="button" value="+" class="form-control">
                                         </div>
-                                    </p>
+                                    </p> --}}
                                 </td>
                                 <td class="align-middle">
                                     S/. {{number_format($detail_sale->precioTicket * $detail_sale->cantidad, 2)}}

@@ -63,8 +63,13 @@
                         @csrf
                         <input type="hidden" name="precio" value="{{$product->precioTicket}}">
                         <input type="hidden" name="idProducto" value="{{$product->id}}">
-                        <input type="hidden" name="cantidad" value="1">
-                        <button type="submit" class="btn btn-primary my-2 px-5">Agregar al carrito</button>
+                        <p class="my-3">
+                            <label for="">Seleccione la cantidad de tickets</label>
+                            <input type="number" class="form-control text-center" name="cantidad" value="1">
+                        </p>
+                        <p class="text-center">
+                            <button type="submit" class="btn btn-primary my-2 px-5">Agregar al carrito</button>
+                        </p>
                     </form>
                 </div>
             </div>
