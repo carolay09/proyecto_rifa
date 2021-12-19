@@ -5,7 +5,7 @@
 @section('content')
     <section class="container py-5">
         <div class="row">
-            <div class="col-9">
+            <div class="col-12 col-md-9">
                 <h4 class="third-color"><strong>IDENTIFICACIÓN</strong></h4>
                 <hr class="linea third-color">
                 <p>Solicitamos únicamente la información esencial para la finalización de la compra</p>
@@ -39,28 +39,32 @@
                     <a href="{{route('metodos_pago')}}" class="btn boton-color text-white px-4">Siguiente</a>
                 </p>
             </div>
-            <div class="col-3">
+            <div class="col-12 col-md-9">
                 <h4 class="third-color"><strong>RESUMEN</strong></h4>
                 <hr class="linea third-color">
                 <div class="row">
-                    <p class="col-12 col-md-6 font-color">Valor regular: </p>
-                    <p class="col-12 col-md-6 font-color">S/. {{number_format($sale->total, 2)}}</p>
+                    <p class="col-6 font-color">Valor regular: </p>
+                    <p class="col-6 font-color">S/. {{number_format($sale->total, 2)}}</p>
                 </div>
                 <div class="row">
-                    <label for="" class="col-12 col-md-6 font-color">Descuento</label>
+                    <label for="" class="col-6 font-color">Descuento</label>
                     @if ($cupon == null)
-                        <p class="col-12 col-md-6 text-danger">S/. 0.00</p>  
+                        <p class="col-6 text-danger">S/. 0.00</p>  
                     @else  
-                        <p class="col-12 col-md-6 text-danger">S/. {{number_format($cupon->descuento, 2)}}</p>
+                        <p class="col-6 text-danger">S/. {{number_format($cupon->descuento, 2)}}</p>
                     @endif
                 </div>
                 <hr class="linea third-color my-4">
                 <div class="row">
-                    <p class="col-12 col-md-6 font-color">Total</p>
+                    <p class="col-6 font-color">Total</p>
                     @if ($cupon == null)
-                        <p class="col-12 col-md-6 text-success">S/. {{number_format($sale->total, 2)}}</p>
+                        <p class="col-6 text-success">S/. {{number_format($sale->total, 2)}}</p>
                     @else
-                        <p class="col-12 col-md-6 text-success">S/. {{number_format($sale->total-$cupon->descuento, 2)}}</p>
+                        @if ($sale->total-$cupon->descuento <= 0)
+                            <p class="col-6 font-color text-success">S/. 0.00</p>
+                        @else
+                            <p class="col-6 font-color text-success">S/. {{number_format($sale->total-$cupon->descuento, 2)}}</p>
+                        @endif
                     @endif
                 </div>
             </div>

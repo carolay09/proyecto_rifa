@@ -5,24 +5,21 @@
 @section('content')
     <section class="container py-5">
         <div class="row">
-            <div class="col-9">
+            <div class="col-12 col-md-9">
                 <h4 class="third-color"><strong>PAGOS</strong></h4>
                 <hr class="linea third-color">
                 <div class="py-3">
                     <p>Si pagarás con YAPE o PLIN:</p>
-                    <div class="metodos-pago d-flex justify-content-center">
-                        <div class="d-flex px-5">
+                    <div class="metodos-pago row">
+                        <div class="col-12 col-md-6 px-5">
                             <img src="{{asset('images/yape.png')}}" class="logo-metodo-pago" alt="">
                             <p class="px-3 m-0 d-flex align-items-center borde">982027069</p>
                         </div>
-                        <div class="d-flex px-5">
+                        <div class="col-12 col-md-6 px-5">
                             <img src="{{asset('images/plin.png')}}" class="logo-metodo-pago" alt="">
                             <p class="px-3 m-0 d-flex align-items-center borde">950012263</p>
                         </div>
-
                     </div>
-                                       
-               
                 </div>
                 <div class="py-3">
                     <p>Si pagarás con una transferencia bancaria:</p>
@@ -44,31 +41,35 @@
                             </div>
                         </div>
                     </div>
-
                 </div>                
             </div>
-            <div class="col-3">
+
+            <div class="col-12 col-md-3">
                 <h4 class="third-color"><strong>RESUMEN</strong></h4>
                 <hr class="linea third-color">
                 <div class="row">
-                    <p class="col-12 col-md-6 font-color">Valor regular: </p>
-                    <p class="col-12 col-md-6 font-color">S/. {{number_format($sale->total, 2)}}</p>
+                    <p class="col-6 font-color">Valor regular: </p>
+                    <p class="col-6 font-color">S/. {{number_format($sale->total, 2)}}</p>
                 </div>
                 <div class="row">
-                    <label for="" class="col-12 col-md-6 font-color">Descuento</label>
+                    <label for="" class="col-6 font-color">Descuento</label>
                     @if (isset($cupon))
-                        <p class="col-12 col-md-6 text-danger">S/. {{number_format($cupon->descuento, 2)}}</p>
+                        <p class="col-6 text-danger">S/. {{number_format($cupon->descuento, 2)}}</p>
                     @else  
-                        <p class="col-12 col-md-6 text-danger">S/. 0.00</p>  
+                        <p class="col-6 text-danger">S/. 0.00</p>  
                     @endif
                 </div>
                 <hr class="linea third-color my-4">
                 <div class="row">
-                    <p class="col-12 col-md-6 font-color">Total</p>
+                    <p class="col-6 font-color">Total</p>
                     @if (isset($cupon))
-                        <p class="col-12 col-md-6 text-success">S/. {{number_format($sale->total-$cupon->descuento, 2)}}</p>
+                        @if ($sale->total-$cupon->descuento <= 0)
+                            <p class="col-6 text-success">S/. 0.00</p>
+                        @else
+                            <p class="col-6 text-success">S/. {{number_format($sale->total-$cupon->descuento, 2)}}</p>
+                        @endif
                     @else
-                        <p class="col-12 col-md-6 text-success">S/. {{number_format($sale->total, 2)}}</p>
+                        <p class="col-6 text-success">S/. {{number_format($sale->total, 2)}}</p>
                     @endif
                 </div>
 

@@ -5,7 +5,7 @@
 @section('content')
     <section class="container">
         <div class="row">
-            <div class="col-6">
+            <div class="col-12 col-md-6">
                 <img src="{{asset('storage'.'/'.$product->imagen)}}" class="image-fluid" alt="" style="max-width: 100%">
                 <div class="my-4 borde">
                     <p class="">Objetivo de la promoción</p>
@@ -25,7 +25,7 @@
                     </a>
                 </div>
             </div>
-            <div class="col-6">
+            <div class="col-12 col-md-6">
                 <div class="w-75 mx-auto">
                     {{-- aqui va el formulario y detalles --}}
                     <p class="mb-3 text-center nombre-prod py-3 fs-2"><strong>{{$product->nombre}}</strong></p>
