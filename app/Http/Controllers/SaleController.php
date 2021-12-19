@@ -75,7 +75,7 @@ class SaleController extends Controller
         ->join('products', 'raffles.idProducto', '=', 'products.id')
         ->where('sales.idUsuario', '=', $id_user)
         ->where('sales.idEstado', '=', '7')
-        ->select('products.imagen', 'products.nombre', 'raffles.fechaSorteo', 'raffles.precioTicket', 'detail_sales.precio', 'detail_sales.cantidad', 'detail_sales.id')
+        ->select('products.imagen', 'products.nombre', 'raffles.fechaSorteo', 'raffles.precioTicket', 'raffles.link', 'detail_sales.precio', 'detail_sales.cantidad', 'detail_sales.id')
         ->get();
 
         // $rifasObs = DetailSale::join('sales', 'detail_sales.idVenta', '=', 'sales.id')
