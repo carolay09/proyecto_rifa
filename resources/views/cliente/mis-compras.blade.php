@@ -6,16 +6,9 @@
     <section class="container py-3">
         <h4 class="third-color text-uppercase">Mis compras</h4>
         <hr class="linea third-color">
-        <table class="table">
-            <tr>
-                <td></td>
-                <td class="font-color">Descripción</td>
-                <td class="font-color">Valor</td>
-                <td class="font-color">Estado de pago</td>
-                <td class="font-color">Fecha de sorteo</td>
-                <td></td>
-            </tr>
-            @foreach ($rifasRev as $rifaRev)
+        <div class="table-responsive-xl">
+            <table class="table">
+                @foreach ($rifasRev as $rifaRev)
                 <tr>
                     <td><img src="{{asset('storage'.'/'.$rifaRev->imagen)}}" alt="" class="imagen-icono"></td>
                     <td class="font-color align-middle">{{$rifaRev->nombre}}</td>
@@ -35,5 +28,6 @@
                 </tr>
             @endforeach
         </table>
+
     </section>
 @endsection
