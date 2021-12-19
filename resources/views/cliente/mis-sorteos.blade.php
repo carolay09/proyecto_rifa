@@ -32,8 +32,8 @@
                     </td> --}}
                     <td class="font-color align-middle">{{$sorteo->fechaSorteo}}</td>
                     <td class="align-middle">
-                        <a href="#" class="btn btn-primary">Ver Sorteo</a>
-                        <a href="{{route('tickets.show', $sorteo->id)}}" class="btn btn-primary">Ver Tickets</a>
+                        <a href="{{$sorteo->link}}" target="_blank" class="btn boton-color text-white">Ver Sorteo</a>
+                        <a href="{{route('tickets.show', $sorteo->id)}}" class="btn boton-color text-white">Ver Tickets</a>
                     </td>
                 </tr>
             @endforeach

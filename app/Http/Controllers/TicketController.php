@@ -23,7 +23,7 @@ class TicketController extends Controller
             ->join('states', 'sales.idEstado', '=', 'states.id')
             ->where('states.nombre', '=', 'pagado')
             ->where('sales.id', '=', auth()->user()->id)
-            ->select('products.nombre', DB::raw("SUM(detail_sales.cantidad) as cantidad"), 'products.imagen', 'raffles.cantidadPart', 'raffles.fechaSorteo', 'raffles.id')
+            ->select('products.nombre', DB::raw("SUM(detail_sales.cantidad) as cantidad"), 'products.imagen', 'raffles.cantidadPart', 'raffles.fechaSorteo', 'raffles.id','raffles.link')
             ->groupBy('products.nombre', 'products.imagen', 'raffles.cantidadPart', 'raffles.fechaSorteo', 'raffles.id')
             ->get();
 
@@ -31,7 +31,7 @@ class TicketController extends Controller
         // ->join('tickets', 'raffles.id', '=', 'tickets.idRifa')
         // ->where('products.nombre', '=', $sorteos->nombre)
         // ->select('tickets.idRifa')
-        // ->get()
+        // ->get()ññ
         // ->count();
         return view('cliente.mis-sorteos', compact('sorteos'));
     }
@@ -76,7 +76,7 @@ class TicketController extends Controller
         ->select('tickets.nroTicket')
         ->get();
 
-        return $tickets;
+        return view('cliente/mis-tickets',compact('tickets'));
     }
 
     public function edit(Ticket $ticket)

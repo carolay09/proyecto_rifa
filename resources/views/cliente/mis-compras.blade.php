@@ -22,7 +22,6 @@
                     <td class="font-color align-middle"><strong>S/. {{number_format($rifaRev->precioTicket, 2)}}</strong></td>
                     <td class="font-color align-middle text-danger">Validando código</td>
                     <td class="font-color align-middle">{{$rifaRev->fechaSorteo}}</td>
-                    <td class="align-middle"><a href="#" class="btn btn-primary">Ver Sorteo</a></td>
                 </tr>
             @endforeach
             @foreach ($rifasConf as $rifaConf)
@@ -32,7 +31,7 @@
                     <td class="font-color align-middle"><strong>S/. {{number_format($rifaConf->precioTicket, 2)}}</strong></td>
                     <td class="font-color align-middle text-success">Pago aprobado</td>
                     <td class="font-color align-middle">{{$rifaConf->fechaSorteo}}</td>
-                    <td class="align-middle"><a href="#" class="btn boton-color text-white">Ver Sorteo</a></td>
+                    <td class="align-middle"><a href="{{$rifaConf->link}}" target="_blank" class="btn boton-color text-white">Ver Sorteo</a></td>
                 </tr>
             @endforeach
         </table>
