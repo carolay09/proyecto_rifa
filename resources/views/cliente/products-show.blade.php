@@ -18,14 +18,14 @@
                         </div>
                     </div>
                 </div>
-                <div class="borde w-50 text-center p-0">
+                <div class="borde w-50 text-center p-0 mx-auto">
                     <a href="{{route('politicas')}}" style="text-decoration: none;" target="_blank">
                         <i class="fas fa-file-alt color-letra"></i>
                         <p class="p-0 m-0 color-letra" >TÉRMINOS Y CONDICIONES</p>
                     </a>
                 </div>
             </div>
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-md-6 my-3">
                 <div class="w-75 mx-auto">
                     {{-- aqui va el formulario y detalles --}}
                     <p class="mb-3 text-center nombre-prod py-3 fs-2"><strong>{{$product->nombre}}</strong></p>
