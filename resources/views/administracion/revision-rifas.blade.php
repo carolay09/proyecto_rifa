@@ -25,11 +25,11 @@
                                 <input type="hidden" name="idUsuario" value="{{$rifaPend->idUsuario}}">
                                 <button type="submit" class="btn btn-primary">Confirmado</button>
                             </form>
-                            <form action="{{route('observa-pago', $rifaPend->id)}}" method="post">
+                            {{-- <form action="{{route('observa-pago', $rifaPend->id)}}" method="post">
                                 @csrf
                                 @method('PATCH')
                                 <button type="submit" class="btn btn-danger">Observado</button>
-                            </form>
+                            </form> --}} 
                         </td>
                     </tr>
                 @endforeach

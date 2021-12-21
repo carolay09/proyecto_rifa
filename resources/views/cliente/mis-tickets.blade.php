@@ -27,6 +27,6 @@
                 </tr>
             @endforeach
         </table>
-        <a href="{{route('tickets.show', $sorteo->id)}}" class="btn boton-color text-white">Regresar</a>
+        <a href="{{route('mis-sorteos')}}" class="btn boton-color text-white">Regresar</a>
     </section>
 @endsection

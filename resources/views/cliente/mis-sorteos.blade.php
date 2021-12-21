@@ -10,7 +10,6 @@
             <tr>
                 <td class="font-color">Imagen</td>
                 <td class="font-color">Nombre</td>
-                <td class="font-color">cantidad</td>
                 {{-- <td class="font-color">Objetivo</td> --}}
                 <td class="font-color">Fecha de sorteo</td>
                 <td></td>
@@ -19,7 +18,6 @@
                 <tr>
                     <td><img src="{{asset('storage'.'/'.$sorteo->imagen)}}" alt="" class="imagen-icono"></td>
                     <td class="font-color align-middle">{{$sorteo->nombre}}</td>
-                    <td class="font-color align-middle">{{$sorteo->cantidad}}</td>
                     {{-- <td>
                         @php
                         $objetivo = $cantPartActual / $sorteo->cantidadPart * 100;

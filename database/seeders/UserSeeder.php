@@ -16,24 +16,12 @@ class UserSeeder extends Seeder
     {
         DB::table('users')->insert([
             'dni' => '12345',
-            'nombre' => 'cliente',
-            'apellido' => 'cliente',
-            'telefono' => 'cliente',
-            'direccion' => 'lima',
-            'email' => 'cliente@rifa.com',
-            'password' => bcrypt('12345'),
-            'idEstado' => '1',
-            'idRol' => '1'
-        ]);
-
-        DB::table('users')->insert([
-            'dni' => '12345',
             'nombre' => 'administrador',
             'apellido' => 'administrador',
             'telefono' => 'administrador',
             'direccion' => 'lima',
             'email' => 'admi@rifa.com',
-            'password' => bcrypt('12345'),
+            'password' => bcrypt('Dieciocho(18).'),
             'idEstado' => '1',
             'idRol' => '2'
         ]);

@@ -32,6 +32,8 @@ body{
     bottom: 2rem;
     right: 2rem;
     width: 5rem;
+    background-color: white;
+    border-radius: 42px;
 }
 
 .palabra-ayuda{
