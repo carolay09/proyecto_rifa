@@ -44,7 +44,7 @@
     </div>
 </div>
 <div class="section my-5">
-    <p class="text-center h3 fw-bold secondary-color">¿Quiénes somos?</p>
+    <p class="text-center h3 fw-bold secondary-color" id="quienes" >¿Quiénes somos?</p>
     <article class="container articulo">
         Somos una empresa peruana que propone una forma alternativa de adquisición de bienes con costos elevados, ofreciendo la posibilidad de adquirir estos productos por medio de aportes simbólicos traducidos en tickets virtuales que, mediante sorteos benefician a los usuarios de nuestra plataforma.
     </article>

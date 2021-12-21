@@ -5,7 +5,7 @@
 @section('content')
 
 <section class="container">
-    <a href="{{route('categories.create')}}" class="btn btn-primary my-3">Exportar a Excel</a>
+    <a href="{{route('tickets.exportExcel')}}" class="btn btn-primary my-3">Exportar a Excel</a>
     <h4 class="text-center">Tickets de la rifa</h4>
     <div class="table-responsive-xl">
     <table class="table">

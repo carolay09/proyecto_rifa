@@ -12,6 +12,8 @@ class TicketsExport implements FromCollection
     */
     public function collection()
     {
-        return Ticket::all();
+        return Ticket::join('users','tickets.idUsuario','=','users.id')
+        ->select('tickets.nroTicket', 'users.dni','users.nombre','users.apellido','users.telefono','users.direccion','users.email')
+        ->get();
     }
 }

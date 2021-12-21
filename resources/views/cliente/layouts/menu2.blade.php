@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Lotti') }}</title>
     <link rel="icon" type="image/jpeg" href="{{asset('images/logo.jpeg')}}">
 
     <!-- Scripts -->
@@ -44,7 +44,7 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a href="#" class="nav-link"><i class="fas fa-users px-2"></i>Quiénes somos</a>
+                            <a href="{{route('home')}}#quienes" class="nav-link"><i class="fas fa-users px-2"></i>Quiénes somos</a>
                         </li>
                         <li class="nav-item">
                             <a href="{{route('politicas')}}" class="nav-link" target="_blank"><i class="fas fa-file-invoice px-2"></i>Políticas</a>
@@ -97,7 +97,7 @@
     <main class="py-4 mt-5">
         @yield('content')
     </main>
-    <a href="https://api.whatsapp.com/send?phone=51982027069&amp;text=Hola!%20quisiera%20m%C3%A1s%20informacion.%20GRACIAS!">
+    <a href="https://api.whatsapp.com/send?phone=51982027069&amp;text=Hola!%20quisiera%20m%C3%A1s%20informacion.%20GRACIAS!"  target="_blank">
         <img src="{{asset('images/whatsapp.png')}}" alt="" class="icono-ayuda">
         <p class="palabra-ayuda"><strong>AYUDA</strong></p>
     </a>

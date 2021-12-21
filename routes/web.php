@@ -46,6 +46,7 @@ Route::group(['middleware' => 'admin'], function(){
     Route::get('venta/{id}/mostrar', [SaleController::class, 'mostrar'])->name('sales.mostrar');
     Route::patch('dashboard/categories/{id}', [CategoryController::class, 'update_state'])->name('categories.update-state');
     Route::get('ticket/{id}/mostrar', [RaffleController::class, 'mostrar'])->name('raffles.mostrar');
+    Route::get('ticket/export', [TicketController::class, 'exportExcel'])->name('tickets.exportExcel');
 });
 
 Route::group(['middleware' => 'cliente'], function(){
