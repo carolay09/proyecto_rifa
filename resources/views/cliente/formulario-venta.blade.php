@@ -39,7 +39,7 @@
                     <a href="{{route('metodos_pago')}}" class="btn boton-color text-white px-4">Siguiente</a>
                 </p>
             </div>
-            <div class="col-12 col-md-9">
+            <div class="col-12 col-md-3">
                 <h4 class="third-color"><strong>RESUMEN</strong></h4>
                 <hr class="linea third-color">
                 <div class="row">

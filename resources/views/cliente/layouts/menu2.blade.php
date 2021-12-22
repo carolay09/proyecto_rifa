@@ -26,23 +26,23 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm fixed-top">
+        <nav class="navbar navbar-expand navbar-light bg-white shadow-sm fixed-top">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     <img src="{{asset('images/logo.jpeg')}}" alt="" style="width: 100px">
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                {{-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-primary-color"></span>
-                </button>
+                </button> --}}
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
+                    {{-- <ul class="navbar-nav me-auto">
                       
-                    </ul>
+                    </ul> --}}
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
+                    <ul class="navbar-nav">
                         <li class="nav-item">
                             <a href="#" class="nav-link"><i class="fas fa-users px-2"></i>Quiénes somos</a>
                         </li>
@@ -50,7 +50,7 @@
                             <a href="{{route('politicas')}}" class="nav-link" target="_blank"><i class="fas fa-file-invoice px-2"></i>Políticas</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('detail_sales.index')}}" class="nav-link"><i class="fas fa-shopping-cart px-3"></i></a>
+                            <a href="{{route('detail_sales.index')}}" class="nav-link"><i class="fas fa-shopping-cart px-0"></i></a>
                         </li>
                         <!-- Authentication Links -->
                         @guest
